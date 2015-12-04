@@ -1,0 +1,66 @@
+<Workspace Version="0.9.1.3360" X="214.159536361448" Y="141.719363893227" zoom="0.943084670293633" Name="Analysis Period" Description="Create a Ladybug Analysis Period" ID="68f28d75-707b-49d6-b95f-6925e88ffd2e" Category="Ladybug.1|Analyze Weather Data">
+  <NamespaceResolutionMap />
+  <Elements>
+    <PythonNodeModels.PythonStringNode guid="f93a683c-bcbf-453a-aea1-254668038c46" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="418.995960308079" y="-2.79351959656879" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="7" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="94746156-3a27-4747-9b13-5001c6c51931" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-81.3616052043578" y="69.5517013075263" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//Start month (1-12)&#xD;&#xA;_startMonth_: int = 1;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <PythonNodeModels.PythonNode guid="a507aa7b-fc51-4a05-a20e-a4ad4c879324" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="166.035746428105" y="-2.41644148649448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+      <Script>def getPackagePath(packageName):
+	import sys
+	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
+	import os
+	dynamoPath = sys.path[1].split('\\')[2].replace(' ', '\\')
+	appdata = os.getenv('APPDATA')
+	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
+
+filePath = getPackagePath('Ladybug') + IN[0]
+
+with open(filePath, 'rb') as inf:
+    lines = inf.readlines()
+
+OUT = ''.join(lines)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4852f56e-5525-4ea5-99cb-48ac0f0c108f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-77.8690497805459" y="138.659968622666" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//Start day (1-31)&#xD;&#xA;_startDay_: int = 1;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="7ea7ca61-e288-40e9-80f5-e49400a4d55c" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-94.9642535718958" y="1.7968918468388" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;analysisPeriod.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="abb91dec-c575-4a0b-a1dd-a3a7ae2bed43" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="646.518053026651" y="-4.04545853381475" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+      <Symbol value="analysisPeriod" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="45fa94fa-3918-4b87-919c-1348dd0a37e1" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-79.5448953480802" y="212.158069745627" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//Start hour (1-24)&#xD;&#xA;_startHour_: int = 1;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="dd419793-afe2-4484-84f6-3ff14a3619e1" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="159.327683434418" y="72.09616277151" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//End month (1-12)&#xD;&#xA;_endMonth_: int = 12;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="38dc5a16-5306-43f9-9d2c-b476748cc49a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="165.854990099367" y="141.20443008665" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//End day (1-31)&#xD;&#xA;_endDay_: int = 31;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="66234bca-6193-4acd-9050-98e767ee1f5d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="164.179144531832" y="214.702531209611" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//End hour (1-24)&#xD;&#xA;_endHour_: int = 24;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="f93a683c-bcbf-453a-aea1-254668038c46" start_index="0" end="abb91dec-c575-4a0b-a1dd-a3a7ae2bed43" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="94746156-3a27-4747-9b13-5001c6c51931" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="a507aa7b-fc51-4a05-a20e-a4ad4c879324" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="4852f56e-5525-4ea5-99cb-48ac0f0c108f" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7ea7ca61-e288-40e9-80f5-e49400a4d55c" start_index="0" end="a507aa7b-fc51-4a05-a20e-a4ad4c879324" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="45fa94fa-3918-4b87-919c-1348dd0a37e1" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="3" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="dd419793-afe2-4484-84f6-3ff14a3619e1" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="4" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="38dc5a16-5306-43f9-9d2c-b476748cc49a" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="5" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="66234bca-6193-4acd-9050-98e767ee1f5d" start_index="0" end="f93a683c-bcbf-453a-aea1-254668038c46" end_index="6" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="a5d27b34-edf8-4af7-82d4-a454edc668b0" annotationText="import the script from file" left="-104.964253571896" top="-32.4164414864945" width="430.000000000001" height="102.213333333333" fontSize="14" InitialTop="-2.41644148649448" InitialHeight="102.213333333333" TextblockHeight="20" backgrouund="#FFC1D676">
+      <Models ModelGuid="a507aa7b-fc51-4a05-a20e-a4ad4c879324" />
+      <Models ModelGuid="7ea7ca61-e288-40e9-80f5-e49400a4d55c" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
