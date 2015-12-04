@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="-534.409926364713" Y="232.14293068189" zoom="0.96690837978019" Name="Import epw" Description="Use this node to import lists of weather data into Dynamo from a standard .epw file.&#xA;For detailed information about the structure of an epw file, you may want to read the&#xA;&quot;Weather Converter Program&quot; section in &quot;Auxiliary EnergyPlus Programs&quot; document.&#xA;All descriptions of importaed data are borrowed from this document.&#xA;The document is available online at this address:&#xA;&quot;http://apps1.eere.energy.gov/buildings/energyplus/pdfs/auxiliaryprograms.pdf&quot;" ID="5e4542cd-a772-4ab7-8c33-edb4c07046b6" Category="Ladybug.0|Ladybug">
+<Workspace Version="0.9.1.3360" X="-511.557818827218" Y="311.946437783591" zoom="1.01952386243157" Name="Import epw" Description="Use this node to import lists of weather data into Dynamo from a standard .epw file.&#xA;For detailed information about the structure of an epw file, you may want to read the&#xA;&quot;Weather Converter Program&quot; section in &quot;Auxiliary EnergyPlus Programs&quot; document.&#xA;All descriptions of importaed data are borrowed from this document.&#xA;The document is available online at this address:&#xA;&quot;http://apps1.eere.energy.gov/buildings/energyplus/pdfs/auxiliaryprograms.pdf&quot;" ID="5e4542cd-a772-4ab7-8c33-edb4c07046b6" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
     <ClassMap partialName="System" resolvedName="System.Object" assemblyName="" />
@@ -6,23 +6,6 @@
   <Elements>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="c16c3067-e11e-463b-b7cb-5974a973af27" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Separate Outputs" x="1299.18136299555" y="-60.1150380898302" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];&#xA;out[8];&#xA;out[9];&#xA;out[10];&#xA;out[11];&#xA;out[12];&#xA;out[13];&#xA;out[14];&#xA;out[15];&#xA;out[16];" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="de4dcd98-c0cd-49ca-b0ce-f301f18c205f" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="1106.29099924359" y="-64.2080643331511" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="3" />
-    <PythonNodeModels.PythonNode guid="d3409b6a-e661-4a76-974b-93e70b445320" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="853.330785363616" y="-63.8309862230768" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
-      <Script>def getPackagePath(packageName):
-	import sys
-	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
-	import os
-	dynamoPath = sys.path[1].split('\\')[2].replace(' ', '\\')
-	appdata = os.getenv('APPDATA')
-	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-
-filePath = getPackagePath('Ladybug') + IN[0]
-
-with open(filePath, 'rb') as inf:
-    lines = inf.readlines()
-
-OUT = ''.join(lines)</Script>
-    </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="5ca5b3da-52b8-4a45-826f-867acd7789c8" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="592.330785363615" y="-59.6176528897435" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;importEPW.py&quot;;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="77d9d212-633e-468a-bade-c98f79b32691" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="718.219229653215" y="8.13715657094409" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="//File path to a valid epw file&#xD;&#xA;_epwFile: string" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
@@ -80,6 +63,25 @@ OUT = ''.join(lines)</Script>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="04aaad1a-5cd3-45c9-b163-1f3c37b17800" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="506.591177776381" y="79.2038622772665" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="//Ladybug Analysis Period&#xD;&#xA;_analysisPeriod_: string = &quot;1/1 to 12/31 between 1 to 24&quot;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <PythonNodeModels.PythonNode guid="da3fcbcc-6eaa-4d19-9a5f-6b6a238472d3" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="852.804612121446" y="-78.1592851979582" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+      <Script>def getPackagePath(packageName):
+	import sys
+	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
+	import os
+	import clr
+	clr.AddReference('DynamoCore')
+	dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+	appdata = os.getenv('APPDATA')
+	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
+
+filePath = getPackagePath('Ladybug') + IN[0]
+
+with open(filePath, 'rb') as inf:
+    lines = inf.readlines()
+
+OUT = ''.join(lines)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="49a6421a-bde8-4698-a06b-8a49b3db39de" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="612.52853919842" y="-74.0163755556386" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;importEPW.py&quot;;" ShouldFocus="false" />
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="c16c3067-e11e-463b-b7cb-5974a973af27" start_index="0" end="ebb2d9f7-ce55-49a7-b79c-96eed7e2381b" end_index="0" portType="0" />
@@ -100,16 +102,16 @@ OUT = ''.join(lines)</Script>
     <Dynamo.Graph.Connectors.ConnectorModel start="c16c3067-e11e-463b-b7cb-5974a973af27" start_index="15" end="55841265-ab63-4228-be5d-66509e2c0a16" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="c16c3067-e11e-463b-b7cb-5974a973af27" start_index="16" end="47184c96-e4c6-4658-a397-9dccfa589901" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="de4dcd98-c0cd-49ca-b0ce-f301f18c205f" start_index="0" end="c16c3067-e11e-463b-b7cb-5974a973af27" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="d3409b6a-e661-4a76-974b-93e70b445320" start_index="0" end="de4dcd98-c0cd-49ca-b0ce-f301f18c205f" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="5ca5b3da-52b8-4a45-826f-867acd7789c8" start_index="0" end="d3409b6a-e661-4a76-974b-93e70b445320" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="77d9d212-633e-468a-bade-c98f79b32691" start_index="0" end="de4dcd98-c0cd-49ca-b0ce-f301f18c205f" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="04aaad1a-5cd3-45c9-b163-1f3c37b17800" start_index="0" end="de4dcd98-c0cd-49ca-b0ce-f301f18c205f" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="da3fcbcc-6eaa-4d19-9a5f-6b6a238472d3" start_index="0" end="de4dcd98-c0cd-49ca-b0ce-f301f18c205f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="49a6421a-bde8-4698-a06b-8a49b3db39de" start_index="0" end="da3fcbcc-6eaa-4d19-9a5f-6b6a238472d3" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="236725e7-749d-4248-a39b-907c8c204083" annotationText="import the script from file" left="582.330785363615" top="-93.8309862230768" width="430.000000000001" height="102.213333333333" fontSize="14" InitialTop="-63.8309862230768" InitialHeight="102.213333333333" TextblockHeight="20" backgrouund="#FFC1D676">
-      <Models ModelGuid="d3409b6a-e661-4a76-974b-93e70b445320" />
-      <Models ModelGuid="5ca5b3da-52b8-4a45-826f-867acd7789c8" />
+    <Dynamo.Graph.Annotations.AnnotationModel guid="270576c9-6609-4744-8233-2df8f74d3262" annotationText="load the script" left="602.52853919842" top="-108.159285197958" width="409.276072923026" height="102.14290964232" fontSize="14" InitialTop="-78.1592851979582" InitialHeight="102.14290964232" TextblockHeight="20" backgrouund="#FFC1D676">
+      <Models ModelGuid="da3fcbcc-6eaa-4d19-9a5f-6b6a238472d3" />
+      <Models ModelGuid="49a6421a-bde8-4698-a06b-8a49b3db39de" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
