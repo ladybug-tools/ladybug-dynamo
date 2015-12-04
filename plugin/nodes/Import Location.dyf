@@ -1,0 +1,48 @@
+<Workspace Version="0.9.1.3360" X="319.963849374081" Y="294.410846530228" zoom="0.72585966773228" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
+  <NamespaceResolutionMap />
+  <Elements>
+    <PythonNodeModels.PythonStringNode guid="a1dc49d8-593a-44e0-8bad-215ebd543070" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="364.899817709071" y="-99.7752171559125" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="9fc55bf1-5ac9-4ec8-89d3-4b68aa47951f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-23.171951881304" y="-27.4299962518173" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//File path to a valid epw file&#xD;&#xA;_epwFile: string" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <PythonNodeModels.PythonNode guid="3beee65b-4533-4a7c-b1ff-9c360f4fb939" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="111.413430586927" y="-113.72643802072" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+      <Script>def getPackagePath(packageName):
+	import sys
+	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
+	import os
+	import clr
+	clr.AddReference('DynamoCore')
+	dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+	appdata = os.getenv('APPDATA')
+	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
+
+filePath = getPackagePath('Ladybug') + IN[0]
+
+with open(filePath, 'rb') as inf:
+    lines = inf.readlines()
+
+OUT = ''.join(lines)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="25db76b6-7aad-4f85-be35-e39c940b8554" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-128.862642336099" y="-109.5835283784" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;importLocation.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="5df9e824-58cd-4f9b-99d7-ebbc7fbabe8b" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="579.395364526229" y="-100.825108200513" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+      <Symbol value="location" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="a1dc49d8-593a-44e0-8bad-215ebd543070" start_index="0" end="5df9e824-58cd-4f9b-99d7-ebbc7fbabe8b" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="9fc55bf1-5ac9-4ec8-89d3-4b68aa47951f" start_index="0" end="a1dc49d8-593a-44e0-8bad-215ebd543070" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3beee65b-4533-4a7c-b1ff-9c360f4fb939" start_index="0" end="a1dc49d8-593a-44e0-8bad-215ebd543070" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="25db76b6-7aad-4f85-be35-e39c940b8554" start_index="0" end="3beee65b-4533-4a7c-b1ff-9c360f4fb939" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="02a7e587-4cad-44fb-8b68-c9b186c0dafa" annotationText="load the script" left="-138.862642336099" top="-143.72643802072" width="409.276072923026" height="102.14290964232" fontSize="14" InitialTop="-113.72643802072" InitialHeight="102.14290964232" TextblockHeight="20" backgrouund="#FFC1D676">
+      <Models ModelGuid="3beee65b-4533-4a7c-b1ff-9c360f4fb939" />
+      <Models ModelGuid="25db76b6-7aad-4f85-be35-e39c940b8554" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
