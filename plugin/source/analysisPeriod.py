@@ -52,4 +52,8 @@ import ladybug.core as core
 
 # assign inputs from dynamo python node
 # I have to export it as a string in Dynamo since inputs can't handle type casting
-OUT = str(core.AnalysisPeriod(*IN))
+ap = core.AnalysisPeriod(*IN)
+dates = ap.get_timestamps()
+hoys = [d.HOY for d in dates]
+
+OUT = str(ap), dates, hoys
