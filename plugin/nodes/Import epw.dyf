@@ -61,7 +61,7 @@
       <Symbol value="modelYear" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="04aaad1a-5cd3-45c9-b163-1f3c37b17800" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="506.591177776381" y="79.2038622772665" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
-      <Symbol value="//Ladybug Analysis Period&#xD;&#xA;_analysisPeriod_: string = &quot;1/1 to 12/31 between 1 to 24&quot;" />
+      <Symbol value="//Ladybug Analysis Period&#xD;&#xA;_analysisPeriod_: string = &quot;1/1 to 12/31 between 1 to 24 @1&quot;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <PythonNodeModels.PythonNode guid="da3fcbcc-6eaa-4d19-9a5f-6b6a238472d3" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="852.804612121446" y="-78.1592851979582" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
       <Script>def getPackagePath(packageName):
