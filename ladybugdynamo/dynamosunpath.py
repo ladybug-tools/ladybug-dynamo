@@ -1,7 +1,6 @@
 import clr
 clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
-
 import math
 
 class DSSunpath:
@@ -33,7 +32,9 @@ class DSSunpath:
         if not basePoint: basePoint = Point.Origin()
         self.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
 
-        self.scale = float(scale)
+        self.scale = float(scale) #scale of the whole sunpath
+        self.sunScale = float(sunScale) * self.scale #scale for sun s
+        self.__sunRadius = 1
         self.__radius = 50
         self.__suns = [] # placeholder for sun(s)
         self.__dailyCurves = []
@@ -43,11 +44,61 @@ class DSSunpath:
     @property
     def geometries(self):
         return {
-        'suns': self.__suns,
         'dailyCurves': self.__dailyCurves,
         'analemmaCurves': self.__analemmaCurves,
-        'baseCurves': self.__baseCurves
+        'baseCurves': self.__baseCurves,
+        'suns': self.sunGeometries
         }
+
+    @property
+    def suns(self):
+        """Get list of suns"""
+        return self.__suns
+
+    @property
+    def sunGeometries(self):
+        """Get list of suns"""
+        if not len(self.__suns): return self.__suns #emapty list
+        return [sun.geometry for sun in self.__suns]
+
+    def removeSuns(self):
+        self.__suns = []
+        return True
+
+        """Remove all suns from the sunpath"""
+
+    @property
+    def dailyCurves(self):
+        """Get daily curves as a list"""
+        return self.__dailyCurves
+
+    @property
+    def analemmaCurves(self):
+        """Get daily curves as a list"""
+        return self.__analemmaCurves
+
+    @property
+    def baseCurves(self):
+        """Get daily curves as a list"""
+        return self.__baseCurves
+
+    def drawSun(self, month, day, hour, isSolarTime = False):
+        """Draw a sun based on month, day and hour"""
+        #create a dateTime to check the input
+        sun = self.calculateSunPosition(month, day, hour, isSolarTime)
+
+        if sun.isDuringDay:
+            self.__createSunSphere(sun) #it will be added to sun itself
+            self.__suns.append(sun)
+
+    def drawSunFromDateTime(self, dateTime, isSolarTime = False):
+        """Draw a sun based on datetime"""
+        self.drawSun(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+
+    def __createSunSphere(self, sun):
+        """Create an sphere and add it to sun.geometry"""
+        sp = Sphere.ByCenterPointRadius(sun.position, self.sunScale * self.__sunRadius)
+        sun.geometry = sp
 
     def drawDailySunpath(self, month, day = 21):
         # draw curve for the day
@@ -64,21 +115,6 @@ class DSSunpath:
 
         # draw baseline circles
         self.calculateBaseCurves()
-
-    @property
-    def suns(self):
-        """Get list of suns"""
-        return self.__suns
-
-    def addSun(self, sun):
-        """Add a new sun to sunpath"""
-        assert type(sun) == Sun
-        self.__suns.append(sun)
-
-    def removeSuns(self):
-        """Remove all suns from the sunpath"""
-        self.__suns = []
-        return True
 
     def calculateSunPositionFromDateTime(self, dateTime, isSolarTime = False):
         """ Calculate the position of sun based on origin and scale
@@ -102,19 +138,12 @@ class DSSunpath:
         # calculate sunposition
         DSSunVector = Vector.ByCoordinates(sun.sunVector.x, \
             sun.sunVector.y, sun.sunVector.z)
-        DSSunVector = DSSunVector.Reverse().Scale(self.__radius)
-        sunPosition = self.basePoint.Add(DSSunVector)
+        DSSunVector = DSSunVector.Reverse().Scale(self.__radius * self.scale)
 
-        return sunPosition, sun.isDuringDay
+        sun.vector = DSSunVector
+        sun.position = self.basePoint.Add(DSSunVector)
 
-    def calculateSun(self, month, day, hour, isSolarTime = False):
-        pass
-
-    def calculateSunFromHOY(self, HOY, isSolarTime = False):
-        pass
-
-    def calculateSunFromDateTime(self, datetime, isSolarTime = False):
-        pass
+        return sun
 
     def calculateDailyCurve(self, month, day = 21, isSolarTime = False):
         """Calculate daily curve the day
@@ -131,8 +160,8 @@ class DSSunpath:
 
         dailySunPositions = []
         for datetime in datetimes:
-            sunPos, isDay = self.calculateSunPositionFromDateTime(datetime, isSolarTime = False)
-            dailySunPositions.append(sunPos)
+            sun = self.calculateSunPositionFromDateTime(datetime, isSolarTime = False)
+            dailySunPositions.append(sun.position)
 
         dailyCurve = Arc.ByThreePoints(*dailySunPositions)
         self.__dailyCurves.append(dailyCurve)
@@ -145,34 +174,54 @@ class DSSunpath:
         for month in range(1,13):
             self.calculateDailyCurve(month)
 
-
     def calculateAnalemmaCurves(self):
         """Calculate analemma curves for an annual sunpath
             After calculating the curves check 'dailyCurves' property for curve geometries
         """
         day = 21
+        # point and plane for triming the curves
+        pt = Point.ByCoordinates(0, 0, -10 + self.basePoint.Z)
+        plane = Plane.ByOriginNormal(self.basePoint, Vector.ZAxis())
+
         for hour in range(1, 25):
+            anySunUpHour = False
+            anySunDownHour = False
             monthlySunPositions = []
             for month in range(1,13):
-                sunPos, isDay = self.calculateSunPosition(month, day, hour = hour)
-                if isDay:
-                    monthlySunPositions.append(sunPos)
+                sun = self.calculateSunPosition(month, day, hour = hour)
+                if sun.isDuringDay:
+                    anySunUpHour = True
                 else:
-                    continue
-                    # calculate sunset or sunrise and append that position
-                    dts = self.sunPath.calculateSunriseSunset(month, day, depression = 0, isSolarTime = False)
+                    anySunDownHour = True
 
-                    if hour > 12:
-                        shour = dts['sunset'].floatHour
-                    else:
-                        shour = dts['sunrise'].floatHour
+                monthlySunPositions.append(sun.position)
 
-                    sunPos, isDay = self.calculateSunPosition(month, day, shour)
-                    monthlySunPositions.append(sunPos)
+            # all night hour
+            if not anySunUpHour: continue
+            # create the curve
+            analemmaCurve = NurbsCurve.ByPoints(monthlySunPositions, True)
 
-            if len(monthlySunPositions) > 1:
-                analemmaCurve = NurbsCurve.ByPoints(monthlySunPositions, True)
-                self.__analemmaCurves.append(analemmaCurve)
+            if anySunDownHour + anySunUpHour == 2:
+                # some of the hours are up hours and some are down
+                # trim the curve
+                curves = Geometry.Trim(analemmaCurve, plane, pt)
+                # Dynamo trim doesn't work as expected
+                # or I don't know how it is supposed to work so I check the curves
+                selectedCurves = []
+                for curve in curves:
+                    # find mid point
+                    midPar = (curve.EndParameter() + curve.StartParameter())/2
+                    midPt = curve.PointAtParameter(midPar)
+                    if midPt.Z >= self.basePoint.Z:
+                        selectedCurves.append(curve)
+
+                if len(selectedCurves)==1:
+                    analemmaCurve = selectedCurves[0]
+                else:
+                # join curves
+                    analemmaCurve = selectedCurves[0].Join(selectedCurves[1:])
+
+            self.__analemmaCurves.append(analemmaCurve)
 
     def calculateBaseCurves(self):
         """Calculate base circles for sunpath"""

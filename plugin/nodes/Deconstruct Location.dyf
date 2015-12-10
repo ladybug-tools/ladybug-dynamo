@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="642.169312226753" Y="-300.50912184434" zoom="0.823080562643652" Name="Deconstruct Location" Description="Get different location data from a location string" ID="1e9d66af-b2be-4a12-bac7-1040ecca5af0" Category="Ladybug.0|Ladybug">
+<Workspace Version="0.9.1.3360" X="638.173260418185" Y="-420.206377442151" zoom="0.83312748433509" Name="Deconstruct Location" Description="Get different location data from a location string" ID="1e9d66af-b2be-4a12-bac7-1040ecca5af0" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
     <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />
@@ -43,6 +43,15 @@ OUT = ''.join(lines)</Script>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="24e548ab-d715-4d2b-8aac-9d1b058106ee" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="578.621470503663" y="804.03139639034" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
       <Symbol value="elevation" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5321d6bf-3b32-48e1-85e9-51453dc41062" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-464.529968760927" y="781.261627922969" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="myInput" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="b8e0c77c-e2ad-4d6c-840d-2054eda56e7c" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-465.4486148011" y="840.513032135778" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//This is my input&#xD;&#xA;myInput" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="3dc671d6-9048-4031-a770-80c09f7cabb6" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-463.046620906879" y="919.362929147457" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//This is my input&#xD;&#xA;myInput: var..var" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="dcbdb9e6-3992-4008-a55a-756cbcfe7903" start_index="0" end="eb5f2edf-4e68-4d89-a62b-93a28eb027b7" end_index="0" portType="0" />
