@@ -1,0 +1,134 @@
+<Workspace Version="0.9.1.3360" X="730.961073233976" Y="82.513333098532" zoom="0.773083827373097" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+  <NamespaceResolutionMap />
+  <Elements>
+    <DSCoreNodesUI.Input.Filename guid="da5872d1-712b-4738-8a10-ec2e160639c2" type="DSCoreNodesUI.Input.Filename" nickname="File Path" x="-670.033383363245" y="36.9300046728282" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <System.String>C:\EnergyPlusV8-3-0\WeatherData\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw</System.String>
+    </DSCoreNodesUI.Input.Filename>
+    <DSCoreNodesUI.Watch guid="4eb9962a-c2df-431e-af41-3c32e8132c4d" type="DSCoreNodesUI.Watch" nickname="Watch" x="408.017076869813" y="86.6974183037913" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="02174a3f-4494-4715-95f6-534ef5fba2ff" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-803.091790380115" y="321.754956037118" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="2;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="e1a03498-7de7-4104-9607-50da7fdea17f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Import epw" x="9.76460144326913" y="34.6827806915701" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <PortInfo index="1" default="True" />
+      <ID value="5e4542cd-a772-4ab7-8c33-edb4c07046b6" />
+      <Name value="Import epw" />
+      <Description value="Use this node to import lists of weather data into Dynamo from a standard .epw file.&#xA;For detailed information about the structure of an epw file, you may want to read the&#xA;&quot;Weather Converter Program&quot; section in &quot;Auxiliary EnergyPlus Programs&quot; document.&#xA;All descriptions of importaed data are borrowed from this document.&#xA;The document is available online at this address:&#xA;&quot;http://apps1.eere.energy.gov/buildings/energyplus/pdfs/auxiliaryprograms.pdf&quot;" />
+      <Inputs>
+        <Input value="_epwFile" />
+        <Input value="_analysisPeriod_" />
+      </Inputs>
+      <Outputs>
+        <Output value="description" />
+        <Output value="location" />
+        <Output value="dryBulbTemperature" />
+        <Output value="dewPointTemperature" />
+        <Output value="relativeHumidity" />
+        <Output value="windDirection" />
+        <Output value="windSpeed" />
+        <Output value="directNormalRadiation" />
+        <Output value="diffuseHorizontalRadiation" />
+        <Output value="globalHorizontalRadiation" />
+        <Output value="directNormalIlluminance" />
+        <Output value="diffuseHorizontalIlluminance" />
+        <Output value="globalHorizontalIlluminance" />
+        <Output value="liquidPrecipitationDepth" />
+        <Output value="totalSkyCover" />
+        <Output value="barometricPressure" />
+        <Output value="modelYear" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="6c8f73e6-f8cd-4340-ab8a-c969003f2877" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Import Location" x="54.6740704867433" y="802.311835400887" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <ID value="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" />
+      <Name value="Import Location" />
+      <Description value="Import location data from an epw weather file" />
+      <Inputs>
+        <Input value="_epwFile" />
+      </Inputs>
+      <Outputs>
+        <Output value="location" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Construct Location" x="577.573183331396" y="801.790096976885" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <PortInfo index="3" default="True" />
+      <PortInfo index="4" default="True" />
+      <ID value="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" />
+      <Name value="Construct Location" />
+      <Description value="Construct a Ladybug location based on input data" />
+      <Inputs>
+        <Input value="_locationName_" />
+        <Input value="_latitude_" />
+        <Input value="_longitude_" />
+        <Input value="_timeZone_" />
+        <Input value="_elevation_" />
+      </Inputs>
+      <Outputs>
+        <Output value="location" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="db490969-9bf6-4b04-8dad-aaee1b6ce110" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Deconstruct Location" x="272.099255944556" y="802.126905544509" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <ID value="1e9d66af-b2be-4a12-bac7-1040ecca5af0" />
+      <Name value="Deconstruct Location" />
+      <Description value="Get different location data from a location string" />
+      <Inputs>
+        <Input value="_location" />
+      </Inputs>
+      <Outputs>
+        <Output value="locationName" />
+        <Output value="latitude" />
+        <Output value="longitude" />
+        <Output value="timeZone" />
+        <Output value="elevation" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="94280cb9-7c38-44c2-ba9f-c89e1d9590dd" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Analysis Period" x="-659.074742793566" y="160.163258601425" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <PortInfo index="3" default="True" />
+      <PortInfo index="4" default="True" />
+      <PortInfo index="5" default="True" />
+      <PortInfo index="6" default="True" />
+      <ID value="68f28d75-707b-49d6-b95f-6925e88ffd2e" />
+      <Name value="Analysis Period" />
+      <Description value="Create a Ladybug Analysis Period" />
+      <Inputs>
+        <Input value="_startMonth_" />
+        <Input value="_startDay_" />
+        <Input value="_startHour_" />
+        <Input value="_endMonth_" />
+        <Input value="_endDay_" />
+        <Input value="_endHour_" />
+        <Input value="_timestep_" />
+      </Inputs>
+      <Outputs>
+        <Output value="analysisPeriod" />
+        <Output value="dates" />
+        <Output value="hoursOfYear" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <DSCoreNodesUI.Watch guid="4e982e79-8d98-4d97-be96-32fca8c315e6" type="DSCoreNodesUI.Watch" nickname="Watch" x="-372.278212247753" y="315.995127275931" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <DSCoreNodesUI.Watch guid="2f1294ea-14e2-4ba1-bdcf-28469338baac" type="DSCoreNodesUI.Watch" nickname="Watch" x="-186.214441720583" y="314.685070804799" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="da5872d1-712b-4738-8a10-ec2e160639c2" start_index="0" end="6c8f73e6-f8cd-4340-ab8a-c969003f2877" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="da5872d1-712b-4738-8a10-ec2e160639c2" start_index="0" end="e1a03498-7de7-4104-9607-50da7fdea17f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="02174a3f-4494-4715-95f6-534ef5fba2ff" start_index="0" end="94280cb9-7c38-44c2-ba9f-c89e1d9590dd" end_index="6" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e1a03498-7de7-4104-9607-50da7fdea17f" start_index="2" end="4eb9962a-c2df-431e-af41-3c32e8132c4d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="6c8f73e6-f8cd-4340-ab8a-c969003f2877" start_index="0" end="db490969-9bf6-4b04-8dad-aaee1b6ce110" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="0" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="1" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="2" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="3" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="3" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="4" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="4" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="94280cb9-7c38-44c2-ba9f-c89e1d9590dd" start_index="0" end="e1a03498-7de7-4104-9607-50da7fdea17f" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="94280cb9-7c38-44c2-ba9f-c89e1d9590dd" start_index="1" end="4e982e79-8d98-4d97-be96-32fca8c315e6" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="94280cb9-7c38-44c2-ba9f-c89e1d9590dd" start_index="2" end="2f1294ea-14e2-4ba1-bdcf-28469338baac" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
