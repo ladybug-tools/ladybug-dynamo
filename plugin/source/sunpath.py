@@ -25,13 +25,15 @@ import ladybugdynamo.dynamosunpath as dssunpath
 
 ## calculate sunpath data
 # get location data
-location = IN[0]
-HOYs = IN[1]
-cenPt, scale, sunScale = IN[2:5]
-drawAnnualSunpath = IN[5] # a boolean that indicates if sunpath should be drawn for
+northAngle = IN[0]
+location = IN[1]
+HOYs = IN[2]
+cenPt, scale, sunScale = IN[3:6]
+drawAnnualSunpath = IN[6] # a boolean that indicates if sunpath should be drawn for
+#daylightSavingPeriod = IN[7]
 
 # initiate sunpath based on location
-sp = sunpath.Sunpath.fromLocation(location, northAngle = 0)
+sp = sunpath.Sunpath.fromLocation(location, northAngle)
 
 dynamoSp = dssunpath.DSSunpath(sp, basePoint =cenPt, scale = scale, sunScale = sunScale)
 

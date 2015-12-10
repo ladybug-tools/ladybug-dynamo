@@ -239,7 +239,7 @@ class DSSunpath:
         northArrow = Line.ByStartPointEndPoint(startPt, endPt)
         # draw it for the 4 direction
         for angle in range(0, 360, 90):
-            self.__baseCurves.append(northArrow.Rotate(Plane.XY(), angle))
+            self.__baseCurves.append(northArrow.Rotate(Plane.XY(), angle + self.sunPath.northAngle))
 
         # create mid curves
         endVector = Vector.Scale(Vector.YAxis(), 1.08 * self.scale * self.__radius)
@@ -248,7 +248,7 @@ class DSSunpath:
         # draw it for the 4 direction
         for angle in range(0, 360, 30):
             if angle%90!=0:
-                self.__baseCurves.append(shortArrow.Rotate(Plane.XY(), angle))
+                self.__baseCurves.append(shortArrow.Rotate(Plane.XY(), angle + self.sunPath.northAngle))
 
     def __drawBaseCircles(self):
         """draw base circles"""
