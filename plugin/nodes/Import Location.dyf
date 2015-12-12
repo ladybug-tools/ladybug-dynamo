@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="319.963849374081" Y="294.410846530228" zoom="0.72585966773228" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
+<Workspace Version="0.9.1.3360" X="271.126124978037" Y="282.736323601691" zoom="2.26620467832306" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap />
   <Elements>
     <PythonNodeModels.PythonStringNode guid="a1dc49d8-593a-44e0-8bad-215ebd543070" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="364.899817709071" y="-99.7752171559125" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2" />
@@ -43,6 +43,6 @@ OUT = ''.join(lines)</Script>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="-36.4018440246582" eyeY="83.0020599365234" eyeZ="-116.035415649414" lookX="60.4629745483398" lookY="-78.9809722900391" lookZ="167.844650268555" upX="0.0675682798027992" upY="0.97992467880249" upZ="0.187568932771683" />
   </Cameras>
 </Workspace>

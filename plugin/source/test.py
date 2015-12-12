@@ -18,20 +18,24 @@ def getPackagePath(packageName):
 sys.path.append(getPackagePath('Ladybug'))
 
 ###### start you code from here ###
-import ladybug.core as core
-import ladybug.epw as epw
-import ladybug.sunpath as sunpath
-import ladybugdynamo.dynamosunpath as dssunpath
+import ladybugdynamo.epw as epw
+import ladybugdynamo.core as core
+import ladybugdynamo.sunpath as sunpath
 
 # This example shows how to calculate sunpath with Ladybug and draw it in Dynamo
 
 ## calculate sunpath data
 # get location data
 epwFile = r"C:\EnergyPlusV8-3-0\WeatherData\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw"
+#epwFile = r"C:\ladybug\AUS_NSW\AUS_NSW.Cobar.947110_RMY.epw"
 locationData = epw.EPW(epwFile).location
+HOYs = range(9,12)
 
 # initiate sunpath based on location
 sp = sunpath.Sunpath.fromLocation(locationData, northAngle = 0)
-dynamoSp = dssunpath.DSSunpath(sp)
-dynamoSp.drawAnnualSunpath()
-OUT = dynamoSp.geometries.values()
+sp.drawAnnualSunpath()
+
+for HOY in HOYs:
+    sp.drawSunFromDateTime(core.LBDateTime.fromHOY(HOY))
+
+OUT = sp.geometries.values()
