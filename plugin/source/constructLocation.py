@@ -48,7 +48,7 @@ outputsDescription = """
         """
 
 # import Ladybug libraries
-import ladybug.core as core
+import ladybugdynamo.core as core
 
 # read Dynamo inputs
 city, latitude, longitude, timeZone, elevation = IN

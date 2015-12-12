@@ -18,10 +18,9 @@ def getPackagePath(packageName):
 sys.path.append(getPackagePath('Ladybug'))
 
 ###### start you code from here ###
-import ladybug.core as core
-import ladybug.epw as epw
-import ladybug.sunpath as sunpath
-import ladybugdynamo.dynamosunpath as dssunpath
+import ladybugdynamo.core as core
+import ladybugdynamo.epw as epw
+import ladybugdynamo.sunpath as sunpath
 
 ## calculate sunpath data
 # get location data
@@ -30,31 +29,32 @@ location = IN[1]
 HOYs = IN[2]
 cenPt, scale, sunScale = IN[3:6]
 drawAnnualSunpath = IN[6] # a boolean that indicates if sunpath should be drawn for
+
 #daylightSavingPeriod = IN[7]
+daylightSavingPeriod = None # temporary until I fully implement it
 
 # initiate sunpath based on location
-sp = sunpath.Sunpath.fromLocation(location, northAngle)
-
-dynamoSp = dssunpath.DSSunpath(sp, basePoint =cenPt, scale = scale, sunScale = sunScale)
+sp = sunpath.Sunpath.fromLocation(location, northAngle, daylightSavingPeriod, \
+        basePoint =cenPt, scale = scale, sunScale = sunScale)
 
 # draw sunpath geometry
-if drawAnnualSunpath: dynamoSp.drawAnnualSunpath()
+if drawAnnualSunpath: sp.drawAnnualSunpath()
 
 # draw suns
 months = {}
 for HOY in HOYs:
     dt = core.LBDateTime.fromHOY(HOY)
-    dynamoSp.drawSunFromDateTime(dt)
+    sp.drawSunFromDateTime(dt)
 
     #draw daily sunpath curves
     if not drawAnnualSunpath and dt.DOY not in months:
         # add this day
-        dynamoSp.drawDailySunpath(dt.month, dt.day)
+        sp.drawDailySunpath(dt.month, dt.day)
         months[dt.DOY] = dt  #keep track of days not to redraw them
 
 
 # generate outputs
-suns = dynamoSp.suns
+suns = sp.suns
 sunCount = len(suns)
 sunVectors = range(sunCount)
 sunAltitudes = range(sunCount)
@@ -69,12 +69,9 @@ for count, sun in enumerate(suns):
     sunPositions[count] = sun.position
     sunDateTimes[count] = sun.datetime
 
-geometries = dynamoSp.dailyCurves + \
-            dynamoSp.analemmaCurves + \
-            dynamoSp.baseCurves
-
-sunSpheres = dynamoSp.sunGeometries
-centerPoint = dynamoSp.basePoint
+geometries = sp.geometries.values()
+sunSpheres = sp.sunGeometries
+centerPoint = sp.basePoint
 
 # assign outputs
 OUT = [

@@ -77,8 +77,8 @@ outputsDescription = """
         """
 
 # import Ladybug libraries
-import ladybug.epw as epw
-import ladybug.core as core
+import ladybugdynamo.epw as epw
+import ladybugdynamo.core as core
 
 # assign inputs from dynamo python node
 _epwFile, _analysisPeriod_ = IN

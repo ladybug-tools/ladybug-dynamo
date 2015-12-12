@@ -48,7 +48,7 @@ outputsDescription = """
         """
 
 # import Ladybug libraries
-import ladybug.core as core
+import ladybugdynamo.core as core
 
 # assign inputs from dynamo python node
 # I have to export it as a string in Dynamo since inputs can't handle type casting

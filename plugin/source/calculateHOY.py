@@ -18,7 +18,7 @@ def getPackagePath(packageName):
 sys.path.append(getPackagePath('Ladybug'))
 
 ###### start you code from here ###
-import ladybug.core as core
+import ladybugdynamo.core as core
 
 ## calculate sunpath data
 # get location data

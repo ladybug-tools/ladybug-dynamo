@@ -48,7 +48,7 @@ outputsDescription = """
         """
 
 # import Ladybug libraries
-import ladybug.epw as epw
+import ladybugdynamo.epw as epw
 
 _epwFile = IN[0]
 #_epwFile, _analysisPeriod_ = 'C:\EnergyPlusV8-3-0\WeatherData\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw', '10/1 to 12/31 between 1 to 24'

@@ -33,9 +33,9 @@ HOYs = range(9,12)
 
 # initiate sunpath based on location
 sp = sunpath.Sunpath.fromLocation(locationData, northAngle = 0)
+
 sp.drawAnnualSunpath()
 
-for HOY in HOYs:
-    sp.drawSunFromDateTime(core.LBDateTime.fromHOY(HOY))
+for HOY in HOYs: sp.drawSunFromDateTime(core.LBDateTime.fromHOY(HOY))
 
 OUT = sp.geometries.values()
