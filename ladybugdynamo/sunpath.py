@@ -307,11 +307,9 @@ class Sun(LBSun):
     def __calculateGeometricalSun(self):
         """calculate sun vector, base point and sphere"""
         # convert sun vector to Dynamo Vector
-        DSSunVector = Vector.ByCoordinates(self.sunVector.x, self.sunVector.y, self.sunVector.z)
+        self.__vector = Vector.ByCoordinates(self.sunVector.x, self.sunVector.y, self.sunVector.z)
 
-        self.__vector = DSSunVector.Reverse()
-
-        movingVector = self.__vector.Scale(self.__sunpathRadius * self.__sunpathScale)
+        movingVector = self.__vector.Reverse().Scale(self.__sunpathRadius * self.__sunpathScale)
         # calculate position
         self.__position = self.__sunpathBasePoint.Add(movingVector)
         # create sun sphere
