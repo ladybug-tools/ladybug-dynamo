@@ -88,21 +88,20 @@ epwData = epw.EPW(_epwFile)
 analysisPeriod = core.AnalysisPeriod.fromAnalysisPeriod(_analysisPeriod_)
 
 OUT = [
-        outputsDescription,
         epwData.location,
-        epwData.dryBulbTemperature.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.dewPointTemperature.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-		epwData.relativeHumidity.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.windDirection.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.windSpeed.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.directNormalRadiation.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.diffuseHorizontalRadiation.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.globalHorizontalRadiation.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.directNormalIlluminance.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.diffuseHorizontalIlluminance.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.globalHorizontalIlluminance.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.totalSkyCover.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.liquidPrecipitationDepth.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.atmosphericStationPressure.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader,
-        epwData.years.filterByAnalysisPeriod(analysisPeriod).valuesWithHeader
+        epwData.dryBulbTemperature.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.dewPointTemperature.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+		epwData.relativeHumidity.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.windDirection.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.windSpeed.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.directNormalRadiation.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.diffuseHorizontalRadiation.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.globalHorizontalRadiation.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.directNormalIlluminance.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.diffuseHorizontalIlluminance.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.globalHorizontalIlluminance.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.totalSkyCover.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.liquidPrecipitationDepth.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.atmosphericStationPressure.filterByAnalysisPeriod(analysisPeriod).values(header = True),
+        epwData.years.filterByAnalysisPeriod(analysisPeriod).values(header = True)
         ]

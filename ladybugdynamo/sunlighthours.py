@@ -1,6 +1,6 @@
 """Sunlight hours library for Dynamo"""
-from ladybugdynamo.sunpath import Sun
-import ladybugdynamo.geometryoperations as go
+import sunpath
+import geometryoperations as go
 
 
 class Sunlighthours:

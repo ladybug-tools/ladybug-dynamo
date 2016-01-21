@@ -5,6 +5,9 @@ clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
 from itertools import chain
 
+def disposeGeometries(geometries):
+    for geo in geometries: geo.Dispose()
+
 def calculateSceneSize(geometries):
     """Calculate scene size for a list of geometry
 
@@ -19,8 +22,9 @@ def calculateSceneSize(geometries):
     bbox = BoundingBox.ByGeometry(flattenedGeometries)
     minPt = bbox.MinPoint
     maxPt = bbox.MaxPoint
-    del(bbox)
-    return minPt.DistanceTo(maxPt)
+    distance = minPt.DistanceTo(maxPt)
+    disposeGeometries([bbox, minPt, maxPt])
+    return distance
 
 # TODO: Write a proper way to generate test points
 def generatePointsFromGeometries(geometries, gridSize, distanceFromBaseSrf):
@@ -48,10 +52,15 @@ class LBAnalysisPoint:
         for lineCount, lineRay in enumerate(self.lineRays):
             for geometry in contextGeometries:
                 intersection = geometry.Intersect(lineRay.ray)
-                #self.intersections[lineCount] = intersection
+
                 if len(intersection) > 0:
+                    disposeGeometries(intersection)
                     self.intersections[lineCount] = True
                     break
+                else:
+                    disposeGeometries(intersection)
+
+        del(self.lineRays)
 
     @property
     def totalNotIntersected(self):

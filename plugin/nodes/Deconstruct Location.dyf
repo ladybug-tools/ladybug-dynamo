@@ -22,7 +22,7 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="af20e3a3-7447-4f56-a13d-41ef81b88d3a" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-369.803973178339" y="585.859166561918" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;deconstructLocation.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="af20e3a3-7447-4f56-a13d-41ef81b88d3a" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-369.803973178339" y="585.859166561918" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;deconstructLocation_node.py&quot;;" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="eb5f2edf-4e68-4d89-a62b-93a28eb027b7" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="159.604514007339" y="580.092933626717" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a0dd5089-c076-41a7-9ca8-c5f8e4093c60" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-623.959372110174" y="662.258143100254" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="// The output from the importLocation, importEPW or constructLocation component.  This is essentially a list of text summarizing a location on the earth.&#xD;&#xA;_location: System.Object" />

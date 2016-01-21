@@ -27,6 +27,7 @@ sunVectors = IN[0]
 testPoints = IN[1]
 geometries = IN[2]
 
+# TODO: Integrate datetime into analysis
 slh = sunlighthours.Sunlighthours(sunVectors, [], testPoints, geometries)
 slh.runAnalysis()
 

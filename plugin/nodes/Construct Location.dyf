@@ -23,7 +23,7 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="53.4566632110453" y="159.282476314904" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;constructLocation.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="53.4566632110453" y="159.282476314904" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;constructLocation_node.py&quot;;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="bcfdaabc-e37c-47ac-ab97-4b7dbbab8a2a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.144602790822" y="362.654463592397" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="// The latitude of the location you are constructing. Values must be between -90 and 90. Default is set to the equator&#xD;&#xA;_latitude_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>

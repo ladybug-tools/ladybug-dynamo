@@ -19,7 +19,7 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="6da1f744-795a-4b62-b55f-84ad81144415" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="110.81462336856" y="133.126785486521" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;calculateHOY.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="6da1f744-795a-4b62-b55f-84ad81144415" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="110.81462336856" y="133.126785486521" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;calculateHOY_node.py&quot;;" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="ac1c9c5c-1dc2-425e-85f4-77db993e5681" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="731.18074172483" y="170.47102275803" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="5" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a2db7766-c2d3-4b67-bdf0-5166375c5534" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-85.3883434729991" y="242.825889564867" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="//A number between 1 and 12 that represents the month of the year&#xD;&#xA;_month_: int = 12;" />

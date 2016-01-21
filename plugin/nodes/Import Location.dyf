@@ -23,7 +23,7 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="25db76b6-7aad-4f85-be35-e39c940b8554" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-128.862642336099" y="-109.5835283784" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;importLocation.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="25db76b6-7aad-4f85-be35-e39c940b8554" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-128.862642336099" y="-109.5835283784" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;importLocation_node.py&quot;;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="5df9e824-58cd-4f9b-99d7-ebbc7fbabe8b" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="579.395364526229" y="-100.825108200513" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
       <Symbol value="location" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>

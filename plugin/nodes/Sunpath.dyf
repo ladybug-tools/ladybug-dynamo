@@ -23,7 +23,7 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="62321348-8c78-40b9-b45f-60198445b256" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-309.80113947628" y="542.624520986025" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;sunpath.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="62321348-8c78-40b9-b45f-60198445b256" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-309.80113947628" y="542.624520986025" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;sunpath_node.py&quot;;" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="c596ece9-372e-484c-965a-8890c5b08b60" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="134.957445393804" y="595.995067658154" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="9" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5d30b893-9726-43bc-a257-33826e0c7691" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-637.083602451676" y="606.227342322028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="// Input a number between 0 and 360 that represents the degrees off from the y-axis to make North.  The default North direction is set to the Y-axis (0 degrees).&#xD;&#xA;north_: double = 0;" />
