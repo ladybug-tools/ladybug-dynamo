@@ -1,7 +1,8 @@
 """Analysis library for Dynamo. This calss is base class for radiation and sunlighthours analysis"""
+from abc import ABCMeta, abstractmethod, abstractproperty
 import geometryoperations as go
 
-class LBAnalysis:
+class LBAnalysis(object):
     """Ladybug base analysis class
 
         Attributes:
@@ -30,13 +31,6 @@ class LBAnalysis:
         self.isExecuted = True
 
     #TODO: create meaningful outputs from the analysis
-    @property
+    @abstractproperty
     def results(self):
-        """Return results of the analysis"""
-        if not self.isExecuted:
-            self.runAnalysis(parallel = True)
-
-        # package the results and return the package
-        #return [[line.ray for line in ap.lineRays] for ap in self.analysisPoints]
-        #return [ap.intersections for ap in self.analysisPoints]
-        return [ap.totalNotIntersected for ap in self.analysisPoints]
+        pass

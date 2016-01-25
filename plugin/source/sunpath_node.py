@@ -3,7 +3,7 @@ import sys
 IronPythonLib = 'C:\Program Files (x86)\IronPython 2.7\Lib'
 sys.path.append(IronPythonLib)
 
-# Now that the path to IronPython is stablished we can import libraries
+# Now that the path to IronPython is established we can import libraries
 import os
 import clr
 clr.AddReference('DynamoCore')

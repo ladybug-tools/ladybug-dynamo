@@ -3,10 +3,41 @@
 import clr
 clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
-from itertools import chain
+import collections
+
+def flatten(inputList):
+    """Return a flattened genertor from an input list
+
+        Usage:
+            inputList = [['a'], ['b', 'c', 'd'], [['e']], ['f']]
+            list(flatten(inputList))
+            >> ['a', 'b', 'c', 'd', 'e', 'f']
+    """
+    for el in inputList:
+        if isinstance(el, collections.Iterable) and not isinstance(el, basestring):
+            for sub in flatten(el):
+                yield sub
+        else:
+            yield el
+
+def unflatten(guide, falttenedInput):
+    """Unflatten a falttened generator
+        guide: A guide list to follow the structure
+        falttenedInput: A flattened iterator object
+
+        Usage:
+            guide = [["a"], ["b","c","d"], [["e"]], ["f"]]
+            inputList = [0, 1, 2, 3, 4, 5, 6, 7]
+            unflatten(guide, iter(inputList))
+            >> [[0], [1, 2, 3], [[4]], [5]]
+    """
+    return [unflatten(subList, falttenedInput) if isinstance(subList, list) else next(falttenedInput) for subList in guide]
 
 def disposeGeometries(geometries):
-    for geo in geometries: geo.Dispose()
+    try:
+        for geo in geometries: geo.Dispose()
+    except Exception, e:
+        print str(e)
 
 def calculateSceneSize(geometries):
     """Calculate scene size for a list of geometry
@@ -18,7 +49,7 @@ def calculateSceneSize(geometries):
             length: length of scene's diagonal
     """
     # flatten the list
-    flattenedGeometries = list(chain.from_iterable([geometries]))
+    flattenedGeometries = list(flatten([geometries]))
     bbox = BoundingBox.ByGeometry(flattenedGeometries)
     minPt = bbox.MinPoint
     maxPt = bbox.MaxPoint
@@ -26,9 +57,31 @@ def calculateSceneSize(geometries):
     disposeGeometries([bbox, minPt, maxPt])
     return distance
 
-# TODO: Write a proper way to generate test points
-def generatePointsFromGeometries(geometries, gridSize, distanceFromBaseSrf):
-    pass
+def xfrange(start, stop, step):
+    values = []
+    while start <= stop:
+        values.append(start)
+        start += step
+
+    return values
+
+# TODO: Change numberOfSegments to gridSize
+def generatePointsFromSurface(testSurface, numOfSegments, distanceFromBaseSrf):
+    #generate values between 0 and 1 based on number of segments
+    step = 1.0 / (numOfSegments - 1)
+    parameters = xfrange(0.00, 1.00, step)
+    __pts = []
+    for p in parameters:
+        pts = []
+        for pp in parameters:
+            uv = UV.ByCoordinates(p, pp)
+            pt = testSurface.PointAtParameter(uv.U, uv.V)
+            normal = testSurface.NormalAtParameter(uv.U, uv.V).Normalized().Scale(distanceFromBaseSrf)
+            pts.append(pt.Translate(normal))
+
+        __pts.append(pts)
+
+    return __pts
 
 # TODO: Add data on top of vectors. It can be timedate or skypatch number
 class LBAnalysisPoint:
@@ -65,7 +118,6 @@ class LBAnalysisPoint:
     @property
     def totalNotIntersected(self):
         return len(self.intersections) - sum(self.intersections)
-
 
 class LineRay:
     """Create a line ray

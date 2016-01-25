@@ -6,7 +6,6 @@ sys.path.append(IronPythonLib)
 # Now that the path to IronPython is established we can import libraries
 import os
 import clr
-import copy
 clr.AddReference('DynamoCore')
 
 def getPackagePath(packageName):
@@ -19,18 +18,15 @@ def getPackagePath(packageName):
 sys.path.append(getPackagePath('Ladybug'))
 
 ###### start you code from here ###
-import ladybugdynamo.sunlighthours as sunlighthours
+import ladybugdynamo.geometryoperations as go
 
+# This example shows how to calculate sunpath with Ladybug and draw it in Dynamo
+pts = []
+surfaces = IN[0]
+numOfSegments = IN[1]
+distanceFromBaseSrf = IN[2]
 
-# get input data
-sunVectors = IN[0]
-testPoints = IN[1]
-geometries = IN[2]
+for srf in surfaces:
+    pts.append(go.generatePointsFromSurface(srf, numOfSegments, distanceFromBaseSrf))
 
-# TODO: Integrate datetime into analysis
-slh = sunlighthours.Sunlighthours(sunVectors, [], testPoints, geometries)
-slh.runAnalysis()
-
-# assign outputs
-OUT = copy.deepcopy(slh.results)
-del(slh)
+OUT = pts

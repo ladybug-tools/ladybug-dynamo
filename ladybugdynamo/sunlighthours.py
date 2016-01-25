@@ -1,9 +1,10 @@
 """Sunlight hours library for Dynamo"""
-import sunpath
+from sunpath import Sun
+from analysis import LBAnalysis
 import geometryoperations as go
 
 
-class Sunlighthours:
+class Sunlighthours(LBAnalysis):
     """Ladybug sunlight hours for Dynamo
 
         Attributes:
@@ -13,17 +14,8 @@ class Sunlighthours:
             geometries: A list of all the geometries in scene
     """
     def __init__(self, vectors, datetimes, testPoints, geometries):
-        # set up the analysis
-        self.geometries = geometries
-        self.vectors = [vector.Reverse() for vector in vectors]
-        # find maximum length of the scene - which is 3d diagonal
-        maxLength = go.calculateSceneSize(testPoints + geometries)
 
-        # create analysis points
-        self.analysisPoints = [go.LBAnalysisPoint(testPoint, self.vectors, maxLength) for testPoint in testPoints]
-
-        # create place holder for results
-        self.isExecuted = False
+        LBAnalysis.__init__(self, vectors, testPoints, geometries)
 
     @classmethod
     def byTestGeometries(cls, vectors, datetimes, testGeometries, contextGeometries, gridSize, distanceFromBaseSrf):
