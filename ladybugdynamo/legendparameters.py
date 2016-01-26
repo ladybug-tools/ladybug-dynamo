@@ -1,7 +1,7 @@
-from color import LBColorRange
-from listoperations import *
+from ladybug.legendparameters import *
+import color
 
-class LBLegendParameters(object):
+class LegendParameters(LBLegendParameters):
     """Ladybug lagend parameters
 
         Attributes:
@@ -25,58 +25,19 @@ class LBLegendParameters(object):
     # TODO: Add textual and geometry parts
     def __init__(self, legendRange = ['min', 'max'], numberOfSegments = 11, colors = None, \
         chartType = 0):
-        self.colorRange = LBColorRange(colors = colors, domain = legendRange, chartType = chartType)
-
-    @property
-    def colors(self):
-        return self.colorRange.colors
-
-    @colors.setter
-    def colors(self, cols):
-        self.colorRange.colors = cols
-
-    @property
-    def domain(self):
-        return self.colorRange.domain
-
-    # TODO: set the domain based on the number of segments
-    @domain.setter
-    def domain(self, dom):
-        self.colorRange.domain = dom
-
-    @property
-    def isDomainSet(self):
-        return self.colorRange.isDomainSet
-
-    def setDomain(self, values):
-        """Set domain of the colors based on min and max of a list of values"""
-        _flattenedList = list(flatten(values))
-        _flattenedList.sort()
-        self.domain = [_flattenedList[0] if d=='min' else d for d in self.domain]
-        self.domain = [_flattenedList[-1] if d=='max' else d for d in self.domain]
-        del(_flattenedList)
-
-    def calculateColors(self, values):
-        """Return a list (or list of lists) of colors based on input values"""
-        # set domain if it is not set
-        _flattenedList = list(flatten(values))
-        if not self.isDomainSet: self.setDomain(_flattenedList)
-
-        _flattenedColors = range(len(_flattenedList))
-        for count, value in enumerate(_flattenedList):
-            _flattenedColors[count] = self.calculateColor(value)
-
-        return unflatten(values, iter(_flattenedColors))
+        LBLegendParameters.__init__(self, legendRange, numberOfSegments, colors, chartType)
 
     def calculateColor(self, value):
         "Return color for a specific value"
-        return self.colorRange.color(value)
+        return color.ColorConvertor.toDSColor(self.colorRange.color(value)).next()
+
+    @property
+    def colors(self):
+        "Return color for a specific value"
+        return color.ColorConvertor.toDSColor(self.colorRange.colors)
 
     def geometry(self):
         raise NotImplementedError()
 
     def text(self):
         raise NotImplementedError()
-
-    def __repr__(self):
-        return "ladybug.legendparameters"

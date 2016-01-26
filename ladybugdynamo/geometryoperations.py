@@ -3,35 +3,7 @@
 import clr
 clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
-import collections
-
-def flatten(inputList):
-    """Return a flattened genertor from an input list
-
-        Usage:
-            inputList = [['a'], ['b', 'c', 'd'], [['e']], ['f']]
-            list(flatten(inputList))
-            >> ['a', 'b', 'c', 'd', 'e', 'f']
-    """
-    for el in inputList:
-        if isinstance(el, collections.Iterable) and not isinstance(el, basestring):
-            for sub in flatten(el):
-                yield sub
-        else:
-            yield el
-
-def unflatten(guide, falttenedInput):
-    """Unflatten a falttened generator
-        guide: A guide list to follow the structure
-        falttenedInput: A flattened iterator object
-
-        Usage:
-            guide = [["a"], ["b","c","d"], [["e"]], ["f"]]
-            inputList = [0, 1, 2, 3, 4, 5, 6, 7]
-            unflatten(guide, iter(inputList))
-            >> [[0], [1, 2, 3], [[4]], [5]]
-    """
-    return [unflatten(subList, falttenedInput) if isinstance(subList, list) else next(falttenedInput) for subList in guide]
+from ladybug.listoperations import *
 
 def disposeGeometries(geometries):
     try:
@@ -71,17 +43,20 @@ def generatePointsFromSurface(testSurface, numOfSegments, distanceFromBaseSrf):
     step = 1.0 / (numOfSegments - 1)
     parameters = xfrange(0.00, 1.00, step)
     __pts = []
+    __ptNormals = []
     for p in parameters:
         pts = []
+        normals = []
         for pp in parameters:
             uv = UV.ByCoordinates(p, pp)
             pt = testSurface.PointAtParameter(uv.U, uv.V)
             normal = testSurface.NormalAtParameter(uv.U, uv.V).Normalized().Scale(distanceFromBaseSrf)
             pts.append(pt.Translate(normal))
+            normals.append(normal)
 
         __pts.append(pts)
-
-    return __pts
+        __ptNormals.append(normals)
+    return __pts, __ptNormals
 
 # TODO: Add data on top of vectors. It can be timedate or skypatch number
 class LBAnalysisPoint:

@@ -1,0 +1,58 @@
+<Workspace Version="1.0.0.193" X="1121.84292678601" Y="758.096471425541" zoom="0.994488700419556" Name="Legend Parameters" Description="Use legend parameter to set up results visualization setting" ID="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" Category="Ladybug.4|Extra">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="236e6b2b-30d3-46f9-80ae-692c0b84c33b" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-896.010945176969" y="-567.47069476296" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;legendParameters_node.py&quot;;" ShouldFocus="false" />
+    <PythonNodeModels.PythonNode guid="044a6855-3a0b-443e-828f-3a3ac5b31b53" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-555.437323004329" y="-571.27248593986" isVisible="false" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+      <Script>def getPackagePath(packageName):
+	import sys
+	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
+	import os
+	import clr
+	clr.AddReference('DynamoCore')
+	dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+	appdata = os.getenv('APPDATA')
+	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
+
+filePath = getPackagePath('Ladybug') + IN[0]
+
+with open(filePath, 'rb') as inf:
+    lines = inf.readlines()
+
+OUT = ''.join(lines)</Script>
+    </PythonNodeModels.PythonNode>
+    <PythonNodeModels.PythonStringNode guid="fe084bf2-6080-4eb2-9107-999731aa61ef" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="-177.327589459314" y="-536.674291807313" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="db1934c3-e6d6-4d63-9b2c-6c18a9ef89aa" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-866.619124402736" y="-495.829134325522" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="// 0&gt; continuous, 1&gt; segmented, 2&gt; ordinal. Default 0&#xD;&#xA;_cType_: int = 0;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="34f08d1e-c26b-47ec-9d7b-770cdea56eb0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-1093.87158077017" y="-428.457830889158" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//A list of numbers or strings.&#xD;&#xA;//For numerical values it should be sorted from min to max. Default&gt; ['min', 'max']&#xD;&#xA;_domain_: var[] = {};" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f02a8d43-f83b-4c2c-bbab-122e91348e81" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-956.112348370441" y="-322.875937444112" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//An optional list of colors. Default is nuanced Ladybug colors.&#xD;&#xA;_colors_: var[] = {};" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="edf33f3c-144f-4120-8238-08c673ce1361" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="103.728753449355" y="-534.039724334204" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+      <Symbol value="legendPar" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="236e6b2b-30d3-46f9-80ae-692c0b84c33b" start_index="0" end="044a6855-3a0b-443e-828f-3a3ac5b31b53" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="044a6855-3a0b-443e-828f-3a3ac5b31b53" start_index="0" end="fe084bf2-6080-4eb2-9107-999731aa61ef" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fe084bf2-6080-4eb2-9107-999731aa61ef" start_index="0" end="edf33f3c-144f-4120-8238-08c673ce1361" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="db1934c3-e6d6-4d63-9b2c-6c18a9ef89aa" start_index="0" end="fe084bf2-6080-4eb2-9107-999731aa61ef" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="34f08d1e-c26b-47ec-9d7b-770cdea56eb0" start_index="0" end="fe084bf2-6080-4eb2-9107-999731aa61ef" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f02a8d43-f83b-4c2c-bbab-122e91348e81" start_index="0" end="fe084bf2-6080-4eb2-9107-999731aa61ef" end_index="3" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="8a8fe7f4-0778-467c-ab69-a0fcbe09314a" annotationText="load the script" left="-906.010945176969" top="-601.27248593986" width="509.57362217264" height="101.8017911769" fontSize="14" InitialTop="-571.27248593986" InitialHeight="101.8017911769" TextblockHeight="20" backgrouund="#FFC1D676">
+      <Models ModelGuid="044a6855-3a0b-443e-828f-3a3ac5b31b53" />
+      <Models ModelGuid="236e6b2b-30d3-46f9-80ae-692c0b84c33b" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-14.5340051651001" eyeY="16.0983200073242" eyeZ="-15.99498462677" lookX="13.9306917190552" lookY="-26.8933334350586" lookZ="15.8510437011719" upX="0.419901311397552" upY="0.771624505519867" upZ="0.477784872055054" />
+  </Cameras>
+</Workspace>

@@ -22,22 +22,9 @@ sys.path.append(getPackagePath('Ladybug'))
 sys.path.append(getDynamoPath()) #This is for using colors
 
 ###### start you code from here ###
-import ladybugdynamo.legendparameters as legendpar
-from ladybugdynamo.wrapper import Wrapper
+import ladybugdynamo.color as color
 
-
-# analysis surfaces will be useful for drawing the legend. No use for now.
-analysisSurfaces = IN[0]
-values = IN[1]
-
-# I couldn't figure out why isinstance(IN[2], Wrapper) returns Flase
-# Thta's why I'm using try/exception
-#legendPar = IN[2].unwrap() if isinstance(IN[2], Wrapper) else legendpar.LegendParameters()
-
-try:
-    legendPar = IN[2].unwrap()
-except:
-    legendPar = legendpar.LegendParameters()
-
-
-OUT = legendPar.calculateColors(values)
+index = IN[0]
+cs = color.LBColorset()
+colors = cs[index]
+OUT = color.ColorConvertor.toDSColor(colors)

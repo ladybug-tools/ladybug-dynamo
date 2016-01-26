@@ -20,13 +20,15 @@ sys.path.append(getPackagePath('Ladybug'))
 ###### start you code from here ###
 import ladybugdynamo.geometryoperations as go
 
-# This example shows how to calculate sunpath with Ladybug and draw it in Dynamo
-pts = []
-surfaces = IN[0]
+# Generate test points
+surfaces = IN[0] if isinstance(IN[0], list) else [IN[0]]
 numOfSegments = IN[1]
 distanceFromBaseSrf = IN[2]
+pts = []
+normals = []
 
 for srf in surfaces:
-    pts.append(go.generatePointsFromSurface(srf, numOfSegments, distanceFromBaseSrf))
-
-OUT = pts
+    p, n = go.generatePointsFromSurface(srf, numOfSegments, distanceFromBaseSrf)
+    pts.append(p)
+    normals.append(n)
+OUT = pts, normals

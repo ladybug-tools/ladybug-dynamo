@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="687.032639019089" Y="-161.963095180059" zoom="0.696607566783612" Name="Sunpath" Description="Use this node to make a 3D sun-path (aka. sun plot) in the Dynamo scene.  The node also outputs sun vectors that can be used for sunlight hours analysis or shading design with the other Ladybug nodes." ID="0927efd4-0340-42da-983a-a9d20b1310cd" Category="Ladybug.2|Visualize Weather Data">
+<Workspace Version="1.0.0.193" X="334.144361543161" Y="-245.410860570724" zoom="0.790273605674071" Name="Sunpath" Description="Use this node to make a 3D sun-path (aka. sun plot) in the Dynamo scene.  The node also outputs sun vectors that can be used for sunlight hours analysis or shading design with the other Ladybug nodes." ID="0927efd4-0340-42da-983a-a9d20b1310cd" Category="Ladybug.2|Visualize Weather Data">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
     <ClassMap partialName="Autodesk.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
@@ -23,7 +23,7 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="62321348-8c78-40b9-b45f-60198445b256" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-309.80113947628" y="542.624520986025" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="&quot;sunpath_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="62321348-8c78-40b9-b45f-60198445b256" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-309.80113947628" y="542.624520986025" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;sunpath_node.py&quot;;" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="c596ece9-372e-484c-965a-8890c5b08b60" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="134.957445393804" y="595.995067658154" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="9" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5d30b893-9726-43bc-a257-33826e0c7691" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-637.083602451676" y="606.227342322028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="// Input a number between 0 and 360 that represents the degrees off from the y-axis to make North.  The default North direction is set to the Y-axis (0 degrees).&#xD;&#xA;north_: double = 0;" />
@@ -70,21 +70,10 @@ OUT = ''.join(lines)</Script>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="6c5ecb2d-726a-4bba-a41c-810766106483" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="935.577554329241" y="900.104552460656" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
       <Symbol value="datetimes" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="66bf102a-682a-4711-aa01-718b75030ec1" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="328.990008867739" y="600.597858908649" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="6cddf019-fcbd-4890-897c-b0f6cf2cdc05" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Display.ByGeometryColor" x="635.287021812346" y="340.406103104724" isVisible="false" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="" IsFrozen="false" assembly="Display.dll" function="Display.Display.ByGeometryColor@Autodesk.DesignScript.Geometry.Geometry,DSCore.Color" />
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="0a680f61-96b5-4fe3-9eff-9e396064aad9" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Color.ByARGB" x="442.573050840726" y="368.043234794069" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="" IsFrozen="false" assembly="DSCoreNodes.dll" function="DSCore.Color.ByARGB@int,int,int,int">
-      <PortInfo index="0" default="True" />
-      <PortInfo index="1" default="True" />
-      <PortInfo index="2" default="True" />
-      <PortInfo index="3" default="True" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="800369d3-edc9-404f-a3bc-afef15cee2ed" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="344.954583098646" y="397.550118759904" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="" IsFrozen="false" CodeText="225;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="66bf102a-682a-4711-aa01-718b75030ec1" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="328.990008867739" y="600.597858908649" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="46930624-e9da-40dc-a585-91e734aca43e" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-635.539473278089" y="1234.95952687637" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="// Daylight saving period as an analysis period&#xD;&#xA;daylightSavingPeriod_: string = &quot;&quot;;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="d427d117-a99e-4250-b773-f39c1c9455e4" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="934.848004393497" y="389.739970466146" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
-      <Symbol value="preview" />
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="047fd0b7-a5be-4f11-b817-236cef0f219b" start_index="0" end="c596ece9-372e-484c-965a-8890c5b08b60" end_index="0" portType="0" />
@@ -100,15 +89,11 @@ OUT = ''.join(lines)</Script>
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="0" end="55092ddd-c091-4afa-a093-17e211c66622" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="1" end="a61dbb6e-8e0a-44e2-b697-9959f691371f" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="2" end="350a8cf7-231d-41be-8561-8223ff98e74e" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="3" end="6cddf019-fcbd-4890-897c-b0f6cf2cdc05" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="3" end="261bd357-e664-458e-b120-6ae1fc809ac6" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="4" end="620243d8-04fb-440a-9d1f-8fb236844d6a" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="5" end="f00330f1-42f9-4437-a8ef-5040d2b83d9e" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="6" end="950743b0-9e58-426f-8c4e-eb9b12c6d2a8" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="66bf102a-682a-4711-aa01-718b75030ec1" start_index="7" end="6c5ecb2d-726a-4bba-a41c-810766106483" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="6cddf019-fcbd-4890-897c-b0f6cf2cdc05" start_index="0" end="d427d117-a99e-4250-b773-f39c1c9455e4" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="0a680f61-96b5-4fe3-9eff-9e396064aad9" start_index="0" end="6cddf019-fcbd-4890-897c-b0f6cf2cdc05" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="800369d3-edc9-404f-a3bc-afef15cee2ed" start_index="0" end="0a680f61-96b5-4fe3-9eff-9e396064aad9" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="46930624-e9da-40dc-a585-91e734aca43e" start_index="0" end="c596ece9-372e-484c-965a-8890c5b08b60" end_index="8" portType="0" />
   </Connectors>
   <Notes />
@@ -120,6 +105,6 @@ OUT = ''.join(lines)</Script>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-36.4018440246582" eyeY="83.0020599365234" eyeZ="-116.035415649414" lookX="60.4629745483398" lookY="-78.9809722900391" lookZ="167.844650268555" upX="0.0675682798027992" upY="0.97992467880249" upZ="0.187568932771683" />
+    <Camera Name="Background Preview" eyeX="-63.6563131414004" eyeY="159.625979485043" eyeZ="-10.257708124387" lookX="62.6654607854433" lookY="-189.10927111102" lookZ="59.8621774237034" upX="0.577489577394606" upY="0.601814957517491" upZ="0.551656079618364" />
   </Cameras>
 </Workspace>
