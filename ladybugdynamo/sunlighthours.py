@@ -61,4 +61,4 @@ class Sunlighthours(LBAnalysis):
         # package the results and return the package
         #return [[line.ray for line in ap.lineRays] for ap in self.analysisPoints]
         #return [ap.intersections for ap in self.analysisPoints]
-        return unflatten[ap.totalNotIntersected for ap in self.analysisPoints]
+        return unflatten([ap.totalNotIntersected for ap in self.analysisPoints])

@@ -26,7 +26,7 @@ import ladybugdynamo.sunpath as sunpath
 # get location data
 northAngle = IN[0]
 location = IN[1]
-HOYs = IN[2]
+HOYs = IN[2] if isinstance(IN[2], list) else [IN[2]]
 cenPt, scale, sunScale = IN[3:6]
 drawAnnualSunpath = IN[6] # a boolean that indicates if sunpath should be drawn for
 

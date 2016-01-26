@@ -1,4 +1,5 @@
 from ladybug.sunpath import *
+import geometryoperations as go
 
 # import Dynamo libraries
 import clr
@@ -174,6 +175,7 @@ class Sunpath(LBSunpath):
 
         dailyCurve = Arc.ByThreePoints(*dailySunPositions)
         self.__dailyCurves.append(dailyCurve)
+        go.disposeGeometries(dailySunPositions)
 
     def calculateDailyCurves(self):
         """Calculate daily curves for an annual sunpath
@@ -223,6 +225,8 @@ class Sunpath(LBSunpath):
                     midPt = curve.PointAtParameter(midPar)
                     if midPt.Z >= self.basePoint.Z:
                         selectedCurves.append(curve)
+                    else:
+                        curve.Dispose()
 
                 if len(selectedCurves)==1:
                     analemmaCurve = selectedCurves[0]
@@ -232,6 +236,8 @@ class Sunpath(LBSunpath):
                         analemmaCurve = selectedCurves[0].Join(selectedCurves[1:])
                     except StandardError:
                         analemmaCurve = selectedCurves
+
+            go.disposeGeometries(monthlySunPositions)
 
             self.__analemmaCurves.append(analemmaCurve)
 

@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="59.2749686524717" Y="385.799954242055" zoom="0.798114197303237" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.0.0.193" X="3.35878690934965" Y="385.685901049932" zoom="0.823119702777249" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
@@ -88,7 +88,7 @@ OUT = ''.join(lines)</Script>
         <Output value="datetimes" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="359f5bb8-ae41-4b81-bdde-d5779f52b22a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Import Location" x="316.110469494152" y="-213.570504720944" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="359f5bb8-ae41-4b81-bdde-d5779f52b22a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Import Location" x="341.623162154946" y="-233.008746748216" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
       <ID value="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" />
       <Name value="Import Location" />
       <Description value="Import location data from an epw weather file" />
@@ -179,7 +179,6 @@ OUT = ''.join(lines)</Script>
     <Dynamo.Graph.Connectors.ConnectorModel start="36862d27-4731-4af7-83a3-2bfe4e1082d6" start_index="0" end="2a7aa7d3-1a1b-4ed4-ba1d-2b7740c66caa" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="ed83a78c-752b-464c-b737-a3dc81860dc4" start_index="0" end="1ef97d10-f30b-4b5d-9d72-942a3eaefbab" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="1ef97d10-f30b-4b5d-9d72-942a3eaefbab" start_index="0" end="36862d27-4731-4af7-83a3-2bfe4e1082d6" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="0d2217ce-8088-4417-b665-ff899a8420eb" start_index="0" end="36862d27-4731-4af7-83a3-2bfe4e1082d6" end_index="3" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="359f5bb8-ae41-4b81-bdde-d5779f52b22a" start_index="0" end="0d2217ce-8088-4417-b665-ff899a8420eb" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="c39536f8-4402-4bfe-affa-5a2ffb339d5b" start_index="0" end="359f5bb8-ae41-4b81-bdde-d5779f52b22a" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="99146098-6190-4f8a-aef3-f3f843972d2b" start_index="0" end="9343785c-e985-4117-b229-e96c99c1c787" end_index="2" portType="0" />
@@ -198,6 +197,6 @@ OUT = ''.join(lines)</Script>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="49.137257925529" eyeY="165.645899582767" eyeZ="-67.4131245876839" lookX="-50.1281102814861" lookY="-195.129191208743" lookZ="117.017593887" upX="-0.275997999889304" upY="0.713250380934233" upZ="0.644281680187608" />
+    <Camera Name="Background Preview" eyeX="49.1372566223145" eyeY="165.645904541016" eyeZ="-67.4131240844727" lookX="-50.1281089782715" lookY="-195.129196166992" lookZ="117.017593383789" upX="-0.275997996330261" upY="0.713250398635864" upZ="0.644281685352325" />
   </Cameras>
 </Workspace>

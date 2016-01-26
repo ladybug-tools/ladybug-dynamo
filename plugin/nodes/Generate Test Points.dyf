@@ -59,6 +59,6 @@ OUT = ''.join(lines)</Script>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="49.137257925529" eyeY="165.645899582767" eyeZ="-67.4131245876839" lookX="-50.1281102814861" lookY="-195.129191208743" lookZ="117.017593887" upX="-0.275997999889304" upY="0.713250380934233" upZ="0.644281680187608" />
+    <Camera Name="Background Preview" eyeX="49.1372566223145" eyeY="165.645904541016" eyeZ="-67.4131240844727" lookX="-50.1281089782715" lookY="-195.129196166992" lookZ="117.017593383789" upX="-0.275997996330261" upY="0.713250398635864" upZ="0.644281685352325" />
   </Cameras>
 </Workspace>
