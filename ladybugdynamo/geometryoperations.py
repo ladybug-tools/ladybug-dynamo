@@ -21,7 +21,7 @@ def calculateSceneSize(geometries):
             length: length of scene's diagonal
     """
     # flatten the list
-    flattenedGeometries = list(flatten([geometries]))
+    flattenedGeometries = geometries
     bbox = BoundingBox.ByGeometry(flattenedGeometries)
     minPt = bbox.MinPoint
     maxPt = bbox.MaxPoint

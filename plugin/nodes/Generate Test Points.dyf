@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="50.5724814757975" Y="171.915579979744" zoom="0.69990909121839" Name="Generate Test Points" Description="Generate test points from a surface based on number of segments and distance from the surface" ID="3bb214f8-59b8-4ce8-969b-e42d4d05414e" Category="Ladybug.3|Analyze Weather Data">
+<Workspace Version="1.0.0.193" X="50.5724814757975" Y="171.915579979744" zoom="0.69990909121839" Name="Generate Test Points" Description="Generate test points from a surface based on number of segments and distance from the surface" ID="3bb214f8-59b8-4ce8-969b-e42d4d05414e" Category="Ladybug.4|Extra">
   <NamespaceResolutionMap>
     <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
@@ -58,7 +58,4 @@ OUT = ''.join(lines)</Script>
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
-  <Cameras>
-    <Camera Name="Background Preview" eyeX="49.1372566223145" eyeY="165.645904541016" eyeZ="-67.4131240844727" lookX="-50.1281089782715" lookY="-195.129196166992" lookZ="117.017593383789" upX="-0.275997996330261" upY="0.713250398635864" upZ="0.644281685352325" />
-  </Cameras>
 </Workspace>

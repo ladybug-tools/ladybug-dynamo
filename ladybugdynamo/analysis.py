@@ -1,5 +1,6 @@
 """Analysis library for Dynamo. This calss is base class for radiation and sunlighthours analysis"""
 from abc import ABCMeta, abstractmethod, abstractproperty
+from itertools import chain
 from ladybug import listoperations as lo
 import geometryoperations as go
 
@@ -14,15 +15,16 @@ class LBAnalysis(object):
     def __init__(self, vectors, testPoints, geometries):
         # set up the analysis
         # flatten input values
-        self.geometries = lo.flatten(geometries)
+        self.geometries = list(lo.flatten(geometries))
         self.vectors = [vector.Reverse() for vector in lo.flatten(vectors)]
+        self.testPoints = list(lo.flatten(testPoints))
 
         # find maximum length of the scene - which is 3d diagonal
-        maxLength = go.calculateSceneSize(testPoints + geometries)
+        maxLength = go.calculateSceneSize(self.testPoints + self.geometries)
 
         # create analysis points
         self.analysisPoints = [go.LBAnalysisPoint(testPoint, self.vectors, maxLength) \
-            for testPoint in lo.flatten(testPoints)]
+            for testPoint in self.testPoints]
 
         # create place holder for results
         self.isExecuted = False

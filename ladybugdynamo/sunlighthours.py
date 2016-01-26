@@ -15,7 +15,7 @@ class Sunlighthours(LBAnalysis):
             geometries: A list of all the geometries in scene
     """
     def __init__(self, vectors, datetimes, testPoints, geometries):
-
+        self.__guideList = testPoints
         LBAnalysis.__init__(self, vectors, testPoints, geometries)
 
     @classmethod
@@ -61,4 +61,4 @@ class Sunlighthours(LBAnalysis):
         # package the results and return the package
         #return [[line.ray for line in ap.lineRays] for ap in self.analysisPoints]
         #return [ap.intersections for ap in self.analysisPoints]
-        return unflatten([ap.totalNotIntersected for ap in self.analysisPoints])
+        return unflatten(self.__guideList, iter([ap.totalNotIntersected for ap in self.analysisPoints]))
