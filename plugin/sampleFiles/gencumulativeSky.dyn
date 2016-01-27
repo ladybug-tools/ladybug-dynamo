@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.123" X="-850.615059630606" Y="261.004911671679" zoom="0.713971938398678" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.0.0.193" X="-888.727978631821" Y="434.335952235138" zoom="0.951443914763497" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
@@ -10,61 +10,62 @@
     <ClassMap partialName="Autodesk.DesignScript.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <PythonNodeModels.PythonStringNode guid="36862d27-4731-4af7-83a3-2bfe4e1082d6" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="1595.99858507761" y="-149.647859687811" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="ed83a78c-752b-464c-b737-a3dc81860dc4" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="995.724041910591" y="-322.362960575658" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;genskymtx.py&quot;;" ShouldFocus="false" />
-    <PythonNodeModels.PythonNode guid="1ef97d10-f30b-4b5d-9d72-942a3eaefbab" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="1204.61385480996" y="-325.589272041578" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
-      <Script>def getPackagePath(packageName):
-	import sys
-	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
-	import os
-	import clr
-	clr.AddReference('DynamoCore')
-	dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
-	appdata = os.getenv('APPDATA')
-	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-
-filePath = getPackagePath('Ladybug') + IN[0]
-
-with open(filePath, 'rb') as inf:
-    lines = inf.readlines()
-
-OUT = ''.join(lines)</Script>
-    </PythonNodeModels.PythonNode>
-    <CoreNodeModels.Input.Filename guid="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" type="CoreNodeModels.Input.Filename" nickname="File Path" x="990.284431430659" y="-120.659248497102" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <CoreNodeModels.Input.Filename guid="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" type="CoreNodeModels.Input.Filename" nickname="File Path" x="1000.47036973222" y="-181.319984868795" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <System.String>C:\EnergyPlusV8-3-0\WeatherData\USA_CO_Golden-NREL.724666_TMY3.epw</System.String>
     </CoreNodeModels.Input.Filename>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="2698388f-1fbd-4545-bf39-a3e790e1b02e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1367.03800930738" y="-34.7075419530203" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="0;" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="fc9b74e8-8964-4d13-a9dd-18279ef9e779" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1293.52183952751" y="49.3676796010893" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;c:\\ladybug&quot;;" ShouldFocus="false" />
-    <PythonNodeModels.PythonNode guid="08056fab-74bb-4220-b579-fb13fa306046" type="PythonNodeModels.PythonNode" nickname="Python Script" x="1930.33047211289" y="47.3039314112216" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
-      <Script>cSky = IN[0]
-HOYs = IN[1]
-
-cSky.gendaymtx(analysisPeriod = HOYs)
-
-#Assign your output to the OUT variable.
-OUT = [cSky.skyTotalRadiation.values(header = True),
-        cSky.skyDiffuseRadiation.values(header = True),
-        cSky.skyDirectRadiation.values(header = True)]</Script>
-    </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="b92d29ac-a744-4669-98e2-fc33d9b2ac73" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1588.91353377905" y="64.3868756466924" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="1..10;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="2d09773a-f756-43c5-9e31-a60dbd3e0971" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Sky Matrix" x="1546.17432036652" y="-181.359155011383" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <ID value="ee2746e6-241d-482b-aaa7-bbff10490610" />
+      <Name value="Generate Sky Matrix" />
+      <Description value="Generate sky matrix for a location from epw file" />
+      <Inputs>
+        <Input value="_epwFile" />
+        <Input value="_skyDensity_" />
+        <Input value="workingDir_" />
+      </Inputs>
+      <Outputs>
+        <Output value="SkyMatrix" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <CoreNodeModels.Watch guid="edaf74b4-f26c-4d7b-bfb0-fd128227670d" type="CoreNodeModels.Watch" nickname="Watch" x="1951.33723149221" y="-362.508589764972" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="fa8bc790-1e1b-426e-8434-1b8a1e91155d" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Filter Sky Matrix" x="1969.40649185109" y="-23.4312572523936" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <PortInfo index="3" default="True" />
+      <ID value="71bc920f-b341-44b4-b64e-0ae42bc3338d" />
+      <Name value="Filter Sky Matrix" />
+      <Description value="Filter Cumulative Sky for an analysis period. You can also filter diffuse or direct component of the sky" />
+      <Inputs>
+        <Input value="_skyMatrix" />
+        <Input value="_HOYs_" />
+        <Input value="_includeDiffuse_" />
+        <Input value="_includeDirect_" />
+      </Inputs>
+      <Outputs>
+        <Output value="filteredSkyMatrix" />
+        <Output value="skyRadiationValues" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <CoreNodeModels.Watch guid="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" type="CoreNodeModels.Watch" nickname="Watch" x="2311.8374552986" y="1.8018252428829" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <CoreNodeModels.Watch guid="599641bd-d3be-4aad-9934-ced6a84d334d" type="CoreNodeModels.Watch" nickname="Watch" x="2308.99970153488" y="-136.92285816431" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
   </Elements>
   <Connectors>
-    <Dynamo.Graph.Connectors.ConnectorModel start="36862d27-4731-4af7-83a3-2bfe4e1082d6" start_index="0" end="08056fab-74bb-4220-b579-fb13fa306046" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="ed83a78c-752b-464c-b737-a3dc81860dc4" start_index="0" end="1ef97d10-f30b-4b5d-9d72-942a3eaefbab" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="1ef97d10-f30b-4b5d-9d72-942a3eaefbab" start_index="0" end="36862d27-4731-4af7-83a3-2bfe4e1082d6" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" start_index="0" end="36862d27-4731-4af7-83a3-2bfe4e1082d6" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="2698388f-1fbd-4545-bf39-a3e790e1b02e" start_index="0" end="36862d27-4731-4af7-83a3-2bfe4e1082d6" end_index="2" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="fc9b74e8-8964-4d13-a9dd-18279ef9e779" start_index="0" end="36862d27-4731-4af7-83a3-2bfe4e1082d6" end_index="3" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="b92d29ac-a744-4669-98e2-fc33d9b2ac73" start_index="0" end="08056fab-74bb-4220-b579-fb13fa306046" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" start_index="0" end="2d09773a-f756-43c5-9e31-a60dbd3e0971" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="0" end="edaf74b4-f26c-4d7b-bfb0-fd128227670d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="0" end="fa8bc790-1e1b-426e-8434-1b8a1e91155d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="0" end="599641bd-d3be-4aad-9934-ced6a84d334d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="1" end="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" end_index="0" portType="0" />
   </Connectors>
   <Notes>
-    <Dynamo.Graph.Notes.NoteModel guid="ec304714-4a47-4bc1-9265-bc224bca8dbf" text="Select Sky" x="1961.21897888518" y="6.12835418648618" />
-    <Dynamo.Graph.Notes.NoteModel guid="8ff7ed7b-82fd-4078-acae-46ff832b97d0" text="gencumulativesky" x="1617.88671588249" y="-188.46128335582" />
+    <Dynamo.Graph.Notes.NoteModel guid="0c24b68a-96c2-4218-a75c-97cdf4e12640" text="Generating sky can take up to few minutes." x="1529.40791201796" y="-23.8139830063289" />
   </Notes>
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="8f1f89ae-ccba-4e51-84e0-0e5e3754dbc2" annotationText="load the script" left="985.724041910591" top="-355.589272041578" width="377.889812899369" height="126.22631146592" fontSize="14" InitialTop="-325.589272041578" InitialHeight="127.14290964232" TextblockHeight="20" backgrouund="#FFC1D676">
-      <Models ModelGuid="1ef97d10-f30b-4b5d-9d72-942a3eaefbab" />
-      <Models ModelGuid="ed83a78c-752b-464c-b737-a3dc81860dc4" />
+    <Dynamo.Graph.Annotations.AnnotationModel guid="410b445a-03c0-4d15-88ba-f694419b37f6" annotationText="Generate sky matrix for running radiation analysis.&#xD;&#xA;If you are running thie file in Dynamo Studio the run will fail at the first run for each weather file - Give it a couple of seconds and re-connect the weather file address and re-run the file and you'll get the results as expected!&#xD;&#xA;&#xD;&#xA;PSThere is a technical reason for this wich will be fixed for the next release." left="1536.17432036652" top="-409.359155011383" width="220" height="373" fontSize="14" InitialTop="-181.359155011383" InitialHeight="175" TextblockHeight="218" backgrouund="#FF48B9FF">
+      <Models ModelGuid="2d09773a-f756-43c5-9e31-a60dbd3e0971" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="0229a01f-fd34-4711-abad-cb52edcc17c5" annotationText="Filter sky matrix for Radiation Analysis.&#xD;&#xA;&#xD;&#xA;In the next release you can use the sky matrix to draw sky dome and radiation rose." left="1959.40649185109" top="-100.431257252394" width="300" height="248" fontSize="14" InitialTop="-23.4312572523936" InitialHeight="201" TextblockHeight="67" backgrouund="#FF48B9FF">
+      <Models ModelGuid="fa8bc790-1e1b-426e-8434-1b8a1e91155d" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />

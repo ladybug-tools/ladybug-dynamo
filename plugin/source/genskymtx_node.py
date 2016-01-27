@@ -20,16 +20,19 @@ def getPackagePath(packageName):
 sys.path.append(getPackagePath('Ladybug'))
 
 ###### start you code from here ###
+from ladybugdynamo.wrapper import Wrapper
 import ladybugdynamo.sky as sky
-
 
 # get input data
 epwfile = IN[0]
 skyDensity = IN[1]
-workingDir = IN[2]
+workingDir = IN[2] if IN[2].strip()!="" else os.path.join(getPackagePath('Ladybug') + "temp\\cumulativeSkies")
 
 cSky = sky.CumulativeSkyMtx(epwfile,  skyDensity= skyDensity, workingDir = workingDir)
-cSky.gendaymtx(pathToRadianceBinaries = os.path.join(getPackagePath('Ladybug') + "bin"))
 
-# assign outputs
-OUT = cSky
+try:
+    cSky.gendaymtx(pathToRadianceBinaries = os.path.join(getPackagePath('Ladybug'), "bin"))
+    # assign sky to output
+    OUT = Wrapper(cSky)
+except Exception, e:
+    OUT = str(e)
