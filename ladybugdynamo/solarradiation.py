@@ -13,38 +13,15 @@ class SolarRadiation(LBAnalysis):
             testPoints: A single list or several lists of test points.
             geometries: A list of all the geometries in scene
     """
-    def __init__(self, sky, testPoints, geometries):
+    # TODO: add a classmethod to LBAnalysis for running the analysis from skyTotalRadiation
+    # radiation values and vectors should be unwrapped in LBAnalysis
+    def __init__(self, sky, testPoints, pointsNormal, geometries):
         self.__guideList = testPoints
-        LBAnalysis.__init__(self, vectors, testPoints, geometries)
-
-    @classmethod
-    def byTestGeometries(cls, sky, testGeometries, contextGeometries, gridSize, distanceFromBaseSrf):
-        # generate test points from geometries
-        #testPoints = go.generatePointsFromGeometries(testGeometries, gridSize, distanceFromBaseSrf)
-        #return cls(vectors, datetimes, testPoints, testGeometries + contextGeometries)
-        raise NotImplementedError()
-
-    @classmethod
-    def bySkyTestPoints(cls, sky, testPoints, contextGeometries):
-        """Ladybug sunlight hours for Dynamo
-
-        Args:
-            suns: A list of Ladbug suns
-            testPoints: A single list or several lists of test points.
-            contextGeometries: A list of context geometries
-        """
-        # vectors = range(len(suns))
-        # datetimes = range(len(suns))
-        # return cls(vectors, datetimes, testPoints, contextGeometries)
-        raise NotImplementedError()
-
-    @classmethod
-    def bySunsTestGeometries(cls, suns, testGeometries, contextGeometries, gridSize, distanceFromBaseSrf):
-
-        # generate test points from geometries
-        testPoints = go.generatePointsFromGeometries(testGeometries, gridSize, distanceFromBaseSrf)
-        return cls.bySunsTestPoints(suns, testPoints, testGeometries + contextGeometries)
-
+        self.__raditionValues = sky.skyTotalRadiation.values(header = False)
+        # generate vectors from sky
+        vectors = [go.toDSVector(r.vector) for r in self.__raditionValues]
+        LBAnalysis.__init__(self, vectors, testPoints, geometries, reverseVectors = False, \
+            pointsNormal = pointsNormal, values = self.__raditionValues)
 
     def runAnalysis(self, parallel = False):
         for analysisPoint in self.analysisPoints:

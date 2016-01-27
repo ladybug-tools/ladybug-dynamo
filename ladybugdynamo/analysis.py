@@ -12,22 +12,30 @@ class LBAnalysis(object):
             testPoints: A single list or several lists of test points.
             geometries: A list of all the geometries in scene
     """
-    def __init__(self, vectors, testPoints, geometries):
+    def __init__(self, vectors, testPoints, geometries, reverseVectors = True, \
+        pointsNormal = None, values = None):
         # set up the analysis
         # flatten input values
         self.geometries = list(lo.flatten(geometries))
-        self.vectors = [vector.Reverse() for vector in lo.flatten(vectors)]
+        self.vectors = [vector.Reverse() if reverseVectors else vector for vector in lo.flatten(vectors)]
         self.testPoints = list(lo.flatten(testPoints))
-
+        if pointsNormal:
+            self.pointsNormal = list(lo.flatten(pointsNormal))
+        else:
+            self.pointsNormal = [None] * len(self.testPoints)
         # find maximum length of the scene - which is 3d diagonal
         maxLength = go.calculateSceneSize(self.testPoints + self.geometries)
 
         # create analysis points
-        self.analysisPoints = [go.LBAnalysisPoint(testPoint, self.vectors, maxLength) \
-            for testPoint in self.testPoints]
+        self.analysisPoints = [go.LBAnalysisPoint(testPoint, self.vectors, maxLength, \
+            self.pointsNormal[count], values) for count, testPoint in enumerate(self.testPoints)]
 
         # create place holder for results
         self.isExecuted = False
+
+    @classmethod
+    def bySkyTestPoints(cls):
+        pass
 
     def runAnalysis(self, parallel = False):
         for analysisPoint in self.analysisPoints:

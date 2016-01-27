@@ -1,0 +1,62 @@
+<Workspace Version="1.0.0.193" X="319.882428694625" Y="458.729114221054" zoom="1.00600419002725" Name="Solar Radiation Analysis" Description="Calculate solar radiation for points in wh" ID="3a351690-4383-4977-9488-8f5007449935" Category="Ladybug.3|Environmental Analysis">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonStringNode guid="17920221-89e7-4e4b-9b45-c38061a17d60" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="662.048763173571" y="-308.266346996792" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="5" />
+    <PythonNodeModels.PythonNode guid="f8e7bd11-6d18-4eea-af9b-b93d41db3040" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="465.037676709362" y="-308.084404694364" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+      <Script>def getPackagePath(packageName):
+	import sys
+	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
+	import os
+	import clr
+	clr.AddReference('DynamoCore')
+	dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+	appdata = os.getenv('APPDATA')
+	return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
+
+filePath = getPackagePath('Ladybug') + IN[0]
+
+with open(filePath, 'rb') as inf:
+    lines = inf.readlines()
+
+OUT = ''.join(lines)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="b25a1631-7977-4bbd-97a5-a7a214bad435" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="152.279585935982" y="-303.923392110584" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;solarRadiation_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c13877ec-3c60-4c5f-989f-88e19fadd722" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-273.770332770723" y="-227.363977693631" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="// Test points. You can use several methods including using Generate Test Points to generate test points.&#xD;&#xA;_testPoints: var[]..[];" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a0aee864-b0ca-49eb-a315-2ba9384194f2" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-273.770332770723" y="-131.936939763103" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="// Points Normal. A vector for each test point should be provided&#xD;&#xA;_pointsNormal: var[]..[];" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="28cf3dfb-2acc-4b79-b1ef-81277330830e" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-273.770332770723" y="-60.3666613152072" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="// All the context geometries as surfaces&#xD;&#xA;_geometries: var[]..[];" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="42f9c097-3e48-438d-8150-13ea12d89196" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-275.758396060942" y="18.1618386484564" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="//Ladybug Sky. Use Filter Sky Matrix node to generate a filtered sky&#xD;&#xA;_filteredSkyMatrix: System.Object;" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="8dc9a21d-7824-4706-9166-e0a4c18e049e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="940.470805871844" y="-306.886509302405" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+      <Symbol value="solarRadiation" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="17920221-89e7-4e4b-9b45-c38061a17d60" start_index="0" end="8dc9a21d-7824-4706-9166-e0a4c18e049e" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f8e7bd11-6d18-4eea-af9b-b93d41db3040" start_index="0" end="17920221-89e7-4e4b-9b45-c38061a17d60" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b25a1631-7977-4bbd-97a5-a7a214bad435" start_index="0" end="f8e7bd11-6d18-4eea-af9b-b93d41db3040" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c13877ec-3c60-4c5f-989f-88e19fadd722" start_index="0" end="17920221-89e7-4e4b-9b45-c38061a17d60" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="a0aee864-b0ca-49eb-a315-2ba9384194f2" start_index="0" end="17920221-89e7-4e4b-9b45-c38061a17d60" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="28cf3dfb-2acc-4b79-b1ef-81277330830e" start_index="0" end="17920221-89e7-4e4b-9b45-c38061a17d60" end_index="3" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="42f9c097-3e48-438d-8150-13ea12d89196" start_index="0" end="17920221-89e7-4e4b-9b45-c38061a17d60" end_index="4" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="5e9d0ca3-96f7-4878-b990-d2f06b1806ef" annotationText="load the script" left="142.279585935982" top="-338.084404694364" width="481.75809077338" height="102.16101258378" fontSize="14" InitialTop="-308.084404694364" InitialHeight="102.16101258378" TextblockHeight="20" backgrouund="#FFC1D676">
+      <Models ModelGuid="f8e7bd11-6d18-4eea-af9b-b93d41db3040" />
+      <Models ModelGuid="b25a1631-7977-4bbd-97a5-a7a214bad435" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-81.7639999389648" eyeY="59.4743232727051" eyeZ="-101.746223449707" lookX="99.6409530639648" lookY="-85.49658203125" lookZ="140.672622680664" upX="0.139833062887192" upY="0.970295667648315" upZ="0.197415620088577" />
+  </Cameras>
+</Workspace>

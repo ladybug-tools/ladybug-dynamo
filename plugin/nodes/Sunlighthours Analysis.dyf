@@ -1,9 +1,9 @@
-<Workspace Version="1.0.0.193" X="505.819702624226" Y="244.09611738963" zoom="1.13758205229474" Name="Sunlighthours Analysis" Description="Calculate sunlight hours for a list of test points" ID="09d9f5ab-9afb-4e14-b9ec-812e8306f601" Category="Ladybug.3|Environmental Analysis">
+<Workspace Version="1.0.0.193" X="590.264278160967" Y="227.166953336684" zoom="1.22704736140834" Name="Sunlighthours Analysis" Description="Calculate sunlight hours for a list of test points" ID="09d9f5ab-9afb-4e14-b9ec-812e8306f601" Category="Ladybug.3|Environmental Analysis">
   <NamespaceResolutionMap />
   <Elements>
-    <PythonNodeModels.PythonStringNode guid="347dce98-66dd-4fc8-92e7-cd8751c99829" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="110.826624945615" y="-12.2806003249328" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="2a127d40-358c-4dd1-aedd-0085a842adbf" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-371.940398499015" y="-7.79313671717881" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;sunlighthours_node.py&quot;;" ShouldFocus="false" />
-    <PythonNodeModels.PythonNode guid="943a2ff0-32b2-4513-8328-723b6d02a7a4" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-100.130085895924" y="-11.0194481830988" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonStringNode guid="347dce98-66dd-4fc8-92e7-cd8751c99829" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="492.337566617498" y="-12.2806003249328" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="2a127d40-358c-4dd1-aedd-0085a842adbf" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-356.117364051794" y="-42.955435488781" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;sunlighthours_node.py&quot;;" ShouldFocus="false" />
+    <PythonNodeModels.PythonNode guid="943a2ff0-32b2-4513-8328-723b6d02a7a4" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-84.307051448703" y="-46.181746954701" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
       <Script>def getPackagePath(packageName):
 	import sys
 	sys.path.append('C:\Program Files (x86)\IronPython 2.7\Lib')
@@ -21,16 +21,16 @@ with open(filePath, 'rb') as inf:
 
 OUT = ''.join(lines)</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4e5e9c4c-c3ab-4727-824a-80d230637a6f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.493829523508" y="89.5793691583022" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
-      <Symbol value="_testPoints" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4e5e9c4c-c3ab-4727-824a-80d230637a6f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-391.901139548497" y="50.9008405095398" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="// Test points. You can use several methods including using Generate Test Points to generate test points.&#xD;&#xA;_testPoints: var[]..[];" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="001199b2-6808-478f-ae43-adeb2dfeddf4" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-248.614772054218" y="151.992449477896" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
-      <Symbol value="_geometries" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="001199b2-6808-478f-ae43-adeb2dfeddf4" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-392.863482875656" y="136.508124587459" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+      <Symbol value="// All the context geometries as surfaces&#xD;&#xA;_geometries: var[]..[];" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="d6119c54-5a23-4ebd-beab-b556e62c4d56" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.493829523508" y="215.28458726678" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="d6119c54-5a23-4ebd-beab-b556e62c4d56" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-390.482682473275" y="224.249196413875" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
       <Symbol value="_sunVectors" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f362ebd4-4806-405c-b0e0-c9aed4a8a71e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="372.87885873385" y="-13.2703547486341" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f362ebd4-4806-405c-b0e0-c9aed4a8a71e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="754.389800405733" y="-13.2703547486341" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
       <Symbol value="sunlightHours" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
@@ -44,13 +44,13 @@ OUT = ''.join(lines)</Script>
   </Connectors>
   <Notes />
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="5e59c7ea-6654-4188-ba54-d4d60e4b802b" annotationText="load the script" left="-381.940398499015" top="-41.0194481830988" width="440.81031260309" height="101.22631146592" fontSize="14" InitialTop="-11.0194481830988" InitialHeight="101.22631146592" TextblockHeight="20" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="5e59c7ea-6654-4188-ba54-d4d60e4b802b" annotationText="load the script" left="-366.117364051794" top="-76.181746954701" width="440.810312603091" height="101.22631146592" fontSize="14" InitialTop="-46.181746954701" InitialHeight="101.22631146592" TextblockHeight="20" backgrouund="#FFC1D676">
       <Models ModelGuid="943a2ff0-32b2-4513-8328-723b6d02a7a4" />
       <Models ModelGuid="2a127d40-358c-4dd1-aedd-0085a842adbf" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-81.7639981710592" eyeY="59.4743216746294" eyeZ="-101.746225839108" lookX="99.6409546488858" lookY="-85.4965851106469" lookZ="140.672619505818" upX="0.139833055909923" upY="0.970295678141647" upZ="0.197415624172801" />
+    <Camera Name="Background Preview" eyeX="-81.7639999389648" eyeY="59.4743232727051" eyeZ="-101.746223449707" lookX="99.6409530639648" lookY="-85.49658203125" lookZ="140.672622680664" upX="0.139833062887192" upY="0.970295667648315" upZ="0.197415620088577" />
   </Cameras>
 </Workspace>

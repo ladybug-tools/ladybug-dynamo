@@ -4,6 +4,13 @@ import clr
 clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
 from ladybug.listoperations import *
+import math
+
+def toDSVector(vector):
+    try:
+        return Vector.ByCoordinates(vector.x, vector.y, vector.z)
+    except:
+        return Vector.ByCoordinates(*vector)
 
 def disposeGeometries(geometries):
     try:
@@ -20,9 +27,10 @@ def calculateSceneSize(geometries):
         Return:
             length: length of scene's diagonal
     """
-    # flatten the list
-    flattenedGeometries = geometries
-    bbox = BoundingBox.ByGeometry(flattenedGeometries)
+    for geo in geometries:
+        assert isinstance(geo, Geometry), \
+            "%s is not a geometry"%str(geo)
+    bbox = BoundingBox.ByGeometry(geometries)
     minPt = bbox.MinPoint
     maxPt = bbox.MaxPoint
     distance = minPt.DistanceTo(maxPt)
@@ -66,33 +74,50 @@ class LBAnalysisPoint:
             testPoint: A points that represnts test sensor
             vectors: Test vectors for analysis. It can be sun vectors or vectors for sky patches
             length: maximum length of test secne
+            pointNormal: A vector that represents test point's directon. None for sunlighthours analysisPoint
+            values: A list of values that correspond to the list of vectors. None for sunlighthours analysis
     """
-    def __init__(self, testPoint, vectors, length):
+    def __init__(self, testPoint, vectors, length, pointNormal = None, values = None):
 
         self.testPoint = testPoint
         # calculate LinRays
         self.lineRays = [LineRay(self.testPoint, vector, length) for vector in vectors]
-        # place holder for intersections
-        self.intersections = [False] * len(vectors)
+        # angle between test point normal and vectors. If no point normal angle is set to 0
+        self.angles = [pointNormal.AngleBetween(vector) if pointNormal else 0 for vector in vectors]
+        # values for each vectors. If no value it will be set to 1
+        self.values = values if values else [1] * len(vectors)
+        # assume that point sees none of the vectors
+        self.intensity = [0] * len(vectors)
 
     def calculateIntersections(self, contextGeometries, parallel = False):
         """calculate intersection for this analysis point against conetext geometries"""
         for lineCount, lineRay in enumerate(self.lineRays):
+            # in case angle is larger than 90 or vector value is 0 result will
+            # be 0 - continue to next line ray
+            if self.angles[lineCount] >= 90 or self.values[lineCount] == 0:
+                continue
+
             for geometry in contextGeometries:
                 intersection = geometry.Intersect(lineRay.ray)
 
                 if len(intersection) > 0:
                     disposeGeometries(intersection)
-                    self.intersections[lineCount] = True
+                    self.intensity[lineCount] = 0
                     break
                 else:
                     disposeGeometries(intersection)
+                    # calculate value based on normal angle and value
+                    self.intensity[lineCount] = \
+                        self.values[lineCount] * math.cos(math.radians(self.angles[lineCount]))
 
+        #dispose lineRays
+        for lr in self.lineRays:
+            disposeGeometries([lr.ray])
         del(self.lineRays)
 
     @property
     def totalNotIntersected(self):
-        return len(self.intersections) - sum(self.intersections)
+        return sum(self.intensity)
 
 class LineRay:
     """Create a line ray
