@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3872" X="-888.727978631821" Y="434.335952235138" zoom="0.951443914763497" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="0.9.1.3872" X="-869.292098582488" Y="452.120899267195" zoom="0.907576653039008" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
@@ -11,7 +11,7 @@
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" type="CoreNodeModels.Input.Filename" nickname="File Path" x="1000.47036973222" y="-181.319984868795" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
-      <System.String>C:\EnergyPlusV8-3-0\WeatherData\USA_CO_Golden-NREL.724666_TMY3.epw</System.String>
+      <System.String>C:\EnergyPlusV8-3-0\WeatherData\USA_FL_Tampa.Intl.AP.722110_TMY3.epw</System.String>
     </CoreNodeModels.Input.Filename>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="2d09773a-f756-43c5-9e31-a60dbd3e0971" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Sky Matrix" x="1546.17432036652" y="-181.359155011383" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
       <PortInfo index="1" default="True" />

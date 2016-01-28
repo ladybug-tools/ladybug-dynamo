@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="590.264278160967" Y="227.166953336684" zoom="1.22704736140834" Name="Sunlighthours Analysis" Description="Calculate sunlight hours for a list of test points" ID="09d9f5ab-9afb-4e14-b9ec-812e8306f601" Category="Ladybug.3|Environmental Analysis">
+<Workspace Version="0.9.1.3872" X="590.264278160967" Y="227.166953336684" zoom="1.22704736140834" Name="Sunlighthours Analysis" Description="Calculate sunlight hours for a list of test points" ID="09d9f5ab-9afb-4e14-b9ec-812e8306f601" Category="Ladybug.3|Environmental Analysis">
   <NamespaceResolutionMap />
   <Elements>
     <PythonNodeModels.PythonStringNode guid="347dce98-66dd-4fc8-92e7-cd8751c99829" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="492.337566617498" y="-12.2806003249328" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />

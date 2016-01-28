@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="288.067593283127" Y="9.62536112223813" zoom="0.72583335096494" Name="Construct Location" Description="Construct a Ladybug location based on input data" ID="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" Category="Ladybug.0|Ladybug">
+<Workspace Version="0.9.1.3872" X="288.067593283127" Y="9.62536112223813" zoom="0.72583335096494" Name="Construct Location" Description="Construct a Ladybug location based on input data" ID="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap />
   <Elements>
     <PythonNodeModels.PythonStringNode guid="a6924a42-ff14-4259-b8d4-4210bcd6de54" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="695.130396330236" y="199.226672867258" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="6" />

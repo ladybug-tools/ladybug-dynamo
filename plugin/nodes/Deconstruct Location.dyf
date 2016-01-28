@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="638.173260418185" Y="-420.206377442151" zoom="0.83312748433509" Name="Deconstruct Location" Description="Get different location data from a location string" ID="1e9d66af-b2be-4a12-bac7-1040ecca5af0" Category="Ladybug.0|Ladybug">
+<Workspace Version="0.9.1.3872" X="638.173260418185" Y="-420.206377442151" zoom="0.83312748433509" Name="Deconstruct Location" Description="Get different location data from a location string" ID="1e9d66af-b2be-4a12-bac7-1040ecca5af0" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
     <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />

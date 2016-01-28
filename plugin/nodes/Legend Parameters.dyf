@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="1121.84292678601" Y="758.096471425541" zoom="0.994488700419556" Name="Legend Parameters" Description="Use legend parameter to set up results visualization setting" ID="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" Category="Ladybug.4|Extra">
+<Workspace Version="0.9.1.3872" X="1121.84292678601" Y="758.096471425541" zoom="0.994488700419556" Name="Legend Parameters" Description="Use legend parameter to set up results visualization setting" ID="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" Category="Ladybug.4|Extra">
   <NamespaceResolutionMap>
     <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>

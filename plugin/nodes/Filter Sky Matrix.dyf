@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="2766.18447495353" Y="1125.39659532656" zoom="0.793979681425322" Name="Filter Sky Matrix" Description="Filter Cumulative Sky for an analysis period. You can also filter diffuse or direct component of the sky" ID="71bc920f-b341-44b4-b64e-0ae42bc3338d" Category="Ladybug.2|Visualize Weather Data">
+<Workspace Version="0.9.1.3872" X="2766.18447495353" Y="1125.39659532656" zoom="0.793979681425322" Name="Filter Sky Matrix" Description="Filter Cumulative Sky for an analysis period. You can also filter diffuse or direct component of the sky" ID="71bc920f-b341-44b4-b64e-0ae42bc3338d" Category="Ladybug.2|Visualize Weather Data">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
   </NamespaceResolutionMap>

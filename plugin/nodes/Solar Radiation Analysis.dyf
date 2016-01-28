@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="319.882428694625" Y="458.729114221054" zoom="1.00600419002725" Name="Solar Radiation Analysis" Description="Calculate solar radiation for points in wh" ID="3a351690-4383-4977-9488-8f5007449935" Category="Ladybug.3|Environmental Analysis">
+<Workspace Version="0.9.1.3872" X="319.882428694625" Y="458.729114221054" zoom="1.00600419002725" Name="Solar Radiation Analysis" Description="Calculate solar radiation for points in wh" ID="3a351690-4383-4977-9488-8f5007449935" Category="Ladybug.3|Environmental Analysis">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
   </NamespaceResolutionMap>

@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3360" X="271.126124978037" Y="282.736323601691" zoom="2.26620467832306" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
+<Workspace Version="0.9.1.3872" X="271.126124978037" Y="282.736323601691" zoom="2.26620467832306" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap />
   <Elements>
     <PythonNodeModels.PythonStringNode guid="a1dc49d8-593a-44e0-8bad-215ebd543070" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="364.899817709071" y="-99.7752171559125" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2" />
