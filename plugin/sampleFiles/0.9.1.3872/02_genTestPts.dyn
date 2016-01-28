@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3872" X="197.55847904749" Y="44.1398595011055" zoom="0.402776933203646" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="0.9.1.3872" X="265.355257185264" Y="85.0297545164518" zoom="0.466395726590643" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
@@ -41,6 +41,7 @@
       <Outputs>
         <Output value="testPts" />
         <Output value="ptsNormal" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="e7c19cf0-2875-45ae-83ad-7090b681304b" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="456.920480476758" y="314.254256501885" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="20;" ShouldFocus="false" />
@@ -62,6 +63,7 @@
       </Inputs>
       <Outputs>
         <Output value="colors" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="cfad05f2-ed42-42db-a67e-dd7fd03ae20e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1368.98721408889" y="775.375862178033" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="0;" ShouldFocus="false" />
@@ -79,6 +81,7 @@
       </Inputs>
       <Outputs>
         <Output value="legendPar" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="0f490ea5-24b2-4f8d-ae33-cf72c38c2737" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="domain" x="1492.11425711014" y="595.938335786172" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="{&quot;min&quot;,5};" ShouldFocus="false" />
@@ -92,6 +95,7 @@
       </Inputs>
       <Outputs>
         <Output value="colors" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="f792b6e2-55b5-479a-8d9d-7c550186a8bd" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1223.33754911614" y="1235.03848574228" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="2;" ShouldFocus="false" />
@@ -113,6 +117,7 @@
       </Inputs>
       <Outputs>
         <Output value="legendPar" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="31dbeaf8-f4cb-433b-a22f-224917609b93" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Color Surface" x="2390.15480779067" y="169.637069543496" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -127,6 +132,7 @@
       </Inputs>
       <Outputs>
         <Output value="Display" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
@@ -171,21 +177,21 @@
       <Models ModelGuid="70ebd375-8e87-4e89-a207-a89de405388c" />
       <Models ModelGuid="26021a0a-aeb8-49ec-a527-c0f2a625c826" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="6685f126-b905-4efa-b4e1-1d01499631e7" annotationText="Ladybug color range&#xD;&#xA;Check _index_ description for more information." left="1479.26483796474" top="711.996808315307" width="166" height="153" fontSize="14" InitialTop="771.996808315307" InitialHeight="123" TextblockHeight="50" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="6685f126-b905-4efa-b4e1-1d01499631e7" annotationText="Ladybug color range&#xD;&#xA;Check _index_ description for more information." left="1479.26483796474" top="711.996808315307" width="193" height="179" fontSize="14" InitialTop="771.996808315307" InitialHeight="123" TextblockHeight="50" backgrouund="#FF48B9FF">
       <Models ModelGuid="2e34e137-8041-4f6d-89ac-257018fb8a17" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9aa890a5-ca78-4f15-af4c-3487dafb9d76" annotationText="Legend Parameters" left="1795.23670927713" top="691.853262635751" width="203" height="175" fontSize="14" InitialTop="721.853262635751" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9aa890a5-ca78-4f15-af4c-3487dafb9d76" annotationText="Legend Parameters" left="1795.23670927713" top="691.853262635751" width="206" height="175" fontSize="14" InitialTop="721.853262635751" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
       <Models ModelGuid="dd482bdb-ac01-49b9-8f90-c151a0223232" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="80d4ba22-34a4-46ee-b21f-aa9368ac406c" annotationText="Ladybug color range&#xD;&#xA;Check _index_ description for more information." left="1338.42946645836" top="1170.64582428874" width="166" height="153" fontSize="14" InitialTop="1230.64582428874" InitialHeight="123" TextblockHeight="50" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="80d4ba22-34a4-46ee-b21f-aa9368ac406c" annotationText="Ladybug color range&#xD;&#xA;Check _index_ description for more information." left="1338.42946645836" top="1170.64582428874" width="193" height="179" fontSize="14" InitialTop="1230.64582428874" InitialHeight="123" TextblockHeight="50" backgrouund="#FF48B9FF">
       <Models ModelGuid="f2f598f2-9b2c-43e8-8c7b-d106116e9c16" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="65838059-7212-47cd-87ed-829e397b42a5" annotationText="Legend Parameters" left="1833.07630597956" top="1016.66449065461" width="203" height="175" fontSize="14" InitialTop="1046.66449065461" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="65838059-7212-47cd-87ed-829e397b42a5" annotationText="Legend Parameters" left="1833.07630597956" top="1016.66449065461" width="206" height="175" fontSize="14" InitialTop="1046.66449065461" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
       <Models ModelGuid="02a907b9-573f-470d-8edb-1e03fcf58d93" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-9.62945262450341" eyeY="16.2723972951364" eyeZ="-9.77249528027511" lookX="10.0564864740841" lookY="-24.95231275476" lookZ="13.1959478836935" upX="0.421057410192577" upY="0.719339738966716" upZ="0.552504237841532" />
+    <Camera Name="Background Preview" eyeX="-9.6294527053833" eyeY="16.2723979949951" eyeZ="-9.77249526977539" lookX="10.0564861297607" lookY="-24.9523124694824" lookZ="13.1959476470947" upX="0.421057403087616" upY="0.719339728355408" upZ="0.552504241466522" />
   </Cameras>
 </Workspace>

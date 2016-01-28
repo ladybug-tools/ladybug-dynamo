@@ -11,7 +11,7 @@
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" type="CoreNodeModels.Input.Filename" nickname="File Path" x="1000.47036973222" y="-181.319984868795" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
-      <System.String>C:\EnergyPlusV8-3-0\WeatherData\USA_FL_Tampa.Intl.AP.722110_TMY3.epw</System.String>
+      <System.String>C:\EnergyPlusV8-1-0\WeatherData\USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.epw</System.String>
     </CoreNodeModels.Input.Filename>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="2d09773a-f756-43c5-9e31-a60dbd3e0971" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Sky Matrix" x="1546.17432036652" y="-181.359155011383" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
       <PortInfo index="1" default="True" />
@@ -26,9 +26,10 @@
       </Inputs>
       <Outputs>
         <Output value="SkyMatrix" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Watch guid="edaf74b4-f26c-4d7b-bfb0-fd128227670d" type="CoreNodeModels.Watch" nickname="Watch" x="1951.33723149221" y="-362.508589764972" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <CoreNodeModels.Watch guid="edaf74b4-f26c-4d7b-bfb0-fd128227670d" type="CoreNodeModels.Watch" nickname="Watch" x="1827.93167712392" y="-369.119601606131" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="fa8bc790-1e1b-426e-8434-1b8a1e91155d" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Filter Sky Matrix" x="1969.40649185109" y="-23.4312572523936" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
       <PortInfo index="1" default="True" />
       <PortInfo index="2" default="True" />
@@ -45,6 +46,7 @@
       <Outputs>
         <Output value="filteredSkyMatrix" />
         <Output value="skyRadiationValues" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Watch guid="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" type="CoreNodeModels.Watch" nickname="Watch" x="2311.8374552986" y="1.8018252428829" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
@@ -52,8 +54,8 @@
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" start_index="0" end="2d09773a-f756-43c5-9e31-a60dbd3e0971" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="0" end="edaf74b4-f26c-4d7b-bfb0-fd128227670d" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="0" end="fa8bc790-1e1b-426e-8434-1b8a1e91155d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="1" end="edaf74b4-f26c-4d7b-bfb0-fd128227670d" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="0" end="599641bd-d3be-4aad-9934-ced6a84d334d" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="1" end="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" end_index="0" portType="0" />
   </Connectors>
@@ -61,7 +63,7 @@
     <Dynamo.Graph.Notes.NoteModel guid="0c24b68a-96c2-4218-a75c-97cdf4e12640" text="Generating sky can take up to few minutes." x="1529.40791201796" y="-23.8139830063289" />
   </Notes>
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="410b445a-03c0-4d15-88ba-f694419b37f6" annotationText="Generate sky matrix for running radiation analysis.&#xD;&#xA;If you are running thie file in Dynamo Studio the run will fail at the first run for each weather file - Give it a couple of seconds and re-connect the weather file address and re-run the file and you'll get the results as expected!&#xD;&#xA;&#xD;&#xA;PSThere is a technical reason for this wich will be fixed for the next release." left="1536.17432036652" top="-409.359155011383" width="220" height="373" fontSize="14" InitialTop="-181.359155011383" InitialHeight="175" TextblockHeight="218" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="410b445a-03c0-4d15-88ba-f694419b37f6" annotationText="Generate sky matrix for running radiation analysis.&#xD;&#xA;If you are running thie file in Dynamo Studio the run will fail at the first run for each weather file - Give it a couple of seconds and re-connect the weather file address and re-run the file and you'll get the results as expected!&#xD;&#xA;&#xD;&#xA;PSThere is a technical reason for this wich will be fixed for the next release." left="1536.17432036652" top="-409.359155011383" width="225" height="373" fontSize="14" InitialTop="-181.359155011383" InitialHeight="175" TextblockHeight="218" backgrouund="#FF48B9FF">
       <Models ModelGuid="2d09773a-f756-43c5-9e31-a60dbd3e0971" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="0229a01f-fd34-4711-abad-cb52edcc17c5" annotationText="Filter sky matrix for Radiation Analysis.&#xD;&#xA;&#xD;&#xA;In the next release you can use the sky matrix to draw sky dome and radiation rose." left="1959.40649185109" top="-100.431257252394" width="300" height="248" fontSize="14" InitialTop="-23.4312572523936" InitialHeight="201" TextblockHeight="67" backgrouund="#FF48B9FF">

@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3872" X="760.618774633961" Y="-2.37643349084698" zoom="0.790312267183398" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="0.9.1.3872" X="706.540240925757" Y="62.302957785132" zoom="0.700940424693349" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap />
   <Elements>
     <CoreNodeModels.Input.Filename guid="da5872d1-712b-4738-8a10-ec2e160639c2" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-670.033383363245" y="36.9300046728282" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
@@ -14,6 +14,7 @@
       </Inputs>
       <Outputs>
         <Output value="location" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Construct Location" x="577.573183331396" y="801.790096976885" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -34,6 +35,7 @@
       </Inputs>
       <Outputs>
         <Output value="location" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="db490969-9bf6-4b04-8dad-aaee1b6ce110" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Deconstruct Location" x="272.099255944556" y="802.126905544509" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -49,6 +51,7 @@
         <Output value="longitude" />
         <Output value="timeZone" />
         <Output value="elevation" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="94280cb9-7c38-44c2-ba9f-c89e1d9590dd" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Analysis Period" x="-808.970190730928" y="318.482355625328" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -75,6 +78,7 @@
         <Output value="analysisPeriod" />
         <Output value="dates" />
         <Output value="hoursOfYear" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Watch guid="4e982e79-8d98-4d97-be96-32fca8c315e6" type="CoreNodeModels.Watch" nickname="Watch" x="-505.0808845332" y="372.603407181848" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
@@ -105,14 +109,17 @@
         <Output value="totalSkyCover" />
         <Output value="barometricPressure" />
         <Output value="modelYear" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Watch guid="8a8dd401-8812-43a4-860d-81e6ed95c03f" type="CoreNodeModels.Watch" nickname="Watch" x="-502.950637870072" y="281.997703046545" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <CoreNodeModels.Watch guid="ba05305b-ae60-4c97-86d4-424a769a207e" type="CoreNodeModels.Watch" nickname="Watch" x="899.91316793003" y="801.218876684452" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="da5872d1-712b-4738-8a10-ec2e160639c2" start_index="0" end="6c8f73e6-f8cd-4340-ab8a-c969003f2877" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="da5872d1-712b-4738-8a10-ec2e160639c2" start_index="0" end="3fe06e53-4edc-49e2-a976-ff124c212428" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="6c8f73e6-f8cd-4340-ab8a-c969003f2877" start_index="0" end="db490969-9bf6-4b04-8dad-aaee1b6ce110" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" start_index="0" end="ba05305b-ae60-4c97-86d4-424a769a207e" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="0" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="1" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="db490969-9bf6-4b04-8dad-aaee1b6ce110" start_index="2" end="5e0bc01f-74bc-4536-8f85-96c5a1ec81db" end_index="2" portType="0" />
@@ -124,7 +131,11 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="3fe06e53-4edc-49e2-a976-ff124c212428" start_index="1" end="4eb9962a-c2df-431e-af41-3c32e8132c4d" end_index="0" portType="0" />
   </Connectors>
   <Notes />
-  <Annotations />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9548d2e1-dc1e-4156-b253-21cb58fab723" annotationText="Select an epw weather file.&#xD;&#xA;If you don't have any epw files you can download one from epwmap:&#xD;&#xA;http://mostapharoudsari.github.io/epwmap/" left="-680.033383363245" top="-23.0699953271718" width="476" height="154" fontSize="14" InitialTop="36.9300046728282" InitialHeight="124" TextblockHeight="50" backgrouund="#FF48B9FF">
+      <Models ModelGuid="da5872d1-712b-4738-8a10-ec2e160639c2" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
   <Presets />
   <Cameras>
     <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />

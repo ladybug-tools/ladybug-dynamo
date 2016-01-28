@@ -1,4 +1,4 @@
-<Workspace Version="0.9.1.3872" X="215.97039313588" Y="292.994100444459" zoom="0.414255540182381" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="0.9.1.3872" X="132.407386965904" Y="307.231318976543" zoom="0.438768233945591" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
@@ -64,6 +64,7 @@
         <Output value="centerPt" />
         <Output value="sunPositions" />
         <Output value="datetimes" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="359f5bb8-ae41-4b81-bdde-d5779f52b22a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Import Location" x="322.643497689863" y="-289.947740143465" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -75,6 +76,7 @@
       </Inputs>
       <Outputs>
         <Output value="location" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Input.Filename guid="c39536f8-4402-4bfe-affa-5a2ffb339d5b" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-200.875444749606" y="-290.731996568793" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
@@ -99,6 +101,7 @@
         <Output value="HOY" />
         <Output value="DOY" />
         <Output value="datetime" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3d8e98e0-00bc-49b6-9fa6-ae25ac1748ee" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-158.306031868095" y="-68.5757861228896" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="6;" ShouldFocus="false" />
@@ -118,6 +121,7 @@
       <Outputs>
         <Output value="testPts" />
         <Output value="ptsNormal" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="2a7aa7d3-1a1b-4ed4-ba1d-2b7740c66caa" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Color Surface" x="3099.69264063779" y="200.037473524806" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -132,6 +136,7 @@
       </Inputs>
       <Outputs>
         <Output value="Display" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="d5ac8d05-b004-4c3c-8e7b-811101f66918" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Legend Parameters" x="1801.24019637177" y="418.54971610263" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -148,6 +153,7 @@
       </Inputs>
       <Outputs>
         <Output value="legendPar" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="2cb14d24-9488-4445-9ac7-4b56c855b9a0" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="LB Color Range" x="1621.39602062853" y="472.502968825604" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false">
@@ -160,6 +166,7 @@
       </Inputs>
       <Outputs>
         <Output value="colors" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="aa22f70d-3ff1-4bae-b04a-5375600af019" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1499.27355792827" y="476.738340276588" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="6;" ShouldFocus="false" />
@@ -174,11 +181,13 @@
       </Inputs>
       <Outputs>
         <Output value="sunlightHours" />
+        <Output value="ERRReport" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="6e55485e-f2bc-4586-bb20-f7fe8a8a4be0" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1348.47347093127" y="362.614509041611" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="1;" ShouldFocus="false" />
     <CoreNodeModels.Watch guid="30730368-c4ff-4164-a554-0ca0fb1795f6" type="CoreNodeModels.Watch" nickname="Watch" x="1537.2173295622" y="-370.721286011487" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
     <CoreNodeModels.Watch guid="d5d8e819-c154-46dc-851c-ff98f1356134" type="CoreNodeModels.Watch" nickname="Watch" x="905.234050555384" y="-456.455641750288" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
+    <CoreNodeModels.Watch guid="ef764d37-353b-4e9f-82f0-aeb1a0c0c663" type="CoreNodeModels.Watch" nickname="Watch" x="1213.37683543454" y="-454.301059375592" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" />
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="1e862920-eb93-4e2f-af29-9e2876e0eecc" start_index="0" end="66f76df0-30a4-49b2-a846-f61ed179970c" end_index="0" portType="0" />
@@ -201,6 +210,7 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="93761ab1-7d79-4a1b-af1b-11df87ee893c" start_index="0" end="2b1cde85-3a65-483a-a7b0-daf3d0a5c6ed" end_index="3" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="0d2217ce-8088-4417-b665-ff899a8420eb" start_index="0" end="d5d8e819-c154-46dc-851c-ff98f1356134" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="0d2217ce-8088-4417-b665-ff899a8420eb" start_index="0" end="66a423f0-9583-42fd-8e7c-d331c374e25f" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0d2217ce-8088-4417-b665-ff899a8420eb" start_index="8" end="ef764d37-353b-4e9f-82f0-aeb1a0c0c663" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="359f5bb8-ae41-4b81-bdde-d5779f52b22a" start_index="0" end="0d2217ce-8088-4417-b665-ff899a8420eb" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="c39536f8-4402-4bfe-affa-5a2ffb339d5b" start_index="0" end="359f5bb8-ae41-4b81-bdde-d5779f52b22a" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="99146098-6190-4f8a-aef3-f3f843972d2b" start_index="0" end="9343785c-e985-4117-b229-e96c99c1c787" end_index="2" portType="0" />
@@ -217,13 +227,13 @@
   </Connectors>
   <Notes />
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="bf2331db-e7e0-44e5-bb3c-45ff6a2d1340" annotationText="Calculate sunpath and sun vectors" left="582.289845555469" top="-302.405077499913" width="267" height="305" fontSize="14" InitialTop="-272.405077499913" InitialHeight="305" TextblockHeight="20" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="bf2331db-e7e0-44e5-bb3c-45ff6a2d1340" annotationText="Calculate sunpath and sun vectors" left="582.289845555469" top="-302.405077499913" width="267" height="331" fontSize="14" InitialTop="-272.405077499913" InitialHeight="305" TextblockHeight="20" backgrouund="#FF48B9FF">
       <Models ModelGuid="0d2217ce-8088-4417-b665-ff899a8420eb" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="f44e44a2-cf26-4c4a-b23f-1bad655ea629" annotationText="Import location data from epw file" left="312.643497689863" top="-333.947740143465" width="184" height="137" fontSize="14" InitialTop="-289.947740143465" InitialHeight="123" TextblockHeight="34" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="f44e44a2-cf26-4c4a-b23f-1bad655ea629" annotationText="Import location data from epw file" left="312.643497689863" top="-333.947740143465" width="200" height="163" fontSize="14" InitialTop="-289.947740143465" InitialHeight="123" TextblockHeight="34" backgrouund="#FF48B9FF">
       <Models ModelGuid="359f5bb8-ae41-4b81-bdde-d5779f52b22a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="85ffda22-ac6c-43d7-ab09-96dd5a2f4629" annotationText="Calculate hours of the year for sunpath" left="86.8935434542925" top="-118.58530987477" width="193" height="215" fontSize="14" InitialTop="-74.58530987477" InitialHeight="201" TextblockHeight="34" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="85ffda22-ac6c-43d7-ab09-96dd5a2f4629" annotationText="Calculate hours of the year for sunpath" left="86.8935434542925" top="-118.58530987477" width="203" height="215" fontSize="14" InitialTop="-74.58530987477" InitialHeight="201" TextblockHeight="34" backgrouund="#FF48B9FF">
       <Models ModelGuid="9343785c-e985-4117-b229-e96c99c1c787" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="bb167f32-7965-412f-9159-8174ac78fe3a" annotationText="Create test geometries!" left="-259.311260135736" top="218.782883808592" width="1096.2217567681" height="425.319399659466" fontSize="14" InitialTop="248.782883808592" InitialHeight="487.005801922398" TextblockHeight="20" backgrouund="#FFFFC999">
@@ -247,10 +257,10 @@
     <Dynamo.Graph.Annotations.AnnotationModel guid="c8a4d954-5d69-4c1d-b98b-792b3b095fd4" annotationText="Calculate Sunlight hours" left="2029.73120933435" top="-10.7019619908939" width="243" height="175" fontSize="14" InitialTop="19.2980380091061" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
       <Models ModelGuid="66a423f0-9583-42fd-8e7c-d331c374e25f" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="fe5cc12f-ad18-422a-a4b8-152fa84b8060" annotationText="Color surfaces based on results" left="3089.69264063779" top="170.037473524806" width="234" height="175" fontSize="14" InitialTop="200.037473524806" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="fe5cc12f-ad18-422a-a4b8-152fa84b8060" annotationText="Color surfaces based on results" left="3089.69264063779" top="170.037473524806" width="254" height="175" fontSize="14" InitialTop="200.037473524806" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
       <Models ModelGuid="2a7aa7d3-1a1b-4ed4-ba1d-2b7740c66caa" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="789f11fd-f908-4e5d-b4eb-51122b046b38" annotationText="Create legend parameters" left="1489.27355792827" top="388.54971610263" width="504.9666384435" height="181.188624173958" fontSize="14" InitialTop="418.54971610263" InitialHeight="181.188624173958" TextblockHeight="20" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="789f11fd-f908-4e5d-b4eb-51122b046b38" annotationText="Create legend parameters" left="1489.27355792827" top="388.54971610263" width="507.9666384435" height="202.953252722974" fontSize="14" InitialTop="418.54971610263" InitialHeight="181.188624173958" TextblockHeight="20" backgrouund="#FF48B9FF">
       <Models ModelGuid="d5ac8d05-b004-4c3c-8e7b-811101f66918" />
       <Models ModelGuid="2cb14d24-9488-4445-9ac7-4b56c855b9a0" />
       <Models ModelGuid="aa22f70d-3ff1-4bae-b04a-5375600af019" />
