@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.193" X="-888.727978631821" Y="434.335952235138" zoom="0.951443914763497" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.0.0.193" X="-728.791122801535" Y="327.662766729525" zoom="0.745618650680332" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
@@ -58,7 +58,7 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="1" end="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" end_index="0" portType="0" />
   </Connectors>
   <Notes>
-    <Dynamo.Graph.Notes.NoteModel guid="0c24b68a-96c2-4218-a75c-97cdf4e12640" text="Generating sky can take up to few minutes." x="1529.40791201796" y="-23.8139830063289" />
+    <Dynamo.Graph.Notes.NoteModel guid="0c24b68a-96c2-4218-a75c-97cdf4e12640" text="Generating sky can take up to few minutes.&#xD;&#xA;If you're testing the file in DynamoStudio it will fail for the first run but will load the results on the second run!" x="1516.79550280098" y="-15.4057101950108" />
   </Notes>
   <Annotations>
     <Dynamo.Graph.Annotations.AnnotationModel guid="410b445a-03c0-4d15-88ba-f694419b37f6" annotationText="Generate sky matrix for running radiation analysis.&#xD;&#xA;If you are running thie file in Dynamo Studio the run will fail at the first run for each weather file - Give it a couple of seconds and re-connect the weather file address and re-run the file and you'll get the results as expected!&#xD;&#xA;&#xD;&#xA;PSThere is a technical reason for this wich will be fixed for the next release." left="1536.17432036652" top="-409.359155011383" width="220" height="373" fontSize="14" InitialTop="-181.359155011383" InitialHeight="175" TextblockHeight="218" backgrouund="#FF48B9FF">

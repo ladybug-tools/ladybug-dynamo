@@ -31,7 +31,7 @@ workingDir = IN[2] if IN[2].strip()!="" else os.path.join(getPackagePath('Ladybu
 cSky = sky.CumulativeSkyMtx(epwfile,  skyDensity= skyDensity, workingDir = workingDir)
 
 try:
-    cSky.gendaymtx(pathToRadianceBinaries = os.path.join(getPackagePath('Ladybug'), "bin"))
+    cSky.gendaymtx(pathToRadianceBinaries = getPackagePath('Ladybug').replace("extra", "bin"))
     # assign sky to output
     OUT = Wrapper(cSky)
 except Exception, e:
