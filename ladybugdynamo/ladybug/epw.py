@@ -221,7 +221,7 @@ class EPW:
     def dryBulbTemperature(self):
         """Return annual Dry Bulb Temperature as a Ladybug Data List
 
-            This is the dry bulb temperature in C at the time indicated. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from -70°C to 70°C. Missing value for this field is 99.9
+            This is the dry bulb temperature in C at the time indicated. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from -70 C to 70 C. Missing value for this field is 99.9
             Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(6)
@@ -230,7 +230,7 @@ class EPW:
     def dewPointTemperature(self):
         """Return annual Dew Point Temperature as a Ladybug Data List
 
-            This is the dew point temperature in C at the time indicated. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from -70°C to 70°C. Missing value for this field is 99.9
+            This is the dew point temperature in C at the time indicated. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from -70 C to 70 C. Missing value for this field is 99.9
             Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(7)
@@ -293,7 +293,7 @@ class EPW:
     def directNormalRadiation(self):
         """Return annual Direct Normal Radiation as a Ladybug Data List
 
-            This is the Direct Normal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) If the field is missing ( ≥ 9999) or invalid ( < 0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.
+            This is the Direct Normal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) If the field is missing ( >= 9999) or invalid ( < 0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.
             Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(14)
@@ -302,7 +302,7 @@ class EPW:
     def diffuseHorizontalRadiation(self):
         """Return annual Diffuse Horizontal Radiation as a Ladybug Data List
 
-            This is the Diffuse Horizontal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) If the field is missing ( ≥ 9999) or invalid ( < 0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod
+            This is the Diffuse Horizontal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) If the field is missing ( >= 9999) or invalid ( < 0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod
             Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(15)
@@ -399,28 +399,28 @@ class EPW:
 
     @property
     def presentWeatherObservation(self):
-        """Return annual Present Weather Observation as a Ladybug Data List
+        """Return annual Present Weather Observation as a Ladybug Data List.
 
-            If the value of the field is 0, then the observed weather codes are taken from the following field. If the value of the field is 9, then "missing" weather is assumed. Since the primary use of these fields (Present Weather Observation and Present Weather Codes) is for rain/wet surfaces, a missing observation field or a missing weather code implies no rain.
-            Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
+        If the value of the field is 0, then the observed weather codes are taken from the following field. If the value of the field is 9, then "missing" weather is assumed. Since the primary use of these fields (Present Weather Observation and Present Weather Codes) is for rain/wet surfaces, a missing observation field or a missing weather code implies no rain.
+        Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(26)
 
     @property
     def presentWeatherCodes(self):
-        """Return annual Present Weather Codes as a Ladybug Data List
+        """Return annual Present Weather Codes as a Ladybug Data List.
 
-            The present weather codes field is assumed to follow the TMY2 conventions for this field. Note that though this field may be represented as numeric (e.g. in the CSV format), it is really a text field of 9 single digits. This convention along with values for each "column" (left to right) is presented in Table 16. Note that some formats (e.g. TMY) does not follow this convention - as much as possible, the present weather codes are converted to this convention during WeatherConverter processing. Also note that the most important fields are those representing liquid precipitation - where the surfaces of the building would be wet. EnergyPlus uses "Snow Depth" to determine if snow is on the ground.
-            Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
+        The present weather codes field is assumed to follow the TMY2 conventions for this field. Note that though this field may be represented as numeric (e.g. in the CSV format), it is really a text field of 9 single digits. This convention along with values for each "column" (left to right) is presented in Table 16. Note that some formats (e.g. TMY) does not follow this convention - as much as possible, the present weather codes are converted to this convention during WeatherConverter processing. Also note that the most important fields are those representing liquid precipitation - where the surfaces of the building would be wet. EnergyPlus uses "Snow Depth" to determine if snow is on the ground.
+        Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(27)
 
     @property
     def precipitableWater(self):
-        """Return annual Precipitable Water as a Ladybug Data List
+        """Return annual Precipitable Water as a Ladybug Data List.
 
-            This is the value for Precipitable Water in mm. (This is not rain - rain is inferred from the PresWeathObs field but a better result is from the Liquid Precipitation Depth field)). It is not currently used in EnergyPlus calculations (primarily due to the unreliability of the reporting of this value). Missing value is 999.
-            Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
+        This is the value for Precipitable Water in mm. (This is not rain - rain is inferred from the PresWeathObs field but a better result is from the Liquid Precipitation Depth field)). It is not currently used in EnergyPlus calculations (primarily due to the unreliability of the reporting of this value). Missing value is 999.
+        Read more at: https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v8.4.0/AuxiliaryPrograms.pdf (Chapter 2.9.1)
         """
         return self.__get_dataByField(28)
 
@@ -742,48 +742,50 @@ class EPWDataTypes:
 
     @classmethod
     def fields(cls):
-        """Return fields as a dictionary
-            If you are looking for field numbers try fieldNumbers method instead
+        """Return fields as a dictionary.
+
+        If you are looking for field numbers try fieldNumbers method instead.
         """
         return cls.__fields
 
     @classmethod
     def get_fieldByNumber(cls, fieldNumber):
-        """Return an EPWField based on field number
-            0 Year
-            1 Month
-            2 Day
-            3 Hour
-            4 Minute
-            -
-            6 Dry Bulb Temperature
-            7 Dew Point Temperature
-            8 Relative Humidity
-            9 Atmospheric Station Pressure
-            10 Extraterrestrial Horizontal Radiation
-            11 Extraterrestrial Direct Normal Radiation
-            12 Horizontal Infrared Radiation Intensity
-            13 Global Horizontal Radiation
-            14 Direct Normal Radiation
-            15 Diffuse Horizontal Radiation
-            16 Global Horizontal Illuminance
-            17 Direct Normal Illuminance
-            18 Diffuse Horizontal Illuminance
-            19 Zenith Luminance
-            20 Wind Direction
-            21 Wind Speed
-            22 Total Sky Cover
-            23 Opaque Sky Cover
-            24 Visibility
-            25 Ceiling Height
-            26 Present Weather Observation
-            27 Present Weather Codes
-            28 Precipitable Water
-            29 Aerosol Optical Depth
-            30 Snow Depth
-            31 Days Since Last Snowfall
-            32 Albedo
-            33 Liquid Precipitation Depth
-            34 Liquid Precipitation Quantity
+        """Return an EPWField based on field number.
+
+        0 Year
+        1 Month
+        2 Day
+        3 Hour
+        4 Minute
+        -
+        6 Dry Bulb Temperature
+        7 Dew Point Temperature
+        8 Relative Humidity
+        9 Atmospheric Station Pressure
+        10 Extraterrestrial Horizontal Radiation
+        11 Extraterrestrial Direct Normal Radiation
+        12 Horizontal Infrared Radiation Intensity
+        13 Global Horizontal Radiation
+        14 Direct Normal Radiation
+        15 Diffuse Horizontal Radiation
+        16 Global Horizontal Illuminance
+        17 Direct Normal Illuminance
+        18 Diffuse Horizontal Illuminance
+        19 Zenith Luminance
+        20 Wind Direction
+        21 Wind Speed
+        22 Total Sky Cover
+        23 Opaque Sky Cover
+        24 Visibility
+        25 Ceiling Height
+        26 Present Weather Observation
+        27 Present Weather Codes
+        28 Precipitable Water
+        29 Aerosol Optical Depth
+        30 Snow Depth
+        31 Days Since Last Snowfall
+        32 Albedo
+        33 Liquid Precipitation Depth
+        34 Liquid Precipitation Quantity
         """
         return cls.EPWField(cls.__fields[fieldNumber])

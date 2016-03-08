@@ -1,0 +1,2796 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+    <title>ladybugdynamo.sunpath API documentation</title>
+    <meta name="description" content="" />
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+  
+  <style type="text/css">
+  
+* {
+  box-sizing: border-box;
+}
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+  </style>
+
+  <style type="text/css">
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+  body {
+    background: #fff;
+    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+  #content {
+    width: 70%;
+    margin-left: 25%;
+    max-width: 850px;
+    float: left;
+    padding: 30px 60px;
+    border-left: 1px solid #ddd;
+  }
+  #sidebar {
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    float: left;
+    padding: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    font-size: .85em;
+    text-transform: uppercase;
+  }
+
+  #footer {
+    font-size: .75em;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+  }
+    #footer p {
+      margin: 0 0 0 30px;
+      display: inline-block;
+    }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin: 0 0 .50em 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin: 1em 0 .50em 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+  }
+
+  a:hover {
+    color: #e08524;
+    transition: color .3s ease-in-out;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .title .name {
+    font-weight: bold;
+  }
+  .section-title {
+    margin-top: 2em;
+  }
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #f9f9f9;
+  }
+
+  pre {
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 0 #f3f3f3;
+    margin: 0 30px;
+    padding: 15px 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+    .codehilite .err { background: #ff3300; color: #fff !important; }
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+
+  #index {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+    #index ul {
+      margin: 0;
+    }
+
+  .item {
+    margin: 0 0 15px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #fafafa;
+      margin: 0;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      min-width: 40%;
+    }
+      .item .name:hover {
+        background: #f6f6f6;
+      }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 0 30px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source_link a {
+      background: #ffc300;
+      font-weight: 400;
+      font-size: .75em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 1px 1px 0 #f4b700;
+
+      padding: 3px 8px;
+      border-radius: 2px;
+      transition: background .3s ease-in-out;
+    }
+      .source_link a:hover {
+        background: #FF7200;
+        text-shadow: none;
+        transition: background .3s ease-in-out;
+      }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+
+  .desc {
+    white-space: pre-wrap;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  @media all and (max-width: 950px) {
+    #sidebar {
+        position: inherit;
+        float: none;
+        width: auto;
+    }
+    #content {
+      width: 65%;
+      margin-left: auto;
+      border-left: none;
+      padding: 30px;
+    }
+  }
+  @media all and (max-width: 650px) {
+    #top {
+      display: none;
+    }
+    #sidebar {
+      float: none;
+      width: auto;
+    }
+    #content {
+      float: none;
+      width: auto;
+      padding: 30px;
+    }
+
+    #index ul {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #index ul li {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    #footer {
+      text-align: left;
+    }
+    #footer p {
+      display: block;
+      margin: inherit;
+    }
+  }
+
+  /*****************************/
+
+  </style>
+
+
+  <style type="text/css">
+  
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+  </style>
+
+  <script type="text/javascript">
+  function toggle(id, $link) {
+    $node = document.getElementById(id);
+    if (!$node)
+    return;
+    if (!$node.style.display || $node.style.display == 'none') {
+    $node.style.display = 'block';
+    $link.innerHTML = 'Hide source &nequiv;';
+    } else {
+    $node.style.display = 'none';
+    $link.innerHTML = 'Show source &equiv;';
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+
+<div id="container">
+    
+  
+  <div id="sidebar">
+    <h1>Index</h1>
+    <ul id="index">
+
+
+    <li class="set"><h3><a href="#header-classes">Classes</a></h3>
+      <ul>
+        <li class="mono">
+        <span class="class_name"><a href="#ladybugdynamo.sunpath.Sun">Sun</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sun.__init__">__init__</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sun.appendHourlyData">appendHourlyData</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sun.fromLBSun">fromLBSun</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ladybugdynamo.sunpath.Sunpath">Sunpath</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.__init__">__init__</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateAnalemmaCurves">calculateAnalemmaCurves</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateBaseCurves">calculateBaseCurves</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateDailyCurve">calculateDailyCurve</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateDailyCurves">calculateDailyCurves</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSun">calculateSun</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSunFromDataTime">calculateSunFromDataTime</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSunFromHOY">calculateSunFromHOY</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSunPosition">calculateSunPosition</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSunPositionFromDateTime">calculateSunPositionFromDateTime</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSunriseSunset">calculateSunriseSunset</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.calculateSunriseSunsetFromDateTime">calculateSunriseSunsetFromDateTime</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.drawAnnualSunpath">drawAnnualSunpath</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.drawDailySunpath">drawDailySunpath</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.drawSun">drawSun</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.drawSunFromDateTime">drawSunFromDateTime</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.fromLocation">fromLocation</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.isDaylightSavingHour">isDaylightSavingHour</a></li>
+    <li class="mono"><a href="#ladybugdynamo.sunpath.Sunpath.removeSuns">removeSuns</a></li>
+  </ul>
+
+        </li>
+      </ul>
+    </li>
+
+    </ul>
+  </div>
+
+    <article id="content">
+      
+  
+
+  
+
+
+  <header id="section-intro">
+  <h1 class="title"><span class="name">ladybugdynamo.sunpath</span> module</h1>
+  
+  
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath" class="source">
+    <pre><code>from ladybug.sunpath import *
+import geometryoperations as go
+
+# import Dynamo libraries
+try:
+    import clr
+    clr.AddReference('ProtoGeometry')
+    from Autodesk.DesignScript.Geometry import *
+except ImportError:
+    print "Failed to import Dynamo libraries. Make sure path is added to sys.path"
+class Sunpath(LBSunpath):
+    """
+    Calculates sun path for Dynamo
+
+    Attributes:
+        latitude: The latitude of the location. Values must be between -90 and 90. Default is set to the equator.
+        northAngle: Angle to north (0-360). 90 is west and 270 is east (Default: 0)
+        longitude: The longitude of the location (Default: 0)
+        timeZone: A number representing the time zone of the location you are constructing. This can improve the accuracy of the resulting sun plot.  The time zone should follow the epw convention and should be between -12 and +12, where 0 is at Greenwich, UK, positive values are to the East of Greenwich and negative values are to the West.
+        daylightSavingPeriod: An analysis period for daylight saving. (Default = None)
+        basePoint: A DS point that will be used as the center of sunpath. Default is Origin
+        scale: A number larger than 0 for scale of sunpath
+        sunScale: A number larger than 0 for scale of sun spheres
+
+    Usage:
+        import ladybugdynamo.epw as epw
+        import ladybugdynamo.sunpath as sunpath
+
+        # initiate sunpath based on location
+        epwWeatherFile = r"c:\yourEpwFile.epw"
+        location = epw.EPW(epwWeatherFile).location
+        sp = sunpath.Sunpath.fromLocation(location)
+        hourlyCurves = sp.draw()
+    """
+
+    def __init__(self, latitude = 0, northAngle = 0, longitude = 0, timeZone = 0,
+                daylightSavingPeriod = None, basePoint = None, scale = 1, sunScale = 1):
+
+        # NOTE
+        # The use of self.__class__ instead of name of subclass can be tricky in case of creating
+        # a new subclass from sunpath unless it provides it's own init but it was the only way that I could
+        # get it to work for now.
+        # Read more here: http://stackoverflow.com/questions/576169/understanding-python-super-with-init-methods
+        super(self.__class__, self).__init__(latitude, northAngle, longitude, timeZone, daylightSavingPeriod)
+
+        if not basePoint: basePoint = Point.Origin()
+        self.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
+
+        self.scale = float(scale) #scale of the whole sunpath
+        self.sunScale = float(sunScale) * self.scale #scale for sun s
+        self.__radius = 50
+        self.__suns = [] # placeholder for sun(s)
+        self.__dailyCurves = []
+        self.__analemmaCurves = []
+        self.__baseCurves = []
+
+    @classmethod
+    def fromLocation(cls, location, northAngle = 0, daylightSavingPeriod = None, \
+            basePoint = None, scale = 1, sunScale = 1):
+        """Create sunpath from location data"""
+        sp = super(Sunpath, cls).fromLocation(location, northAngle, daylightSavingPeriod)
+
+        if not basePoint: basePoint = Point.Origin()
+        sp.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
+
+        sp.scale = float(scale) #scale of the whole sunpath
+        sp.sunScale = float(sunScale) * sp.scale #scale for sun s
+        return sp
+
+    @property
+    def geometries(self):
+        return {
+        'dailyCurves': self.__dailyCurves,
+        'analemmaCurves': self.__analemmaCurves,
+        'baseCurves': self.__baseCurves,
+        'suns': self.sunGeometries
+        }
+
+    @property
+    def suns(self):
+        """Get list of suns"""
+        return self.__suns
+
+    @property
+    def sunGeometries(self):
+        """Get list of suns"""
+        if not len(self.__suns): return self.__suns #emapty list
+        return [sun.geometry for sun in self.__suns]
+
+    def removeSuns(self):
+        self.__suns = []
+        return True
+
+        """Remove all suns from the sunpath"""
+
+    @property
+    def dailyCurves(self):
+        """Get daily curves as a list"""
+        return self.__dailyCurves
+
+    @property
+    def analemmaCurves(self):
+        """Get daily curves as a list"""
+        return self.__analemmaCurves
+
+    @property
+    def baseCurves(self):
+        """Get daily curves as a list"""
+        return self.__baseCurves
+
+    def drawSun(self, month, day, hour, isSolarTime = False):
+        """Draw a sun based on month, day and hour"""
+        #create a dateTime to check the input
+        sun = self.calculateSunPosition(month, day, hour, isSolarTime)
+
+        if sun.isDuringDay: self.__suns.append(sun)
+
+    def drawSunFromDateTime(self, dateTime, isSolarTime = False):
+        """Draw a sun based on datetime"""
+        self.drawSun(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+
+    def drawDailySunpath(self, month, day = 21):
+        # draw curve for the day
+        self.calculateDailyCurve(month, day)
+        # draw baseline circles
+        self.calculateBaseCurves()
+
+    def drawAnnualSunpath(self):
+        # draw analemma curves
+        self.calculateAnalemmaCurves()
+
+        # draw hourly curves
+        self.calculateDailyCurves()
+
+        # draw baseline circles
+        self.calculateBaseCurves()
+
+    def calculateSunPositionFromDateTime(self, dateTime, isSolarTime = False):
+        """ Calculate the position of sun based on origin and scale
+
+            Returns:
+                sun: Returns a sun object
+        """
+        return self.calculateSunPosition(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+
+    def calculateSunPosition(self, month = 12, day = 21, hour = 12, isSolarTime = False):
+        """ Calculate the position of sun based on origin and scale
+
+            Returns:
+                sun: A Ladybug sun object
+        """
+        # calculate ladybug sun for this time
+        lbSun = self.calculateSun(month, day, hour, isSolarTime)
+
+        # create a dynamo sun from ladybug sun
+        sun = Sun.fromLBSun(lbSun, self.basePoint, self.__radius, self.scale, self.sunScale)
+
+        return sun
+
+    def calculateDailyCurve(self, month, day = 21, isSolarTime = False):
+        """Calculate daily curve the day
+            After calculating the curves check 'dailyCurves' property for curve geometries
+        """
+        # calculate sunrise, noon and sunset
+        datetimesDictionary = self.calculateSunriseSunset(month, day = day, depression = 0, isSolarTime = isSolarTime)
+
+        datetimes = [
+                    datetimesDictionary['sunrise'], \
+                    datetimesDictionary['noon'], \
+                    datetimesDictionary['sunset']
+                    ]
+
+        dailySunPositions = []
+        for datetime in datetimes:
+            sun = self.calculateSunPositionFromDateTime(datetime, isSolarTime = False)
+            dailySunPositions.append(sun.position)
+
+        dailyCurve = Arc.ByThreePoints(*dailySunPositions)
+        self.__dailyCurves.append(dailyCurve)
+        go.disposeGeometries(dailySunPositions)
+
+    def calculateDailyCurves(self):
+        """Calculate daily curves for an annual sunpath
+            After calculating the curves check 'dailyCurves' property for curve geometries
+        """
+        # calculate curves for 21st of all the months
+        for month in range(1,13):
+            self.calculateDailyCurve(month)
+
+    def calculateAnalemmaCurves(self):
+        """Calculate analemma curves for an annual sunpath
+            After calculating the curves check 'dailyCurves' property for curve geometries
+        """
+        day = 21
+        # point and plane for triming the curves
+        pt = Point.ByCoordinates(0, 0, -10 + self.basePoint.Z)
+        plane = Plane.ByOriginNormal(self.basePoint, Vector.ZAxis())
+
+        for hour in range(1, 25):
+            anySunUpHour = False
+            anySunDownHour = False
+            monthlySunPositions = []
+            for month in range(1,13):
+                sun = self.calculateSunPosition(month, day, hour = hour)
+                if sun.isDuringDay:
+                    anySunUpHour = True
+                else:
+                    anySunDownHour = True
+
+                monthlySunPositions.append(sun.position)
+
+            # all night hour
+            if not anySunUpHour: continue
+            # create the curve
+            analemmaCurve = NurbsCurve.ByPoints(monthlySunPositions, True)
+
+            if anySunDownHour + anySunUpHour == 2:
+                # some of the hours are up hours and some are down
+                # trim the curve
+                curves = Geometry.Trim(analemmaCurve, plane, pt)
+                # Dynamo trim doesn't work as expected
+                # or I don't know how it is supposed to work so I check the curves
+                selectedCurves = []
+                for curve in curves:
+                    # find mid point
+                    midPar = (curve.EndParameter() + curve.StartParameter())/2
+                    midPt = curve.PointAtParameter(midPar)
+                    if midPt.Z >= self.basePoint.Z:
+                        selectedCurves.append(curve)
+                    else:
+                        curve.Dispose()
+
+                if len(selectedCurves)==1:
+                    analemmaCurve = selectedCurves[0]
+                else:
+                    try:
+                        # join curves
+                        analemmaCurve = selectedCurves[0].Join(selectedCurves[1:])
+                    except StandardError:
+                        analemmaCurve = selectedCurves
+
+            go.disposeGeometries(monthlySunPositions)
+
+            self.__analemmaCurves.append(analemmaCurve)
+
+    def calculateBaseCurves(self):
+        """Calculate base circles for sunpath"""
+        self.__drawBaseCircles()
+        self.__drawDirectionLines()
+
+    # TODO: Add north angle
+    def __drawDirectionLines(self):
+        """Draw direction lines"""
+        # create North Arrow
+        startVector = Vector.Scale(Vector.YAxis(), self.scale * self.__radius)
+        startPt = Point.Add(self.basePoint, startVector)
+        endVector = Vector.Scale(Vector.YAxis(), 1.12 * self.scale * self.__radius)
+        endPt = Point.Add(self.basePoint, endVector)
+        northArrow = Line.ByStartPointEndPoint(startPt, endPt)
+        # draw it for the 4 direction
+        for angle in range(0, 360, 90):
+            self.__baseCurves.append(northArrow.Rotate(Plane.XY(), angle + self.northAngle))
+
+        # create mid curves
+        endVector = Vector.Scale(Vector.YAxis(), 1.08 * self.scale * self.__radius)
+        endPt = Point.Add(self.basePoint, endVector)
+        shortArrow = Line.ByStartPointEndPoint(startPt, endPt)
+        # draw it for the 4 direction
+        for angle in range(0, 360, 30):
+            if angle%90!=0:
+                self.__baseCurves.append(shortArrow.Rotate(Plane.XY(), angle + self.northAngle))
+
+    def __drawBaseCircles(self):
+        """draw base circles"""
+        innerCircle = Circle.ByCenterPointRadius(self.basePoint, self.scale * self.__radius)
+        outerCircle = Circle.ByCenterPointRadius(self.basePoint, 1.02 * self.scale * self.__radius)
+        outerCircle2 = Circle.ByCenterPointRadius(self.basePoint, 1.08 * self.scale * self.__radius)
+        self.__baseCurves.extend([outerCircle, innerCircle, outerCircle2])
+
+
+class Sun(LBSun):
+    """Convert a ladybug sun to a ladybug dynamo sun
+
+    Attributes:
+        datetime: A Ladybug datetime that represents the datetime for this sunVector
+        altitude: Solar Altitude in radians
+        azimuth: Solar Azimuth in radians
+        isSolarTime: A Boolean that indicates if datetime represents the solar time
+        isDaylightSaving: A Boolean that indicates if datetime is calculated for Daylight saving period
+        northAngle: North angle of the sunpath in Degrees. This will be only used to calculate the solar vector.
+    """
+    def __init__(self, datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle,
+                sunpathBasePoint, sunpathScale, sunpathRadius, sunScale):
+
+        #LBSun.__init__(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle)
+        super(self.__class__, self).__init__(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle)
+        self.__sunpathBasePoint = sunpathBasePoint
+        self.__sunpathScale = sunpathScale
+        self.__sunpathRadius = sunpathRadius
+        self.__sunRadius = 1
+        self.scale = sunScale
+
+        # calculate vector, position and geometry
+        self.__calculateGeometricalSun()
+
+        self.__hourlyData = [] # Place holder for hourly data I'm not sure how it will work yet
+
+    # NOTE: I assume there should be cleaner solution to do this but I couldn't figure it out
+    # Ladybug sun is called under the hood in ladybug.sunpath that's
+    @classmethod
+    def fromLBSun(cls, LBSun, basePoint, scale, radius, sunScale):
+        return cls(LBSun.datetime, LBSun.altitudeInRadians, LBSun.azimuthInRadians, LBSun.isSolarTime, \
+            LBSun.isDaylightSaving, LBSun.northAngle, basePoint, scale, radius, sunScale)
+
+    def __calculateGeometricalSun(self):
+        """calculate sun vector, base point and sphere"""
+        # convert sun vector to Dynamo Vector
+        self.__vector = Vector.ByCoordinates(self.sunVector.x, self.sunVector.y, self.sunVector.z)
+
+        movingVector = self.__vector.Reverse().Scale(self.__sunpathRadius * self.__sunpathScale)
+        # calculate position
+        self.__position = self.__sunpathBasePoint.Add(movingVector)
+        # create sun sphere
+        self.__createSunSphere()
+
+    def __createSunSphere(self):
+        """Create the sun sphere"""
+        sp = Sphere.ByCenterPointRadius(self.__position, self.scale * self.__sunRadius)
+        self.__geometry = sp
+
+    @property
+    def vector(self):
+        """get sun vector as a Vector"""
+        return self.__vector
+
+    @property
+    def position(self):
+        """get sun position as Point"""
+        return self.__position
+
+    @property
+    def geometry(self):
+        """get sun sphere"""
+        return self.__geometry
+</code></pre>
+  </div>
+
+  </header>
+
+  <section id="section-items">
+
+
+    <h2 class="section-title" id="header-classes">Classes</h2>
+      
+      <div class="item">
+      <p id="ladybugdynamo.sunpath.Sun" class="name">class <span class="ident">Sun</span></p>
+      
+  
+    <div class="desc"><p>Convert a ladybug sun to a ladybug dynamo sun</p>
+<p>Attributes:
+    datetime: A Ladybug datetime that represents the datetime for this sunVector
+    altitude: Solar Altitude in radians
+    azimuth: Solar Azimuth in radians
+    isSolarTime: A Boolean that indicates if datetime represents the solar time
+    isDaylightSaving: A Boolean that indicates if datetime is calculated for Daylight saving period
+    northAngle: North angle of the sunpath in Degrees. This will be only used to calculate the solar vector.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sun', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sun" class="source">
+    <pre><code>class Sun(LBSun):
+    """Convert a ladybug sun to a ladybug dynamo sun
+
+    Attributes:
+        datetime: A Ladybug datetime that represents the datetime for this sunVector
+        altitude: Solar Altitude in radians
+        azimuth: Solar Azimuth in radians
+        isSolarTime: A Boolean that indicates if datetime represents the solar time
+        isDaylightSaving: A Boolean that indicates if datetime is calculated for Daylight saving period
+        northAngle: North angle of the sunpath in Degrees. This will be only used to calculate the solar vector.
+    """
+    def __init__(self, datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle,
+                sunpathBasePoint, sunpathScale, sunpathRadius, sunScale):
+
+        #LBSun.__init__(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle)
+        super(self.__class__, self).__init__(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle)
+        self.__sunpathBasePoint = sunpathBasePoint
+        self.__sunpathScale = sunpathScale
+        self.__sunpathRadius = sunpathRadius
+        self.__sunRadius = 1
+        self.scale = sunScale
+
+        # calculate vector, position and geometry
+        self.__calculateGeometricalSun()
+
+        self.__hourlyData = [] # Place holder for hourly data I'm not sure how it will work yet
+
+    # NOTE: I assume there should be cleaner solution to do this but I couldn't figure it out
+    # Ladybug sun is called under the hood in ladybug.sunpath that's
+    @classmethod
+    def fromLBSun(cls, LBSun, basePoint, scale, radius, sunScale):
+        return cls(LBSun.datetime, LBSun.altitudeInRadians, LBSun.azimuthInRadians, LBSun.isSolarTime, \
+            LBSun.isDaylightSaving, LBSun.northAngle, basePoint, scale, radius, sunScale)
+
+    def __calculateGeometricalSun(self):
+        """calculate sun vector, base point and sphere"""
+        # convert sun vector to Dynamo Vector
+        self.__vector = Vector.ByCoordinates(self.sunVector.x, self.sunVector.y, self.sunVector.z)
+
+        movingVector = self.__vector.Reverse().Scale(self.__sunpathRadius * self.__sunpathScale)
+        # calculate position
+        self.__position = self.__sunpathBasePoint.Add(movingVector)
+        # create sun sphere
+        self.__createSunSphere()
+
+    def __createSunSphere(self):
+        """Create the sun sphere"""
+        sp = Sphere.ByCenterPointRadius(self.__position, self.scale * self.__sunRadius)
+        self.__geometry = sp
+
+    @property
+    def vector(self):
+        """get sun vector as a Vector"""
+        return self.__vector
+
+    @property
+    def position(self):
+        """get sun position as Point"""
+        return self.__position
+
+    @property
+    def geometry(self):
+        """get sun sphere"""
+        return self.__geometry
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ladybugdynamo.sunpath.Sun">Sun</a></li>
+          <li>ladybugdynamo.ladybug.sunpath.LBSun</li>
+          <li>__builtin__.object</li>
+          </ul>
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.HOY" class="name">var <span class="ident">HOY</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return Hour of the year</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.altitude" class="name">var <span class="ident">altitude</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return solar altitude in degrees</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.altitudeInRadians" class="name">var <span class="ident">altitudeInRadians</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return solar altitude in radians</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.azimuth" class="name">var <span class="ident">azimuth</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return solar azimuth in degrees</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.azimuthInRadians" class="name">var <span class="ident">azimuthInRadians</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return solar azimuth in radians</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.datetime" class="name">var <span class="ident">datetime</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return datetime</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.geometry" class="name">var <span class="ident">geometry</span></p>
+            
+
+            
+  
+    <div class="desc"><p>get sun sphere</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.hourlyData" class="name">var <span class="ident">hourlyData</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.isDaylightSaving" class="name">var <span class="ident">isDaylightSaving</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return a Boolean that indicates is datetime is solar time</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.isDuringDay" class="name">var <span class="ident">isDuringDay</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.isSolarTime" class="name">var <span class="ident">isSolarTime</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return a Boolean that indicates is datetime is solar time</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.northAngle" class="name">var <span class="ident">northAngle</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return north angle for +YAxis</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.position" class="name">var <span class="ident">position</span></p>
+            
+
+            
+  
+    <div class="desc"><p>get sun position as Point</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.sunVector" class="name">var <span class="ident">sunVector</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Return sun vector for this sun
+Sun vector will face</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sun.vector" class="name">var <span class="ident">vector</span></p>
+            
+
+            
+  
+    <div class="desc"><p>get sun vector as a Vector</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sun.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle, sunpathBasePoint, sunpathScale, sunpathRadius, sunScale)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sun.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sun.__init__" class="source">
+    <pre><code>def __init__(self, datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle,
+            sunpathBasePoint, sunpathScale, sunpathRadius, sunScale):
+    #LBSun.__init__(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle)
+    super(self.__class__, self).__init__(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, northAngle)
+    self.__sunpathBasePoint = sunpathBasePoint
+    self.__sunpathScale = sunpathScale
+    self.__sunpathRadius = sunpathRadius
+    self.__sunRadius = 1
+    self.scale = sunScale
+    # calculate vector, position and geometry
+    self.__calculateGeometricalSun()
+    self.__hourlyData = [] # Place holder for hourly data I'm not sure how it will work yet
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sun.appendHourlyData">
+    <p>def <span class="ident">appendHourlyData</span>(</p><p>self, data)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Append Ladybug hourly data to this sun</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sun.appendHourlyData', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sun.appendHourlyData" class="source">
+    <pre><code>def appendHourlyData(self, data):
+    """Append Ladybug hourly data to this sun"""
+    assert data.datetime.HOY == self.HOY
+    self.__hourlyData.append(data)
+    return True
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sun.fromLBSun">
+    <p>def <span class="ident">fromLBSun</span>(</p><p>cls, LBSun, basePoint, scale, radius, sunScale)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sun.fromLBSun', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sun.fromLBSun" class="source">
+    <pre><code>@classmethod
+def fromLBSun(cls, LBSun, basePoint, scale, radius, sunScale):
+    return cls(LBSun.datetime, LBSun.altitudeInRadians, LBSun.azimuthInRadians, LBSun.isSolarTime, \
+        LBSun.isDaylightSaving, LBSun.northAngle, basePoint, scale, radius, sunScale)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ladybugdynamo.sunpath.Sunpath" class="name">class <span class="ident">Sunpath</span></p>
+      
+  
+    <div class="desc"><p>Calculates sun path for Dynamo</p>
+<p>Attributes:
+    latitude: The latitude of the location. Values must be between -90 and 90. Default is set to the equator.
+    northAngle: Angle to north (0-360). 90 is west and 270 is east (Default: 0)
+    longitude: The longitude of the location (Default: 0)
+    timeZone: A number representing the time zone of the location you are constructing. This can improve the accuracy of the resulting sun plot.  The time zone should follow the epw convention and should be between -12 and +12, where 0 is at Greenwich, UK, positive values are to the East of Greenwich and negative values are to the West.
+    daylightSavingPeriod: An analysis period for daylight saving. (Default = None)
+    basePoint: A DS point that will be used as the center of sunpath. Default is Origin
+    scale: A number larger than 0 for scale of sunpath
+    sunScale: A number larger than 0 for scale of sun spheres</p>
+<p>Usage:
+    import ladybugdynamo.epw as epw
+    import ladybugdynamo.sunpath as sunpath</p>
+<pre><code># initiate sunpath based on location
+epwWeatherFile = r"c:\yourEpwFile.epw"
+location = epw.EPW(epwWeatherFile).location
+sp = sunpath.Sunpath.fromLocation(location)
+hourlyCurves = sp.draw()
+</code></pre></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath" class="source">
+    <pre><code>class Sunpath(LBSunpath):
+    """
+    Calculates sun path for Dynamo
+
+    Attributes:
+        latitude: The latitude of the location. Values must be between -90 and 90. Default is set to the equator.
+        northAngle: Angle to north (0-360). 90 is west and 270 is east (Default: 0)
+        longitude: The longitude of the location (Default: 0)
+        timeZone: A number representing the time zone of the location you are constructing. This can improve the accuracy of the resulting sun plot.  The time zone should follow the epw convention and should be between -12 and +12, where 0 is at Greenwich, UK, positive values are to the East of Greenwich and negative values are to the West.
+        daylightSavingPeriod: An analysis period for daylight saving. (Default = None)
+        basePoint: A DS point that will be used as the center of sunpath. Default is Origin
+        scale: A number larger than 0 for scale of sunpath
+        sunScale: A number larger than 0 for scale of sun spheres
+
+    Usage:
+        import ladybugdynamo.epw as epw
+        import ladybugdynamo.sunpath as sunpath
+
+        # initiate sunpath based on location
+        epwWeatherFile = r"c:\yourEpwFile.epw"
+        location = epw.EPW(epwWeatherFile).location
+        sp = sunpath.Sunpath.fromLocation(location)
+        hourlyCurves = sp.draw()
+    """
+
+    def __init__(self, latitude = 0, northAngle = 0, longitude = 0, timeZone = 0,
+                daylightSavingPeriod = None, basePoint = None, scale = 1, sunScale = 1):
+
+        # NOTE
+        # The use of self.__class__ instead of name of subclass can be tricky in case of creating
+        # a new subclass from sunpath unless it provides it's own init but it was the only way that I could
+        # get it to work for now.
+        # Read more here: http://stackoverflow.com/questions/576169/understanding-python-super-with-init-methods
+        super(self.__class__, self).__init__(latitude, northAngle, longitude, timeZone, daylightSavingPeriod)
+
+        if not basePoint: basePoint = Point.Origin()
+        self.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
+
+        self.scale = float(scale) #scale of the whole sunpath
+        self.sunScale = float(sunScale) * self.scale #scale for sun s
+        self.__radius = 50
+        self.__suns = [] # placeholder for sun(s)
+        self.__dailyCurves = []
+        self.__analemmaCurves = []
+        self.__baseCurves = []
+
+    @classmethod
+    def fromLocation(cls, location, northAngle = 0, daylightSavingPeriod = None, \
+            basePoint = None, scale = 1, sunScale = 1):
+        """Create sunpath from location data"""
+        sp = super(Sunpath, cls).fromLocation(location, northAngle, daylightSavingPeriod)
+
+        if not basePoint: basePoint = Point.Origin()
+        sp.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
+
+        sp.scale = float(scale) #scale of the whole sunpath
+        sp.sunScale = float(sunScale) * sp.scale #scale for sun s
+        return sp
+
+    @property
+    def geometries(self):
+        return {
+        'dailyCurves': self.__dailyCurves,
+        'analemmaCurves': self.__analemmaCurves,
+        'baseCurves': self.__baseCurves,
+        'suns': self.sunGeometries
+        }
+
+    @property
+    def suns(self):
+        """Get list of suns"""
+        return self.__suns
+
+    @property
+    def sunGeometries(self):
+        """Get list of suns"""
+        if not len(self.__suns): return self.__suns #emapty list
+        return [sun.geometry for sun in self.__suns]
+
+    def removeSuns(self):
+        self.__suns = []
+        return True
+
+        """Remove all suns from the sunpath"""
+
+    @property
+    def dailyCurves(self):
+        """Get daily curves as a list"""
+        return self.__dailyCurves
+
+    @property
+    def analemmaCurves(self):
+        """Get daily curves as a list"""
+        return self.__analemmaCurves
+
+    @property
+    def baseCurves(self):
+        """Get daily curves as a list"""
+        return self.__baseCurves
+
+    def drawSun(self, month, day, hour, isSolarTime = False):
+        """Draw a sun based on month, day and hour"""
+        #create a dateTime to check the input
+        sun = self.calculateSunPosition(month, day, hour, isSolarTime)
+
+        if sun.isDuringDay: self.__suns.append(sun)
+
+    def drawSunFromDateTime(self, dateTime, isSolarTime = False):
+        """Draw a sun based on datetime"""
+        self.drawSun(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+
+    def drawDailySunpath(self, month, day = 21):
+        # draw curve for the day
+        self.calculateDailyCurve(month, day)
+        # draw baseline circles
+        self.calculateBaseCurves()
+
+    def drawAnnualSunpath(self):
+        # draw analemma curves
+        self.calculateAnalemmaCurves()
+
+        # draw hourly curves
+        self.calculateDailyCurves()
+
+        # draw baseline circles
+        self.calculateBaseCurves()
+
+    def calculateSunPositionFromDateTime(self, dateTime, isSolarTime = False):
+        """ Calculate the position of sun based on origin and scale
+
+            Returns:
+                sun: Returns a sun object
+        """
+        return self.calculateSunPosition(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+
+    def calculateSunPosition(self, month = 12, day = 21, hour = 12, isSolarTime = False):
+        """ Calculate the position of sun based on origin and scale
+
+            Returns:
+                sun: A Ladybug sun object
+        """
+        # calculate ladybug sun for this time
+        lbSun = self.calculateSun(month, day, hour, isSolarTime)
+
+        # create a dynamo sun from ladybug sun
+        sun = Sun.fromLBSun(lbSun, self.basePoint, self.__radius, self.scale, self.sunScale)
+
+        return sun
+
+    def calculateDailyCurve(self, month, day = 21, isSolarTime = False):
+        """Calculate daily curve the day
+            After calculating the curves check 'dailyCurves' property for curve geometries
+        """
+        # calculate sunrise, noon and sunset
+        datetimesDictionary = self.calculateSunriseSunset(month, day = day, depression = 0, isSolarTime = isSolarTime)
+
+        datetimes = [
+                    datetimesDictionary['sunrise'], \
+                    datetimesDictionary['noon'], \
+                    datetimesDictionary['sunset']
+                    ]
+
+        dailySunPositions = []
+        for datetime in datetimes:
+            sun = self.calculateSunPositionFromDateTime(datetime, isSolarTime = False)
+            dailySunPositions.append(sun.position)
+
+        dailyCurve = Arc.ByThreePoints(*dailySunPositions)
+        self.__dailyCurves.append(dailyCurve)
+        go.disposeGeometries(dailySunPositions)
+
+    def calculateDailyCurves(self):
+        """Calculate daily curves for an annual sunpath
+            After calculating the curves check 'dailyCurves' property for curve geometries
+        """
+        # calculate curves for 21st of all the months
+        for month in range(1,13):
+            self.calculateDailyCurve(month)
+
+    def calculateAnalemmaCurves(self):
+        """Calculate analemma curves for an annual sunpath
+            After calculating the curves check 'dailyCurves' property for curve geometries
+        """
+        day = 21
+        # point and plane for triming the curves
+        pt = Point.ByCoordinates(0, 0, -10 + self.basePoint.Z)
+        plane = Plane.ByOriginNormal(self.basePoint, Vector.ZAxis())
+
+        for hour in range(1, 25):
+            anySunUpHour = False
+            anySunDownHour = False
+            monthlySunPositions = []
+            for month in range(1,13):
+                sun = self.calculateSunPosition(month, day, hour = hour)
+                if sun.isDuringDay:
+                    anySunUpHour = True
+                else:
+                    anySunDownHour = True
+
+                monthlySunPositions.append(sun.position)
+
+            # all night hour
+            if not anySunUpHour: continue
+            # create the curve
+            analemmaCurve = NurbsCurve.ByPoints(monthlySunPositions, True)
+
+            if anySunDownHour + anySunUpHour == 2:
+                # some of the hours are up hours and some are down
+                # trim the curve
+                curves = Geometry.Trim(analemmaCurve, plane, pt)
+                # Dynamo trim doesn't work as expected
+                # or I don't know how it is supposed to work so I check the curves
+                selectedCurves = []
+                for curve in curves:
+                    # find mid point
+                    midPar = (curve.EndParameter() + curve.StartParameter())/2
+                    midPt = curve.PointAtParameter(midPar)
+                    if midPt.Z >= self.basePoint.Z:
+                        selectedCurves.append(curve)
+                    else:
+                        curve.Dispose()
+
+                if len(selectedCurves)==1:
+                    analemmaCurve = selectedCurves[0]
+                else:
+                    try:
+                        # join curves
+                        analemmaCurve = selectedCurves[0].Join(selectedCurves[1:])
+                    except StandardError:
+                        analemmaCurve = selectedCurves
+
+            go.disposeGeometries(monthlySunPositions)
+
+            self.__analemmaCurves.append(analemmaCurve)
+
+    def calculateBaseCurves(self):
+        """Calculate base circles for sunpath"""
+        self.__drawBaseCircles()
+        self.__drawDirectionLines()
+
+    # TODO: Add north angle
+    def __drawDirectionLines(self):
+        """Draw direction lines"""
+        # create North Arrow
+        startVector = Vector.Scale(Vector.YAxis(), self.scale * self.__radius)
+        startPt = Point.Add(self.basePoint, startVector)
+        endVector = Vector.Scale(Vector.YAxis(), 1.12 * self.scale * self.__radius)
+        endPt = Point.Add(self.basePoint, endVector)
+        northArrow = Line.ByStartPointEndPoint(startPt, endPt)
+        # draw it for the 4 direction
+        for angle in range(0, 360, 90):
+            self.__baseCurves.append(northArrow.Rotate(Plane.XY(), angle + self.northAngle))
+
+        # create mid curves
+        endVector = Vector.Scale(Vector.YAxis(), 1.08 * self.scale * self.__radius)
+        endPt = Point.Add(self.basePoint, endVector)
+        shortArrow = Line.ByStartPointEndPoint(startPt, endPt)
+        # draw it for the 4 direction
+        for angle in range(0, 360, 30):
+            if angle%90!=0:
+                self.__baseCurves.append(shortArrow.Rotate(Plane.XY(), angle + self.northAngle))
+
+    def __drawBaseCircles(self):
+        """draw base circles"""
+        innerCircle = Circle.ByCenterPointRadius(self.basePoint, self.scale * self.__radius)
+        outerCircle = Circle.ByCenterPointRadius(self.basePoint, 1.02 * self.scale * self.__radius)
+        outerCircle2 = Circle.ByCenterPointRadius(self.basePoint, 1.08 * self.scale * self.__radius)
+        self.__baseCurves.extend([outerCircle, innerCircle, outerCircle2])
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ladybugdynamo.sunpath.Sunpath">Sunpath</a></li>
+          <li>ladybugdynamo.ladybug.sunpath.LBSunpath</li>
+          <li>__builtin__.object</li>
+          </ul>
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.analemmaCurves" class="name">var <span class="ident">analemmaCurves</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Get daily curves as a list</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.baseCurves" class="name">var <span class="ident">baseCurves</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Get daily curves as a list</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.basePoint" class="name">var <span class="ident">basePoint</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.dailyCurves" class="name">var <span class="ident">dailyCurves</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Get daily curves as a list</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.geometries" class="name">var <span class="ident">geometries</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.latitude" class="name">var <span class="ident">latitude</span></p>
+            
+
+            
+  
+    <div class="desc"><p>get latitude in degrees</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.longitude" class="name">var <span class="ident">longitude</span></p>
+            
+
+            
+  
+    <div class="desc"><p>get latitude in degrees</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.sunGeometries" class="name">var <span class="ident">sunGeometries</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Get list of suns</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.sunScale" class="name">var <span class="ident">sunScale</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ladybugdynamo.sunpath.Sunpath.suns" class="name">var <span class="ident">suns</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Get list of suns</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, latitude=0, northAngle=0, longitude=0, timeZone=0, daylightSavingPeriod=None, basePoint=None, scale=1, sunScale=1)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.__init__" class="source">
+    <pre><code>def __init__(self, latitude = 0, northAngle = 0, longitude = 0, timeZone = 0,
+            daylightSavingPeriod = None, basePoint = None, scale = 1, sunScale = 1):
+    # NOTE
+    # The use of self.__class__ instead of name of subclass can be tricky in case of creating
+    # a new subclass from sunpath unless it provides it's own init but it was the only way that I could
+    # get it to work for now.
+    # Read more here: http://stackoverflow.com/questions/576169/understanding-python-super-with-init-methods
+    super(self.__class__, self).__init__(latitude, northAngle, longitude, timeZone, daylightSavingPeriod)
+    if not basePoint: basePoint = Point.Origin()
+    self.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
+    self.scale = float(scale) #scale of the whole sunpath
+    self.sunScale = float(sunScale) * self.scale #scale for sun s
+    self.__radius = 50
+    self.__suns = [] # placeholder for sun(s)
+    self.__dailyCurves = []
+    self.__analemmaCurves = []
+    self.__baseCurves = []
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateAnalemmaCurves">
+    <p>def <span class="ident">calculateAnalemmaCurves</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate analemma curves for an annual sunpath
+After calculating the curves check 'dailyCurves' property for curve geometries</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateAnalemmaCurves', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateAnalemmaCurves" class="source">
+    <pre><code>def calculateAnalemmaCurves(self):
+    """Calculate analemma curves for an annual sunpath
+        After calculating the curves check 'dailyCurves' property for curve geometries
+    """
+    day = 21
+    # point and plane for triming the curves
+    pt = Point.ByCoordinates(0, 0, -10 + self.basePoint.Z)
+    plane = Plane.ByOriginNormal(self.basePoint, Vector.ZAxis())
+    for hour in range(1, 25):
+        anySunUpHour = False
+        anySunDownHour = False
+        monthlySunPositions = []
+        for month in range(1,13):
+            sun = self.calculateSunPosition(month, day, hour = hour)
+            if sun.isDuringDay:
+                anySunUpHour = True
+            else:
+                anySunDownHour = True
+            monthlySunPositions.append(sun.position)
+        # all night hour
+        if not anySunUpHour: continue
+        # create the curve
+        analemmaCurve = NurbsCurve.ByPoints(monthlySunPositions, True)
+        if anySunDownHour + anySunUpHour == 2:
+            # some of the hours are up hours and some are down
+            # trim the curve
+            curves = Geometry.Trim(analemmaCurve, plane, pt)
+            # Dynamo trim doesn't work as expected
+            # or I don't know how it is supposed to work so I check the curves
+            selectedCurves = []
+            for curve in curves:
+                # find mid point
+                midPar = (curve.EndParameter() + curve.StartParameter())/2
+                midPt = curve.PointAtParameter(midPar)
+                if midPt.Z >= self.basePoint.Z:
+                    selectedCurves.append(curve)
+                else:
+                    curve.Dispose()
+            if len(selectedCurves)==1:
+                analemmaCurve = selectedCurves[0]
+            else:
+                try:
+                    # join curves
+                    analemmaCurve = selectedCurves[0].Join(selectedCurves[1:])
+                except StandardError:
+                    analemmaCurve = selectedCurves
+        go.disposeGeometries(monthlySunPositions)
+        self.__analemmaCurves.append(analemmaCurve)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateBaseCurves">
+    <p>def <span class="ident">calculateBaseCurves</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate base circles for sunpath</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateBaseCurves', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateBaseCurves" class="source">
+    <pre><code>def calculateBaseCurves(self):
+    """Calculate base circles for sunpath"""
+    self.__drawBaseCircles()
+    self.__drawDirectionLines()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateDailyCurve">
+    <p>def <span class="ident">calculateDailyCurve</span>(</p><p>self, month, day=21, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate daily curve the day
+After calculating the curves check 'dailyCurves' property for curve geometries</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateDailyCurve', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateDailyCurve" class="source">
+    <pre><code>def calculateDailyCurve(self, month, day = 21, isSolarTime = False):
+    """Calculate daily curve the day
+        After calculating the curves check 'dailyCurves' property for curve geometries
+    """
+    # calculate sunrise, noon and sunset
+    datetimesDictionary = self.calculateSunriseSunset(month, day = day, depression = 0, isSolarTime = isSolarTime)
+    datetimes = [
+                datetimesDictionary['sunrise'], \
+                datetimesDictionary['noon'], \
+                datetimesDictionary['sunset']
+                ]
+    dailySunPositions = []
+    for datetime in datetimes:
+        sun = self.calculateSunPositionFromDateTime(datetime, isSolarTime = False)
+        dailySunPositions.append(sun.position)
+    dailyCurve = Arc.ByThreePoints(*dailySunPositions)
+    self.__dailyCurves.append(dailyCurve)
+    go.disposeGeometries(dailySunPositions)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateDailyCurves">
+    <p>def <span class="ident">calculateDailyCurves</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate daily curves for an annual sunpath
+After calculating the curves check 'dailyCurves' property for curve geometries</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateDailyCurves', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateDailyCurves" class="source">
+    <pre><code>def calculateDailyCurves(self):
+    """Calculate daily curves for an annual sunpath
+        After calculating the curves check 'dailyCurves' property for curve geometries
+    """
+    # calculate curves for 21st of all the months
+    for month in range(1,13):
+        self.calculateDailyCurve(month)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSun">
+    <p>def <span class="ident">calculateSun</span>(</p><p>self, month, day, hour, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Get Sun data for an hour of the year</p>
+<p>Args:
+    month: An integer between 1-12
+    day: An integer between 1-31
+    hour: A positive number &lt;= 24
+    isSolarTime: A boolean to indicate if the input hour is solar time. (Default: False)</p>
+<p>Returns:
+    A sun object for this particular time</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSun', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSun" class="source">
+    <pre><code>def calculateSun(self, month, day, hour, isSolarTime = False):
+    """Get Sun data for an hour of the year
+        Args:
+            month: An integer between 1-12
+            day: An integer between 1-31
+            hour: A positive number <= 24
+            isSolarTime: A boolean to indicate if the input hour is solar time. (Default: False)
+        Returns:
+            A sun object for this particular time
+    """
+    datetime = core.LBDateTime(month, day, hour)
+    return self.calculateSunFromDataTime(datetime, isSolarTime)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSunFromDataTime">
+    <p>def <span class="ident">calculateSunFromDataTime</span>(</p><p>self, datetime, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Get Sun data for an hour of the year
+This code is originally written by Trygve Wastvedt (Trygve.Wastvedt@gmail.com)
+based on (NOAA) and modified by Chris Mackey and Mostapha Roudsari</p>
+<p>Args:
+    datetime: Ladybug datetime
+    isSolarTime: A boolean to indicate if the input hour is solar time. (Default: False)</p>
+<p>Returns:
+    A sun object for this particular time</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSunFromDataTime', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSunFromDataTime" class="source">
+    <pre><code>def calculateSunFromDataTime(self, datetime, isSolarTime = False):
+    """Get Sun data for an hour of the year
+        This code is originally written by Trygve Wastvedt (Trygve.Wastvedt@gmail.com)
+        based on (NOAA) and modified by Chris Mackey and Mostapha Roudsari
+        Args:
+            datetime: Ladybug datetime
+            isSolarTime: A boolean to indicate if the input hour is solar time. (Default: False)
+        Returns:
+            A sun object for this particular time
+    """
+    solDec, eqOfTime = self.__calculateSolarGeometry(datetime)
+    month, day, hour = datetime.month, datetime.day, datetime.floatHour
+    isDaylightSaving = self.isDaylightSavingHour(datetime.HOY)
+    if isDaylightSaving: hour += 1
+    #hours
+    solTime = self.__calculateSolarTime(hour, eqOfTime, isSolarTime)
+    #degrees
+    hourAngle = (solTime*15 + 180) if (solTime*15 < 0) else (solTime*15 - 180)
+    #RADIANS
+    zenith = math.acos(math.sin(self.__latitude)*math.sin(solDec) \
+        + math.cos(self.__latitude)*math.cos(solDec)*math.cos(math.radians(hourAngle)))
+    altitude = (math.pi/2) - zenith
+    if hourAngle == 0.0 or hourAngle == -180.0 or hourAngle == 180.0:
+        if solDec < self.__latitude: azimuth = math.pi
+        else: azimuth = 0.0
+    else:
+        azimuth = ((math.acos(((math.sin(self.__latitude)*math.cos(zenith)) \
+            - math.sin(solDec))/(math.cos(self.__latitude)*math.sin(zenith))) + math.pi) % (2*math.pi)) \
+            if (hourAngle > 0) else \
+                ((3*math.pi - math.acos(((math.sin(self.__latitude)*math.cos(zenith)) \
+                - math.sin(solDec))/(math.cos(self.__latitude)*math.sin(zenith)))) % (2*math.pi))
+    # create the sun for this hour
+    return LBSun(datetime, altitude, azimuth, isSolarTime, isDaylightSaving, self.northAngle)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSunFromHOY">
+    <p>def <span class="ident">calculateSunFromHOY</span>(</p><p>self, HOY, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Get Sun data for an hour of the year</p>
+<p>Args:
+    datetime: Ladybug datetime
+    isSolarTime: A boolean to indicate if the input hour is solar time. (Default: False)</p>
+<p>Returns:
+    A sun object for this particular time</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSunFromHOY', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSunFromHOY" class="source">
+    <pre><code>def calculateSunFromHOY(self, HOY, isSolarTime = False):
+    """Get Sun data for an hour of the year
+        Args:
+            datetime: Ladybug datetime
+            isSolarTime: A boolean to indicate if the input hour is solar time. (Default: False)
+        Returns:
+            A sun object for this particular time
+    """
+    datetime = core.LBDateTime.fromHOY(HOY)
+    return self.calculateSunFromDataTime(datetime, isSolarTime)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSunPosition">
+    <p>def <span class="ident">calculateSunPosition</span>(</p><p>self, month=12, day=21, hour=12, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate the position of sun based on origin and scale</p>
+<p>Returns:
+    sun: A Ladybug sun object</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSunPosition', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSunPosition" class="source">
+    <pre><code>def calculateSunPosition(self, month = 12, day = 21, hour = 12, isSolarTime = False):
+    """ Calculate the position of sun based on origin and scale
+        Returns:
+            sun: A Ladybug sun object
+    """
+    # calculate ladybug sun for this time
+    lbSun = self.calculateSun(month, day, hour, isSolarTime)
+    # create a dynamo sun from ladybug sun
+    sun = Sun.fromLBSun(lbSun, self.basePoint, self.__radius, self.scale, self.sunScale)
+    return sun
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSunPositionFromDateTime">
+    <p>def <span class="ident">calculateSunPositionFromDateTime</span>(</p><p>self, dateTime, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate the position of sun based on origin and scale</p>
+<p>Returns:
+    sun: Returns a sun object</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSunPositionFromDateTime', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSunPositionFromDateTime" class="source">
+    <pre><code>def calculateSunPositionFromDateTime(self, dateTime, isSolarTime = False):
+    """ Calculate the position of sun based on origin and scale
+        Returns:
+            sun: Returns a sun object
+    """
+    return self.calculateSunPosition(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSunriseSunset">
+    <p>def <span class="ident">calculateSunriseSunset</span>(</p><p>self, month, day, depression=0.833, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSunriseSunset', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSunriseSunset" class="source">
+    <pre><code>def calculateSunriseSunset(self, month, day, depression = 0.833, isSolarTime = False):
+    datetime = core.LBDateTime(month, day, hour = 12)
+    return self.calculateSunriseSunsetFromDateTime(datetime, depression, isSolarTime)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.calculateSunriseSunsetFromDateTime">
+    <p>def <span class="ident">calculateSunriseSunsetFromDateTime</span>(</p><p>self, datetime, depression=0.833, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calculate sunrise, sunset and noon for a day of year</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.calculateSunriseSunsetFromDateTime', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.calculateSunriseSunsetFromDateTime" class="source">
+    <pre><code>def calculateSunriseSunsetFromDateTime(self, datetime, depression = 0.833, isSolarTime = False):
+    """Calculate sunrise, sunset and noon for a day of year"""
+    solDec, eqOfTime = self.__calculateSolarGeometry(datetime)
+    # calculate sunrise and sunset hour
+    #if isSolarTime:
+    #    noon = .5
+    #else:
+    noon = (720 - 4 * math.degrees(self.__longitude) - eqOfTime + self.timeZone * 60) / 1440
+    sunRiseHourAngle = self.__calculateSunriseHourAngle(solDec, depression)
+    sunrise  = noon - sunRiseHourAngle * 4 / 1440
+    sunset   = noon + sunRiseHourAngle * 4 / 1440
+    # convert demical hour to solar hour
+    # noon    = self.__calculateSolarTime(24*noon, eqOfTime, isSolarTime)
+    # sunrise = self.__calculateSolarTime(24*sunrise, eqOfTime, isSolarTime)
+    # sunset  = self.__calculateSolarTime(24*sunset, eqOfTime, isSolarTime)
+    return {
+            "sunrise"   : core.LBDateTime(datetime.month, datetime.day, 24 * sunrise),
+            "noon"      : core.LBDateTime(datetime.month, datetime.day, 24 * noon),
+            "sunset"    : core.LBDateTime(datetime.month, datetime.day, 24 * sunset)}
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.drawAnnualSunpath">
+    <p>def <span class="ident">drawAnnualSunpath</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.drawAnnualSunpath', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.drawAnnualSunpath" class="source">
+    <pre><code>def drawAnnualSunpath(self):
+    # draw analemma curves
+    self.calculateAnalemmaCurves()
+    # draw hourly curves
+    self.calculateDailyCurves()
+    # draw baseline circles
+    self.calculateBaseCurves()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.drawDailySunpath">
+    <p>def <span class="ident">drawDailySunpath</span>(</p><p>self, month, day=21)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.drawDailySunpath', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.drawDailySunpath" class="source">
+    <pre><code>def drawDailySunpath(self, month, day = 21):
+    # draw curve for the day
+    self.calculateDailyCurve(month, day)
+    # draw baseline circles
+    self.calculateBaseCurves()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.drawSun">
+    <p>def <span class="ident">drawSun</span>(</p><p>self, month, day, hour, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Draw a sun based on month, day and hour</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.drawSun', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.drawSun" class="source">
+    <pre><code>def drawSun(self, month, day, hour, isSolarTime = False):
+    """Draw a sun based on month, day and hour"""
+    #create a dateTime to check the input
+    sun = self.calculateSunPosition(month, day, hour, isSolarTime)
+    if sun.isDuringDay: self.__suns.append(sun)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.drawSunFromDateTime">
+    <p>def <span class="ident">drawSunFromDateTime</span>(</p><p>self, dateTime, isSolarTime=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Draw a sun based on datetime</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.drawSunFromDateTime', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.drawSunFromDateTime" class="source">
+    <pre><code>def drawSunFromDateTime(self, dateTime, isSolarTime = False):
+    """Draw a sun based on datetime"""
+    self.drawSun(dateTime.month, dateTime.day, dateTime.floatHour, isSolarTime)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.fromLocation">
+    <p>def <span class="ident">fromLocation</span>(</p><p>cls, location, northAngle=0, daylightSavingPeriod=None, basePoint=None, scale=1, sunScale=1)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Create sunpath from location data</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.fromLocation', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.fromLocation" class="source">
+    <pre><code>@classmethod
+def fromLocation(cls, location, northAngle = 0, daylightSavingPeriod = None, \
+        basePoint = None, scale = 1, sunScale = 1):
+    """Create sunpath from location data"""
+    sp = super(Sunpath, cls).fromLocation(location, northAngle, daylightSavingPeriod)
+    if not basePoint: basePoint = Point.Origin()
+    sp.basePoint = Point.ByCoordinates(basePoint.X, basePoint.Y, basePoint.Z)
+    sp.scale = float(scale) #scale of the whole sunpath
+    sp.sunScale = float(sunScale) * sp.scale #scale for sun s
+    return sp
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.isDaylightSavingHour">
+    <p>def <span class="ident">isDaylightSavingHour</span>(</p><p>self, datetime)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.isDaylightSavingHour', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.isDaylightSavingHour" class="source">
+    <pre><code>def isDaylightSavingHour(self, datetime):
+    if not self.daylightSavingPeriod: return False
+    return self.daylightSavingPeriod.isTimeIncluded(datetime.HOY)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ladybugdynamo.sunpath.Sunpath.removeSuns">
+    <p>def <span class="ident">removeSuns</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ladybugdynamo.sunpath.Sunpath.removeSuns', this);">Show source &equiv;</a></p>
+  <div id="source-ladybugdynamo.sunpath.Sunpath.removeSuns" class="source">
+    <pre><code>def removeSuns(self):
+    self.__suns = []
+    return True
+    """Remove all suns from the sunpath"""
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+
+  </section>
+
+    </article>
+  <div class="clear"> </div>
+  <footer id="footer">
+    <p>
+      Documentation generated by
+      <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.1</a>
+    </p>
+
+    <p>pdoc is in the public domain with the
+      <a href="http://unlicense.org">UNLICENSE</a>
+    </p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,9 +1,13 @@
 ﻿from ladybug.color import *
 
-# import Dynamo libraries
-import clr
-clr.AddReference("DSCoreNodes")
-from DSCore import Color as DSColor
+try:
+    # import Dynamo libraries
+    import clr
+    clr.AddReference("DSCoreNodes")
+    from DSCore import Color as DSColor
+except ImportError:
+    print "Failed to import Dynamo libraries. Make sure path is added to sys.path"
+
 
 class ColorConvertor(object):
     @staticmethod

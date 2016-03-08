@@ -2,10 +2,12 @@ from ladybug.sunpath import *
 import geometryoperations as go
 
 # import Dynamo libraries
-import clr
-clr.AddReference('ProtoGeometry')
-from Autodesk.DesignScript.Geometry import *
-
+try:
+    import clr
+    clr.AddReference('ProtoGeometry')
+    from Autodesk.DesignScript.Geometry import *
+except ImportError:
+    print "Failed to import Dynamo libraries. Make sure path is added to sys.path"
 class Sunpath(LBSunpath):
     """
     Calculates sun path for Dynamo
