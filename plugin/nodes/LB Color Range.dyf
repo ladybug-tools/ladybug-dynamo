@@ -1,18 +1,18 @@
-<Workspace Version="0.9.1.3872" X="-1.71431293897547" Y="245.238532993631" zoom="0.867977507649019" Name="LB Color Range" Description="A set of color ranges for coloring analysis results" ID="934e1b58-33ad-4e48-837f-357d5d61b044" Category="Ladybug.4|Extra">
+<Workspace Version="1.0.0.1180" X="-1.71431293897547" Y="245.238532993631" zoom="0.867977507649019" Name="LB Color Range" Description="A set of color ranges for coloring analysis results" ID="934e1b58-33ad-4e48-837f-357d5d61b044" Category="Ladybug.4|Extra">
   <NamespaceResolutionMap />
   <Elements>
-    <PythonNodeModels.PythonStringNode guid="fe57f0f7-ede7-44a3-8f58-3710a11ce351" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="1026.26180985705" y="78.8102993756378" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2" />
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="bfb502ca-7433-4df6-bfd6-f8ae36b55410" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="465.421937735337" y="-130.653237537625" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;colorRange_node.py&quot;;" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c1e99cfb-4589-41a6-86b9-29a566a4a77f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="325.20738595336" y="144.948761592825" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <PythonNodeModels.PythonStringNode guid="fe57f0f7-ede7-44a3-8f58-3710a11ce351" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="1026.26180985705" y="78.8102993756378" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="bfb502ca-7433-4df6-bfd6-f8ae36b55410" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="465.421937735337" y="-130.653237537625" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;colorRange_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c1e99cfb-4589-41a6-86b9-29a566a4a77f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="325.20738595336" y="144.948761592825" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//An index between 0-21 refering to one of the following possible gradients&#xD;&#xA;//0 - Orignal Ladybug&#xD;&#xA;//1 - Nuanced Ladybug&#xD;&#xA;//2 - Multi-colored Ladybug&#xD;&#xA;//3 - View Analysis 1&#xD;&#xA;//4 - View Analysis 2 (Red,Green,Blue)&#xD;&#xA;//5 - Sunlight Hours&#xD;&#xA;//6 - Ecotect&#xD;&#xA;//7 - Thermal Comfort Percentage&#xD;&#xA;//8 - Thermal Comfort Colors&#xD;&#xA;//9 - Thermal Comfort Colors (UTCI)&#xD;&#xA;//10 - Hot Hours&#xD;&#xA;//11 - Cold Hours&#xD;&#xA;//12 - Shade Benefit/Harm&#xD;&#xA;//13 - Thermal Comfort Colors v2 (UTCI)&#xD;&#xA;//14 - Shade Harm&#xD;&#xA;//15 - Shade Benefit&#xD;&#xA;//16 - Black to White&#xD;&#xA;//17 - CFD Colors 1&#xD;&#xA;//18 - CFD Colors 2&#xD;&#xA;//19 - Energy Balance&#xD;&#xA;//20 - THERM&#xD;&#xA;//21 - Cloud Cover&#xD;&#xA;_index_: double = 1;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="15857a8b-6fa3-4eca-b95f-7d82dab24a04" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1246.90909051187" y="77.8571828515421" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="15857a8b-6fa3-4eca-b95f-7d82dab24a04" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1246.90909051187" y="77.8571828515421" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="colors" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="467ea450-eec5-4d99-9019-6ef6ce07b3d0" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1471.61996606353" y="-137.375141570889" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="467ea450-eec5-4d99-9019-6ef6ce07b3d0" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1471.61996606353" y="-137.375141570889" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="b5873f13-8203-4eda-90d2-4a8dde8f679f" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="1312.00993250211" y="-137.375141570889" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="b5873f13-8203-4eda-90d2-4a8dde8f679f" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="1312.00993250211" y="-137.375141570889" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
 importErr = IN[0]
 runErr = IN[1]
@@ -29,7 +29,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="ed19cbaf-19f0-4dfc-aee2-f7f21b41eb54" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="712.822979266835" y="-135.273430751719" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="ed19cbaf-19f0-4dfc-aee2-f7f21b41eb54" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="712.822979266835" y="-135.273430751719" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -37,15 +37,28 @@ else:
 		import os
 		import clr
 		clr.AddReference('DynamoCore')
-		dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+		_loc = clr.References[2].Location
+		_ver = _loc.split('\\')[-2].split(' ')[-1]
+		
+		# the path structure has changed after the release of version 1
+		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
+		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-	
+		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
+		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		
+		if os.path.isdir(path1):
+			return path1
+		elif os.path.isdir(path0):
+			return path0
+		else:
+			raise Exception("Can't find Dynamo installation Folder!")
+
 	filePath = getPackagePath('Ladybug') + IN[0]
-	
+
 	with open(filePath, 'rb') as inf:
 	    lines = inf.readlines()
-	
+
 	OUT = ''.join(lines)
 except Exception, e:
 	OUT = "ERROR: %s"%str(e) + \
@@ -70,6 +83,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-14.5340051651001" eyeY="16.0983200073242" eyeZ="-15.99498462677" lookX="13.9306917190552" lookY="-26.8933334350586" lookZ="15.8510437011719" upX="0.419901311397552" upY="0.771624505519867" upZ="0.477784872055054" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

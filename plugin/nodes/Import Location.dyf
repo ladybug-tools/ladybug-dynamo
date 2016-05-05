@@ -1,18 +1,18 @@
-<Workspace Version="0.9.1.3872" X="592.686128032528" Y="483.279515553078" zoom="0.960267295268066" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
+<Workspace Version="1.0.0.1180" X="329.686128032528" Y="475.279515553078" zoom="0.960267295268066" Name="Import Location" Description="Import location data from an epw weather file" ID="4a0bf83d-d31d-446f-83a9-cc5bde60d8e3" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap />
   <Elements>
-    <PythonNodeModels.PythonStringNode guid="a1dc49d8-593a-44e0-8bad-215ebd543070" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="364.899817709071" y="-99.7752171559125" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="9fc55bf1-5ac9-4ec8-89d3-4b68aa47951f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-23.171951881304" y="-27.4299962518173" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <PythonNodeModels.PythonStringNode guid="a1dc49d8-593a-44e0-8bad-215ebd543070" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="364.899817709071" y="-99.7752171559125" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="9fc55bf1-5ac9-4ec8-89d3-4b68aa47951f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-23.171951881304" y="-27.4299962518173" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//File path to a valid epw file&#xD;&#xA;_epwFile: string" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="25db76b6-7aad-4f85-be35-e39c940b8554" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-187.376536759457" y="-306.532338348617" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;importLocation_node.py&quot;;" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="5df9e824-58cd-4f9b-99d7-ebbc7fbabe8b" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="579.395364526229" y="-100.825108200513" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="25db76b6-7aad-4f85-be35-e39c940b8554" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-187.376536759457" y="-306.532338348617" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;importLocation_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="5df9e824-58cd-4f9b-99d7-ebbc7fbabe8b" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="579.395364526229" y="-100.825108200513" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="location" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="818556cf-8a1e-4397-bb14-78b8df0d65f7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="835.463749029133" y="-310.015686867822" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="818556cf-8a1e-4397-bb14-78b8df0d65f7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="835.463749029133" y="-310.015686867822" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="42c5f614-4fd3-4a79-a849-b853fb8036de" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="675.853715467709" y="-310.015686867822" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="42c5f614-4fd3-4a79-a849-b853fb8036de" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="675.853715467709" y="-310.015686867822" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
 importErr = IN[0]
 runErr = IN[1]
@@ -29,7 +29,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="697345c9-3c7a-49e6-abcc-e0098f77553a" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="93.3287896479738" y="-311.038106189065" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="697345c9-3c7a-49e6-abcc-e0098f77553a" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="93.3287896479738" y="-311.038106189065" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -37,15 +37,28 @@ else:
 		import os
 		import clr
 		clr.AddReference('DynamoCore')
-		dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+		_loc = clr.References[2].Location
+		_ver = _loc.split('\\')[-2].split(' ')[-1]
+		
+		# the path structure has changed after the release of version 1
+		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
+		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-	
+		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
+		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		
+		if os.path.isdir(path1):
+			return path1
+		elif os.path.isdir(path0):
+			return path0
+		else:
+			raise Exception("Can't find Dynamo installation Folder!")
+
 	filePath = getPackagePath('Ladybug') + IN[0]
-	
+
 	with open(filePath, 'rb') as inf:
 	    lines = inf.readlines()
-	
+
 	OUT = ''.join(lines)
 except Exception, e:
 	OUT = "ERROR: %s"%str(e) + \
@@ -70,6 +83,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-53.6443862915039" eyeY="49.8579940795898" eyeZ="-96.9404067993164" lookX="79.1516799926758" lookY="-65.9573059082031" lookZ="143.913116455078" upX="0.0795391201972961" upY="0.98628556728363" upZ="0.144617572426796" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

@@ -1,26 +1,26 @@
-<Workspace Version="0.9.1.3872" X="1019.13482978965" Y="812.184689499371" zoom="0.837801617107671" Name="Legend Parameters" Description="Use legend parameter to set up results visualization setting" ID="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" Category="Ladybug.4|Extra">
+<Workspace Version="1.0.0.1180" X="1019.13482978965" Y="812.184689499371" zoom="0.837801617107671" Name="Legend Parameters" Description="Use legend parameter to set up results visualization setting" ID="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" Category="Ladybug.4|Extra">
   <NamespaceResolutionMap>
     <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="236e6b2b-30d3-46f9-80ae-692c0b84c33b" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-979.562944326433" y="-668.926693730167" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;legendParameters_node.py&quot;;" ShouldFocus="false" />
-    <PythonNodeModels.PythonStringNode guid="fe084bf2-6080-4eb2-9107-999731aa61ef" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="-177.327589459314" y="-536.674291807313" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="db1934c3-e6d6-4d63-9b2c-6c18a9ef89aa" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-866.619124402736" y="-495.829134325522" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="236e6b2b-30d3-46f9-80ae-692c0b84c33b" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-979.562944326433" y="-668.926693730167" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;legendParameters_node.py&quot;;" ShouldFocus="false" />
+    <PythonNodeModels.PythonStringNode guid="fe084bf2-6080-4eb2-9107-999731aa61ef" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="-177.327589459314" y="-536.674291807313" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="4" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="db1934c3-e6d6-4d63-9b2c-6c18a9ef89aa" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-866.619124402736" y="-495.829134325522" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// 0&gt; continuous, 1&gt; segmented, 2&gt; ordinal. Default 0&#xD;&#xA;_cType_: int = 0;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="34f08d1e-c26b-47ec-9d7b-770cdea56eb0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-1093.87158077017" y="-428.457830889158" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="34f08d1e-c26b-47ec-9d7b-770cdea56eb0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-1093.87158077017" y="-428.457830889158" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//A list of numbers or strings.&#xD;&#xA;//For numerical values it should be sorted from min to max. Default&gt; ['min', 'max']&#xD;&#xA;_domain_: var[] = {};" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f02a8d43-f83b-4c2c-bbab-122e91348e81" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-956.112348370441" y="-322.875937444112" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f02a8d43-f83b-4c2c-bbab-122e91348e81" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-956.112348370441" y="-322.875937444112" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//An optional list of colors. Default is nuanced Ladybug colors.&#xD;&#xA;_colors_: var[] = {};" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="edf33f3c-144f-4120-8238-08c673ce1361" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="102.535153461506" y="-538.814124285602" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="edf33f3c-144f-4120-8238-08c673ce1361" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="102.535153461506" y="-538.814124285602" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="legendPar" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fa39e2f7-77a2-43c7-9c73-9f3669d4aa4c" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="243.306459410913" y="-682.057238239706" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fa39e2f7-77a2-43c7-9c73-9f3669d4aa4c" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="243.306459410913" y="-682.057238239706" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="17098dd7-966c-4d0d-aca4-2913600e46af" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="83.6964258494895" y="-682.057238239706" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="17098dd7-966c-4d0d-aca4-2913600e46af" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="83.6964258494895" y="-682.057238239706" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
 importErr = IN[0]
 runErr = IN[1]
@@ -37,7 +37,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="25d3e831-343b-4f98-9c9a-cc7d950c40df" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-680.207325709012" y="-672.793927493439" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="25d3e831-343b-4f98-9c9a-cc7d950c40df" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-680.207325709012" y="-672.793927493439" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -45,15 +45,28 @@ else:
 		import os
 		import clr
 		clr.AddReference('DynamoCore')
-		dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+		_loc = clr.References[2].Location
+		_ver = _loc.split('\\')[-2].split(' ')[-1]
+		
+		# the path structure has changed after the release of version 1
+		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
+		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-	
+		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
+		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		
+		if os.path.isdir(path1):
+			return path1
+		elif os.path.isdir(path0):
+			return path0
+		else:
+			raise Exception("Can't find Dynamo installation Folder!")
+
 	filePath = getPackagePath('Ladybug') + IN[0]
-	
+
 	with open(filePath, 'rb') as inf:
 	    lines = inf.readlines()
-	
+
 	OUT = ''.join(lines)
 except Exception, e:
 	OUT = "ERROR: %s"%str(e) + \
@@ -80,6 +93,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-14.5340051651001" eyeY="16.0983200073242" eyeZ="-15.99498462677" lookX="13.9306917190552" lookY="-26.8933334350586" lookZ="15.8510437011719" upX="0.419901311397552" upY="0.771624505519867" upZ="0.477784872055054" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

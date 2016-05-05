@@ -1,62 +1,62 @@
-<Workspace Version="0.9.1.3872" X="735.381463632356" Y="-181.588340495455" zoom="0.78584478282941" Name="Sunpath" Description="Use this node to make a 3D sun-path (aka. sun plot) in the Dynamo scene.  The node also outputs sun vectors that can be used for sunlight hours analysis or shading design with the other Ladybug nodes." ID="0927efd4-0340-42da-983a-a9d20b1310cd" Category="Ladybug.2|Visualize Weather Data">
+<Workspace Version="1.0.0.1180" X="735.381463632356" Y="-181.588340495455" zoom="0.78584478282941" Name="Sunpath" Description="Use this node to make a 3D sun-path (aka. sun plot) in the Dynamo scene.  The node also outputs sun vectors that can be used for sunlight hours analysis or shading design with the other Ladybug nodes." ID="0927efd4-0340-42da-983a-a9d20b1310cd" Category="Ladybug.2|Visualize Weather Data">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
     <ClassMap partialName="Autodesk.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
     <ClassMap partialName="Autodesk.DesignScript.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="62321348-8c78-40b9-b45f-60198445b256" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-405.239833781744" y="387.377578249137" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;sunpath_node.py&quot;;" ShouldFocus="false" />
-    <PythonNodeModels.PythonStringNode guid="c596ece9-372e-484c-965a-8890c5b08b60" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="134.957445393804" y="595.995067658154" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="8" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5d30b893-9726-43bc-a257-33826e0c7691" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-637.083602451676" y="606.227342322028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="62321348-8c78-40b9-b45f-60198445b256" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-405.239833781744" y="387.377578249137" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;sunpath_node.py&quot;;" ShouldFocus="false" />
+    <PythonNodeModels.PythonStringNode guid="c596ece9-372e-484c-965a-8890c5b08b60" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="134.957445393804" y="595.995067658154" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="8" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5d30b893-9726-43bc-a257-33826e0c7691" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-637.083602451676" y="606.227342322028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// Input a number between 0 and 360 that represents the degrees off from the y-axis to make North.  The default North direction is set to the Y-axis (0 degrees).&#xD;&#xA;north_: double = 0;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4af6ad0b-bd40-4189-a553-c863d501723a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-634.487817430781" y="690.725041438348" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4af6ad0b-bd40-4189-a553-c863d501723a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-634.487817430781" y="690.725041438348" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// The output from the importEPW or constructLocation component.  This is essentially a list of text summarizing a location on the earth.&#xD;&#xA;_location: System.Object;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="6f737e6f-abf6-49eb-8705-712f4ed2a9d3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-634.621061006656" y="776.94951380137" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="6f737e6f-abf6-49eb-8705-712f4ed2a9d3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-634.621061006656" y="776.94951380137" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// A list or a single number that respresent an hour of the year. Use Analysis Period or HOY nodes to generate the number&#xD;&#xA;_hoursOfYear_: var[]..[] = {12.0};" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="0808086f-b367-42fb-81dd-aaa9949dd00d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-632.112697492473" y="865.027151002124" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="0808086f-b367-42fb-81dd-aaa9949dd00d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-632.112697492473" y="865.027151002124" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// Input a point here to change the location of the sun path. The default is set to the Dynamo model origin (0,0,0).&#xD;&#xA;_centerPt_: Autodesk.Geometry.Point = Autodesk.Geometry.Point.Origin();" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="237eec6f-fae7-459f-b981-cf1308ac7ed7" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-630.961130951552" y="958.304040816746" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="237eec6f-fae7-459f-b981-cf1308ac7ed7" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-630.961130951552" y="958.304040816746" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// Input a number here to change the scale of the sun path.  The default is set to 1.&#xD;&#xA;_scale_: double = 1;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="66166e92-58ec-48cb-babf-eaf2ab9533d5" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-634.312529508188" y="1047.50388214292" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="66166e92-58ec-48cb-babf-eaf2ab9533d5" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-634.312529508188" y="1047.50388214292" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// Input a number here to change the scale of the sun spheres located along the sun path.  The default is set to 1.&#xD;&#xA;_sunScale_: double = 1;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c932057d-63b2-49d7-9a4f-7321854ee5ba" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-638.291361868348" y="1133.66477057976" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c932057d-63b2-49d7-9a4f-7321854ee5ba" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-638.291361868348" y="1133.66477057976" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// By default, this value is set to &quot;True&quot; (or 1), which will produce a sun path for the whole year.  Set this input to &quot;False&quot; (or 0) to generate a sun path for just one day of the year (or several days if multiple days are included in the analysis period).&#xD;&#xA;_annualSunpath_: bool = true;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="55092ddd-c091-4afa-a093-17e211c66622" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="923.601785251843" y="460.308692639007" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="55092ddd-c091-4afa-a093-17e211c66622" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="923.601785251843" y="460.308692639007" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="sunVectors" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a61dbb6e-8e0a-44e2-b697-9959f691371f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="923.601785251843" y="521.860073367754" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a61dbb6e-8e0a-44e2-b697-9959f691371f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="923.601785251843" y="521.860073367754" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="sunAltitudes" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="350a8cf7-231d-41be-8561-8223ff98e74e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="921.322104484112" y="582.651560507256" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="350a8cf7-231d-41be-8561-8223ff98e74e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="921.322104484112" y="582.651560507256" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="sunAzimuths" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="261bd357-e664-458e-b120-6ae1fc809ac6" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="924.361678841087" y="644.202941236003" isVisible="false" isUpstreamVisible="false" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="261bd357-e664-458e-b120-6ae1fc809ac6" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="924.361678841087" y="644.202941236003" isVisible="false" isUpstreamVisible="false" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="sunSpheres" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="620243d8-04fb-440a-9d1f-8fb236844d6a" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="929.680933965794" y="712.593364267943" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="620243d8-04fb-440a-9d1f-8fb236844d6a" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="929.680933965794" y="712.593364267943" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="geometry" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f00330f1-42f9-4437-a8ef-5040d2b83d9e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="931.960614733526" y="773.384851407446" isVisible="false" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f00330f1-42f9-4437-a8ef-5040d2b83d9e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="931.960614733526" y="773.384851407446" isVisible="false" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="centerPt" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="950743b0-9e58-426f-8c4e-eb9b12c6d2a8" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="934.240295501257" y="834.176338546949" isVisible="false" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="950743b0-9e58-426f-8c4e-eb9b12c6d2a8" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="934.240295501257" y="834.176338546949" isVisible="false" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="sunPositions" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="6c5ecb2d-726a-4bba-a41c-810766106483" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="935.577554329241" y="900.104552460656" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="6c5ecb2d-726a-4bba-a41c-810766106483" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="935.577554329241" y="900.104552460656" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="datetimes" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="66bf102a-682a-4711-aa01-718b75030ec1" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="328.990008867739" y="600.597858908649" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fe5cf77e-74cd-4e2b-883f-5f4b00bfa3bd" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="917.376058759175" y="374.868354326664" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="66bf102a-682a-4711-aa01-718b75030ec1" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="328.990008867739" y="600.597858908649" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fe5cf77e-74cd-4e2b-883f-5f4b00bfa3bd" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="917.376058759175" y="374.868354326664" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="d8ad0348-5513-4de1-b569-3480fa84bdf1" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="757.766025197751" y="374.868354326664" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="d8ad0348-5513-4de1-b569-3480fa84bdf1" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="757.766025197751" y="374.868354326664" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
 importErr = IN[0]
 runErr = IN[1]
@@ -73,7 +73,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="2f323ffa-582e-473c-8e57-62d43f85ea8b" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-177.365131992755" y="383.332644766198" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="2f323ffa-582e-473c-8e57-62d43f85ea8b" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-177.365131992755" y="383.332644766198" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -81,15 +81,28 @@ else:
 		import os
 		import clr
 		clr.AddReference('DynamoCore')
-		dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+		_loc = clr.References[2].Location
+		_ver = _loc.split('\\')[-2].split(' ')[-1]
+		
+		# the path structure has changed after the release of version 1
+		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
+		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-	
+		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
+		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		
+		if os.path.isdir(path1):
+			return path1
+		elif os.path.isdir(path0):
+			return path0
+		else:
+			raise Exception("Can't find Dynamo installation Folder!")
+
 	filePath = getPackagePath('Ladybug') + IN[0]
-	
+
 	with open(filePath, 'rb') as inf:
 	    lines = inf.readlines()
-	
+
 	OUT = ''.join(lines)
 except Exception, e:
 	OUT = "ERROR: %s"%str(e) + \
@@ -128,6 +141,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-53.6443862915039" eyeY="49.8579940795898" eyeZ="-96.9404067993164" lookX="79.1516799926758" lookY="-65.9573059082031" lookZ="143.913116455078" upX="0.0795391201972961" upY="0.98628556728363" upZ="0.144617572426796" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

@@ -1,24 +1,24 @@
-<Workspace Version="0.9.1.3872" X="676.350435517847" Y="743.634454341027" zoom="0.808219866393029" Name="Generate Sky Matrix" Description="Generate sky matrix for a location from epw file" ID="ee2746e6-241d-482b-aaa7-bbff10490610" Category="Ladybug.2|Visualize Weather Data">
+<Workspace Version="1.0.0.1180" X="676.350435517847" Y="743.634454341027" zoom="0.808219866393029" Name="Generate Sky Matrix" Description="Generate sky matrix for a location from epw file" ID="ee2746e6-241d-482b-aaa7-bbff10490610" Category="Ladybug.2|Visualize Weather Data">
   <NamespaceResolutionMap />
   <Elements>
-    <PythonNodeModels.PythonStringNode guid="b4155cdc-032b-484e-a667-6c3938a22d54" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="202.695299311912" y="-517.420063893414" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="4" />
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="2d70e163-db79-46cb-9360-c219413bd81e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-431.019174278098" y="-657.134814565562" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;genskymtx_node.py&quot;;" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="425b26e5-867c-4a59-9948-f1fc395b8289" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-330.277071366924" y="-436.455955410422" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <PythonNodeModels.PythonStringNode guid="b4155cdc-032b-484e-a667-6c3938a22d54" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="202.695299311912" y="-517.420063893414" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="4" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="2d70e163-db79-46cb-9360-c219413bd81e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-431.019174278098" y="-657.134814565562" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;genskymtx_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="425b26e5-867c-4a59-9948-f1fc395b8289" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-330.277071366924" y="-436.455955410422" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//File path to a valid epw file&#xD;&#xA;_epwFile: string;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="efc08f19-ba91-406d-8886-5837675935c0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-742.260810668636" y="-354.300840241752" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="efc08f19-ba91-406d-8886-5837675935c0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-742.260810668636" y="-354.300840241752" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// Density of the sky. 0 generates a Tregenza sky, which will divide up the sky dome with a coarse density of 145 sky patches.&#xD;&#xA;// Set to 1 to generate a Reinhart sky, which will divide up the sky dome using a density of 578 sky patches.&#xD;&#xA;_skyDensity_: int=0;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="b3d48a66-7e44-4d3f-a190-4e5c6808adb1" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-739.84448375191" y="-240.73347515565" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="b3d48a66-7e44-4d3f-a190-4e5c6808adb1" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-739.84448375191" y="-240.73347515565" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// A local directory to run the study and write the results&#xD;&#xA;// If empty files be saved under&#xD;&#xA;// \Users\#Username\AppData\Roaming\Dynamo\#DynamoVersion\packages\Ladybug\extra\temp\cumulativeSkies\#CityName&#xD;&#xA;workingDir_: string = &quot;&quot;;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="af9846cf-bbd7-4049-b5a9-eced5b8b9882" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="451.404686193802" y="-517.402907120729" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="af9846cf-bbd7-4049-b5a9-eced5b8b9882" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="451.404686193802" y="-517.402907120729" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="SkyMatrix" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c7b40a0d-afa5-4773-9f7f-988e7722f439" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="581.016107898932" y="-665.004758435127" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c7b40a0d-afa5-4773-9f7f-988e7722f439" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="581.016107898932" y="-665.004758435127" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="1add54cf-268e-4b0a-b092-47975988ed35" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="421.406074337508" y="-665.004758435127" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="1add54cf-268e-4b0a-b092-47975988ed35" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="421.406074337508" y="-665.004758435127" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
 importErr = IN[0]
 runErr = IN[1]
@@ -35,7 +35,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="f83be72f-6ee8-414c-a171-627c61e83013" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-177.780878897764" y="-662.903047615957" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="f83be72f-6ee8-414c-a171-627c61e83013" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="-177.780878897764" y="-662.903047615957" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -43,15 +43,28 @@ else:
 		import os
 		import clr
 		clr.AddReference('DynamoCore')
-		dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+		_loc = clr.References[2].Location
+		_ver = _loc.split('\\')[-2].split(' ')[-1]
+		
+		# the path structure has changed after the release of version 1
+		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
+		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-	
+		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
+		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		
+		if os.path.isdir(path1):
+			return path1
+		elif os.path.isdir(path0):
+			return path0
+		else:
+			raise Exception("Can't find Dynamo installation Folder!")
+
 	filePath = getPackagePath('Ladybug') + IN[0]
-	
+
 	with open(filePath, 'rb') as inf:
 	    lines = inf.readlines()
-	
+
 	OUT = ''.join(lines)
 except Exception, e:
 	OUT = "ERROR: %s"%str(e) + \
@@ -80,6 +93,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-39.0121269226074" eyeY="79.5265197753906" eyeZ="-104.912857055664" lookX="88.0934753417969" lookY="-98.2718963623047" lookZ="150.689727783203" upX="0.147556439042091" upY="0.956304728984833" upZ="0.252405077219009" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

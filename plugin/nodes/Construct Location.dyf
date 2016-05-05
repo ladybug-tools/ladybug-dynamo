@@ -1,30 +1,30 @@
-<Workspace Version="0.9.1.3872" X="356.751468456607" Y="158.649132030616" zoom="0.708566939123009" Name="Construct Location" Description="Construct a Ladybug location based on input data" ID="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" Category="Ladybug.0|Ladybug">
+<Workspace Version="1.0.0.1180" X="-32.8845801450216" Y="70.3819047652094" zoom="1.01858378031331" Name="Construct Location" Description="Construct a Ladybug location based on input data" ID="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap />
   <Elements>
-    <PythonNodeModels.PythonStringNode guid="a6924a42-ff14-4259-b8d4-4210bcd6de54" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="695.130396330236" y="199.226672867258" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="6" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="70c6da6a-e656-44c2-8ffa-485ec58ff1a9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.066587201008" y="276.246473405722" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <PythonNodeModels.PythonStringNode guid="a6924a42-ff14-4259-b8d4-4210bcd6de54" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="695.130396330236" y="199.226672867258" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="6" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="70c6da6a-e656-44c2-8ffa-485ec58ff1a9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.066587201008" y="276.246473405722" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// A name for the location you are constructing. (ie. Steventon Island, Antarctica)&#xD;&#xA;_locationName_: string = &quot;unknown city&quot;;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-91.8773453444778" y="29.6443792675841" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" CodeText="&quot;constructLocation_node.py&quot;;" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="bcfdaabc-e37c-47ac-ab97-4b7dbbab8a2a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.144602790822" y="362.654463592397" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-91.8773453444778" y="29.6443792675841" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;constructLocation_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="bcfdaabc-e37c-47ac-ab97-4b7dbbab8a2a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.144602790822" y="362.654463592397" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// The latitude of the location you are constructing. Values must be between -90 and 90. Default is set to the equator&#xD;&#xA;_latitude_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="aceea731-16e6-472b-a21c-6ae174025e9b" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-245.084774292727" y="450.617414384451" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="aceea731-16e6-472b-a21c-6ae174025e9b" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-245.084774292727" y="450.617414384451" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// An optional numerical value representing the longitude of the location you are constructing. This can improve the accuracy of the resulting sun plot.&#xD;&#xA;_longitude_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="b2a92f6c-af2b-4ce3-ac0d-ea04638af9b3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-243.731498126695" y="538.580365176506" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="b2a92f6c-af2b-4ce3-ac0d-ea04638af9b3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-243.731498126695" y="538.580365176506" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// An optional integer representing the time zone of the location you are constructing. This can improve the accuracy of the resulting sun plot.  The time zone should follow the epw convention and should be between -12 and +12, where 0 is at Greenwich, UK, positive values are to the East of Greenwich and negative values are to the West.&#xD;&#xA;_timeZone_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a7bb640b-ba78-4a06-adfd-883f11bcf6ff" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-241.111306261805" y="633.088816464448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a7bb640b-ba78-4a06-adfd-883f11bcf6ff" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-241.111306261805" y="633.088816464448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// An optional numerical value representing the elevation of the location you are constructing.&#xD;&#xA;_elevation_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="258a5bf3-0789-45a5-be84-45df51a314db" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="921.606048864493" y="197.531070578606" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="258a5bf3-0789-45a5-be84-45df51a314db" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="921.606048864493" y="197.531070578606" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="location" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a670d78f-4493-4f55-a435-8c0a2aa98707" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1119.02905161659" y="21.6646686739069" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a670d78f-4493-4f55-a435-8c0a2aa98707" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1119.02905161659" y="21.6646686739069" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="959.419018055166" y="21.6646686739069" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="959.419018055166" y="21.6646686739069" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
 importErr = IN[0]
 runErr = IN[1]
@@ -41,7 +41,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="94a80582-f75b-4d27-96bb-25d9d51fce93" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="295.312298655057" y="23.7663794930768" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="94a80582-f75b-4d27-96bb-25d9d51fce93" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="295.312298655057" y="23.7663794930768" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -49,15 +49,28 @@ else:
 		import os
 		import clr
 		clr.AddReference('DynamoCore')
-		dynamoPath = clr.References[2].Location.split('\\')[2].replace(' ', '\\')
+		_loc = clr.References[2].Location
+		_ver = _loc.split('\\')[-2].split(' ')[-1]
+		
+		# the path structure has changed after the release of version 1
+		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
+		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		return '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath, packageName)
-	
+		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
+		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		
+		if os.path.isdir(path1):
+			return path1
+		elif os.path.isdir(path0):
+			return path0
+		else:
+			raise Exception("Can't find Dynamo installation Folder!")
+
 	filePath = getPackagePath('Ladybug') + IN[0]
-	
+
 	with open(filePath, 'rb') as inf:
 	    lines = inf.readlines()
-	
+
 	OUT = ''.join(lines)
 except Exception, e:
 	OUT = "ERROR: %s"%str(e) + \
