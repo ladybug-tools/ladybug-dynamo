@@ -55,7 +55,7 @@ try:
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
 
-    ###### start you code from here ###
+    # ##### start you code from here #####
 
     outputsDescription = """
             locationName: Name of the location.
@@ -66,20 +66,20 @@ try:
             """
 
     # import Ladybug libraries
-    import ladybugdynamo.core as core
+    from ladybugdynamo.location import Location
 
     # create a ladybug location
-    location = core.Location()
-    location.createFromEPString(str(IN[0]))
+    location = Location.fromLocation(IN[0])
 
     OUT = [
         location.city,
         location.latitude,
         location.longitude,
-        location.timeZone,
+        location.timezone,
         location.elevation
-        ]
+    ]
+
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR:\n%s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

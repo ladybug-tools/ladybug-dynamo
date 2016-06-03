@@ -1,16 +1,15 @@
-<Workspace Version="1.0.0.1180" X="2793.18447495353" Y="1261.39659532656" zoom="0.793979681425322" Name="Filter Sky Matrix" Description="Filter Cumulative Sky for an analysis period. You can also filter diffuse or direct component of the sky" ID="71bc920f-b341-44b4-b64e-0ae42bc3338d" Category="Ladybug.2|Visualize Weather Data">
+<Workspace Version="1.0.0.1180" X="3222.24441472953" Y="1652.15728975603" zoom="1.15117578373144" Name="Filter Sky Matrix" Description="Filter Cumulative Sky for an analysis period. You can also filter diffuse or direct component of the sky" ID="71bc920f-b341-44b4-b64e-0ae42bc3338d" Category="Ladybug.2|Visualize Weather Data">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
   </NamespaceResolutionMap>
   <Elements>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="377ba4ab-2094-4264-a4e5-e79961663cf1" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-3152.7714336137" y="-1350.6324414462" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;filterskymtx_node.py&quot;;" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="77864755-cf2c-4caf-8f21-c28b9f91c1ab" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="-2531.94349334155" y="-1177.30916962626" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="5" />
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="b351166a-dbc7-43b8-a014-74818e65880d" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-2299.89396402204" y="-1172.66996534488" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="out[0];&#xA;out[1];" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="937314bf-e6cb-4949-9bb4-f337d01ee1e6" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-3205.62146302593" y="-1139.10533712506" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//Sky Matrix. Use Generate Sky Matrix to generate the sky&#xD;&#xA;_skyMatrix: System.Object;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="933002ab-d1a1-44eb-a24e-2edc11fd5965" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-3396.8296893587" y="-1063.06342716376" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <Symbol value="//An analysis period or a list of integers between 1-8760 for hours of the year.&#xD;&#xA;//Default is All the hours of the year&#xD;&#xA;_HOYs_: var[]..[] = 1..8760;" />
+      <Symbol value="//An analysis period or a list of integers between 0-8759 for hours of the year.&#xD;&#xA;//Default is All the hours of the year&#xD;&#xA;_HOYs_: var[]..[] = 0..8759;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="56e0ad43-60c5-4a4b-827c-3c05123bacca" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-3084.08916743276" y="-964.122278558193" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//Set to False to remove diffuse radiation&#xD;&#xA;_includeDiffuse_: bool = true;" />
@@ -18,14 +17,8 @@
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="425d6305-9a39-4f8e-9560-56c7b3edb050" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-3076.08916743276" y="-879.725278424966" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="//Set to False to remove direct radiation&#xD;&#xA;_includeDirect_: bool = true;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="8ffc3736-d3f9-4d8b-8e41-4381e579e447" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="-2115.85140349384" y="-1176.89566393248" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="filteredSkyMatrix" />
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="59e1b710-aae7-451d-84db-4c6a655c4f86" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="-2114.70624207543" y="-1117.34727017533" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="skyRadiationValues" />
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="2a6747df-4404-44c2-be86-7a32ad135c5c" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="-2104.22901768845" y="-1356.95738887481" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="ERRReport" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="8ffc3736-d3f9-4d8b-8e41-4381e579e447" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="-2046.16843468396" y="-1202.15309865482" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="//Filtered Sky Matrix&#xD;&#xA;//Use this sky to run radiation analysis&#xD;&#xA;filteredSkyMatrix" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <PythonNodeModels.PythonNode guid="3ca72a94-214d-4f04-94b2-20c773d9ccdc" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="-2263.83905124988" y="-1356.95738887481" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
@@ -80,20 +73,27 @@ except Exception, e:
 		"\n\nIf you think this is a bug submit an issue on github.\n" + \
 		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"</Script>
     </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="75c7f95c-c5bd-4780-95ba-b88e4b16dddb" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="-2048.33575937163" y="-1108.31554821185" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="//Cumulative Radiation values for each sky patch&#xD;&#xA;//Total | Diffuse | Direct&#xD;&#xA;cumulativeRadiationValues" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="35eaa1a8-670b-40e5-aabb-6a2f14b868a4" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-2256.02139818773" y="-1147.79766604912" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="out[0];&#xA;out[1];" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a6876f66-7d41-49fc-85b9-c8c61ad95f86" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="-2057.2396051045" y="-1352.66682270594" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="//Report&#xD;&#xA;ERRReport" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="377ba4ab-2094-4264-a4e5-e79961663cf1" start_index="0" end="03678622-1f43-4f70-866f-f5e6305cc916" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="77864755-cf2c-4caf-8f21-c28b9f91c1ab" start_index="0" end="b351166a-dbc7-43b8-a014-74818e65880d" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="77864755-cf2c-4caf-8f21-c28b9f91c1ab" start_index="0" end="3ca72a94-214d-4f04-94b2-20c773d9ccdc" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="b351166a-dbc7-43b8-a014-74818e65880d" start_index="0" end="8ffc3736-d3f9-4d8b-8e41-4381e579e447" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="b351166a-dbc7-43b8-a014-74818e65880d" start_index="1" end="59e1b710-aae7-451d-84db-4c6a655c4f86" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="77864755-cf2c-4caf-8f21-c28b9f91c1ab" start_index="0" end="35eaa1a8-670b-40e5-aabb-6a2f14b868a4" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="937314bf-e6cb-4949-9bb4-f337d01ee1e6" start_index="0" end="77864755-cf2c-4caf-8f21-c28b9f91c1ab" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="933002ab-d1a1-44eb-a24e-2edc11fd5965" start_index="0" end="77864755-cf2c-4caf-8f21-c28b9f91c1ab" end_index="2" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="56e0ad43-60c5-4a4b-827c-3c05123bacca" start_index="0" end="77864755-cf2c-4caf-8f21-c28b9f91c1ab" end_index="3" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="425d6305-9a39-4f8e-9560-56c7b3edb050" start_index="0" end="77864755-cf2c-4caf-8f21-c28b9f91c1ab" end_index="4" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="3ca72a94-214d-4f04-94b2-20c773d9ccdc" start_index="0" end="2a6747df-4404-44c2-be86-7a32ad135c5c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3ca72a94-214d-4f04-94b2-20c773d9ccdc" start_index="0" end="a6876f66-7d41-49fc-85b9-c8c61ad95f86" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="03678622-1f43-4f70-866f-f5e6305cc916" start_index="0" end="3ca72a94-214d-4f04-94b2-20c773d9ccdc" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="03678622-1f43-4f70-866f-f5e6305cc916" start_index="0" end="77864755-cf2c-4caf-8f21-c28b9f91c1ab" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="35eaa1a8-670b-40e5-aabb-6a2f14b868a4" start_index="0" end="8ffc3736-d3f9-4d8b-8e41-4381e579e447" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="35eaa1a8-670b-40e5-aabb-6a2f14b868a4" start_index="1" end="75c7f95c-c5bd-4780-95ba-b88e4b16dddb" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations>
@@ -103,6 +103,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="64.0221099853516" eyeY="79.8456726074219" eyeZ="-114.98713684082" lookX="-46.1451530456543" lookY="-105.867935180664" lookZ="153.913543701172" upX="-0.102917104959488" upY="0.933580338954926" upZ="0.343272000551224" />
   </Cameras>
 </Workspace>

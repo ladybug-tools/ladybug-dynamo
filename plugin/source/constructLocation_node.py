@@ -62,21 +62,21 @@ try:
             """
 
     # import Ladybug libraries
-    import ladybugdynamo.core as core
+    from ladybugdynamo.location import Location
 
     # read Dynamo inputs
     city, latitude, longitude, timeZone, elevation = IN
 
     # create a ladybug location
-    location = core.Location()
+    location = Location()
     location.city = city
-    location.latitude = str(latitude)
-    location.longitude = str(longitude)
-    location.timeZone = str(timeZone)
-    location.elevation = str(elevation)
+    location.latitude = latitude
+    location.longitude = longitude
+    location.timezone = timeZone
+    location.elevation = elevation
 
     OUT = location
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
+    OUT = "ERROR: %s" % str(e) + \
         "\nIf you think this is a bug submit an issue on github.\n" + \
         "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

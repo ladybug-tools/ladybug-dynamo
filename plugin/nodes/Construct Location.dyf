@@ -19,10 +19,10 @@
       <Symbol value="// An optional numerical value representing the elevation of the location you are constructing.&#xD;&#xA;_elevation_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="258a5bf3-0789-45a5-be84-45df51a314db" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="921.606048864493" y="197.531070578606" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="location" />
+      <Symbol value="//Ladybug location. Use this input to draw a sunpath.&#xD;&#xA;location" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="a670d78f-4493-4f55-a435-8c0a2aa98707" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1119.02905161659" y="21.6646686739069" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="ERRReport" />
+      <Symbol value="//Report&#xD;&#xA;ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <PythonNodeModels.PythonNode guid="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="959.419018055166" y="21.6646686739069" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""

@@ -1,4 +1,5 @@
-try:
+# try:
+if True:
     # add IronPython path to sys
     import sys
     IronPythonLib = 'C:\Program Files (x86)\IronPython 2.7\Lib'
@@ -34,13 +35,12 @@ try:
 
     ###### start you code from here ###
     import ladybugdynamo.solarradiation as radiation
-    from ladybugdynamo.sky import CumulativeSkyMtx
 
     # get input data
     testPoints = IN[0] if isinstance(IN[0], list) else [IN[0]]
     pointsNormal = IN[1] if isinstance(IN[1], list) else [IN[1]]
     geometries = IN[2] if isinstance(IN[2], list) else [IN[2]]
-    sky = IN[3].unwrap()
+    sky = IN[3]
 
     assert type(sky).__name__ == "CumulativeSkyMtx", "Input sky is not a LBCumulativeSky"
 
@@ -51,7 +51,8 @@ try:
     # assign outputs
     OUT = copy.deepcopy(radAnalysis.results)
     del(radAnalysis)
-except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+
+# except Exception, e:
+#     OUT = "ERROR [line(%d)]:\n%s" % (sys.exc_traceback.tb_lineno, str(e)) + \
+#         "\nIf you think this is a bug submit an issue on github.\n" + \
+#         "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

@@ -55,23 +55,23 @@ try:
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
 
-    ###### start you code from here ###
+    # ##### start you code from here ###
 
     outputsDescription = """
             analysisPeriod: A Ladybug analysis period
             """
 
     # import Ladybug libraries
-    import ladybugdynamo.core as core
+    from ladybugdynamo.analysisperiod import AnalysisPeriod
 
     # assign inputs from dynamo python node
     # I have to export it as a string in Dynamo since inputs can't handle type casting
-    ap = core.AnalysisPeriod(*IN)
-    dates = ap.dates
-    hoys = ap.floatHOYs
+    ap = AnalysisPeriod(*IN)
+    dates = ap.datetimes
+    hoys = ap.HOYs
+    OUT = ap, dates, hoys
 
-    OUT = str(ap), dates, hoys
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR:\n%s" % str(e) + \
+          "\nIf you think this is a bug submit an issue on github.\n" + \
+          "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

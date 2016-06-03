@@ -1,1 +1,1 @@
-﻿from ladybug.epw import *
+﻿from ladybug.epw import EPW

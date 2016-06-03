@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.1180" X="486.173260418185" Y="-230.206377442151" zoom="0.83312748433509" Name="Deconstruct Location" Description="Get different location data from a location string" ID="1e9d66af-b2be-4a12-bac7-1040ecca5af0" Category="Ladybug.0|Ladybug">
+<Workspace Version="1.0.0.1180" X="513.623591589073" Y="-162.21749825247" zoom="0.683531558214681" Name="Deconstruct Location" Description="Get different location data from a location string" ID="1e9d66af-b2be-4a12-bac7-1040ecca5af0" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap>
     <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
     <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />
@@ -11,19 +11,19 @@
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="6e5ea53b-1ba2-4a3c-81c6-fea69b39c121" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="365.733878428688" y="583" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="a10a4b17-1cb8-4918-a812-432c957704b7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="577.705878608417" y="577.880198264616" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="locationName" />
+      <Symbol value="// A name for the location you are constructing. (ie. Steventon Island, Antarctica)&#xD;&#xA;locationName" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="0ab773fc-45f8-4145-a8a7-26fe407d0151" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="578.621470503663" y="632.815711979366" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="latitude" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="0ab773fc-45f8-4145-a8a7-26fe407d0151" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="574.337232324033" y="671.373855596033" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="// The latitude of the location you are constructing. Values must be between -90 and 90. Default is set to the equator&#xD;&#xA;latitude" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="3a6675fe-4590-4a1a-a97c-237471c85c32" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="578.621470503663" y="688.666817589363" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="longitude" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="3a6675fe-4590-4a1a-a97c-237471c85c32" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="575.765311717243" y="775.779660575165" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="// An optional numerical value representing the longitude of the location you are constructing. This can improve the accuracy of the resulting sun plot.&#xD;&#xA;longitude" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c293fbca-333c-4c58-bf40-c3c82388d884" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="578.621470503663" y="746.349106989852" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="timeZone" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c293fbca-333c-4c58-bf40-c3c82388d884" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="582.905708683292" y="880.588569951579" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="// An optional integer representing the time zone of the location you are constructing. This can improve the accuracy of the resulting sun plot.  The time zone should follow the epw convention and should be between -12 and +12, where 0 is at Greenwich, UK, positive values are to the East of Greenwich and negative values are to the West.&#xD;&#xA;timeZone" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="24e548ab-d715-4d2b-8aac-9d1b058106ee" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="578.621470503663" y="804.03139639034" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="elevation" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="24e548ab-d715-4d2b-8aac-9d1b058106ee" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="585.761867469712" y="981.113241148363" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="// An optional numerical value representing the elevation of the location you are constructing.&#xD;&#xA;elevation" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="5b4dc24a-bd3b-4553-bcc1-b2110b018029" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="657.764117276898" y="452.759493036285" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <Symbol value="ERRReport" />

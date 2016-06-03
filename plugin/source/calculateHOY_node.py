@@ -31,19 +31,19 @@ try:
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
 
-    ###### start you code from here ###
-    import ladybugdynamo.core as core
+    # ##### start you code from here #####
+    from ladybugdynamo.dt import LBDateTime
 
-    ## calculate sunpath data
+    # calculate sunpath data
     # get location data
-    dt = core.LBDateTime(*IN)
+    dt = LBDateTime(*IN)
 
-    OUT = [
-            dt.floatHOY,
-            dt.DOY,
-            dt
-        ]
+    OUT = (
+        dt.HOY,
+        dt.DOY,
+        dt
+    )
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR:\n%s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

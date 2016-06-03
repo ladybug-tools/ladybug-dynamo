@@ -18,10 +18,10 @@
       <Symbol value="//Ladybug Sky. Use Filter Sky Matrix node to generate a filtered sky&#xD;&#xA;_filteredSkyMatrix: System.Object;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="8dc9a21d-7824-4706-9166-e0a4c18e049e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="941.464837516954" y="-308.874572592624" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="solarRadiation" />
+      <Symbol value="//Radiation Values in wh&#xD;&#xA;solarRadiation" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="6e3cfa48-840c-4964-bd01-5c6864cf885e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1096.88461573208" y="-454.997224423743" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="ERRReport" />
+      <Symbol value="//Report&#xD;&#xA;ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <PythonNodeModels.PythonNode guid="78f7d681-056b-445b-b2c1-9d378b11e6f4" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="937.274582170657" y="-454.997224423743" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
@@ -97,6 +97,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="108.420992924484" eyeY="94.7589794432573" eyeZ="-80.4069200362623" lookX="-90.5440359847872" lookY="-120.7812420165" lookZ="119.333326896614" upX="-0.269704850856096" upY="0.894934273179765" upZ="0.355459964344471" />
   </Cameras>
 </Workspace>

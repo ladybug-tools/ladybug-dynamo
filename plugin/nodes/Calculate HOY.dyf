@@ -1,4 +1,4 @@
-<Workspace Version="1.0.0.1180" X="105.620294024862" Y="164.435578282521" zoom="0.808219866393033" Name="Calculate HOY" Description="Calculate hour of year for a month, day and hour" ID="1c87cdac-09c1-4de8-ab8e-bc7e46be1be1" Category="Ladybug.1|Analyze Weather Data">
+<Workspace Version="1.0.0.1180" X="104.639599287683" Y="141.486700264651" zoom="0.937432296686005" Name="Calculate HOY" Description="Calculate hour of year for a month, day and hour" ID="1c87cdac-09c1-4de8-ab8e-bc7e46be1be1" Category="Ladybug.1|Analyze Weather Data">
   <NamespaceResolutionMap />
   <Elements>
     <PythonNodeModels.PythonNode guid="8063b01d-7962-4152-93fb-38bcb53731c5" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="316.028344456156" y="13.5187992011191" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
@@ -46,23 +46,23 @@ except Exception, e:
       <Symbol value="// A number between 1 and 31 that represents the day of the month&#xD;&#xA;_day_: int = 21;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f7146712-5465-4247-a097-7a617f28855b" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-76.2543556405984" y="376.276809857645" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <Symbol value="// A number between 1 and 24 that represents the hour of the day&#xD;&#xA;_hour_: double = 12.0;" />
+      <Symbol value="// A number between 0 and 23 that represents the hour of the day&#xD;&#xA;_hour_: int = 12;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="ddeff314-985b-4f74-b0d3-ae3ab8fc40e3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-98.7030059293424" y="445.973251598178" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// A number between 0 and 59 that represents the minute of the hour&#xD;&#xA;_minute_: int = 0;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="7180ad0b-56bf-456f-8f92-a6c58b5063d5" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1114.28666093466" y="128.013383823523" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="HOY" />
+      <Symbol value="//Hour of the year&#xD;&#xA;HOY" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a8f99fd5-f708-41ed-97cd-6185ad34771f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1114.07141001711" y="188.026470441024" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="DOY" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a8f99fd5-f708-41ed-97cd-6185ad34771f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1118.33838483133" y="211.49483191926" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="//Day of the year&#xD;&#xA;DOY" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="ab8da194-3fb5-4418-8490-05d72be41964" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1091.51496731054" y="248.641390894652" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="datetime" />
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="ab8da194-3fb5-4418-8490-05d72be41964" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1107.51612286388" y="299.845088665348" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <Symbol value="//Date and time&#xD;&#xA;datetime" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="0f0259b1-b3f0-4279-9649-e673b77f4080" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="932.570278447896" y="174.82691770818" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="63496d3a-acad-4b12-981d-500de05bcde7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1089.28243734486" y="14.3085096003506" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="ERRReport" />
+      <Symbol value="//Report&#xD;&#xA;ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <PythonNodeModels.PythonNode guid="1ef283e9-8f5f-4492-b0ed-896298e93b27" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="929.672403783436" y="14.3085096003506" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""
@@ -106,6 +106,6 @@ else:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="-76.7934951782227" eyeY="67.4907836914063" eyeZ="-107.029731750488" lookX="84.8634262084961" lookY="-71.691162109375" lookZ="109.36336517334" upX="0.158669948577881" upY="0.965925812721252" upZ="0.204477727413177" />
   </Cameras>
 </Workspace>

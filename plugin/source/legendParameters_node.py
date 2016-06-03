@@ -33,20 +33,21 @@ try:
 
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
-    sys.path.append(getDynamoPath()) #This is for using colors
+    sys.path.append(getDynamoPath())  # This is for using colors
 
     ###### start you code from here ###
     import ladybugdynamo.legendparameters as legendpar
-    from ladybugdynamo.wrapper import Wrapper
     from ladybugdynamo.color import ColorConvertor
 
     chartType = IN[0]
     legendRange = IN[1] if IN[1]!=[] else ['min', 'max']
     colors = list(ColorConvertor.toLBColor(IN[2]))
 
-    OUT = Wrapper(legendpar.LegendParameters(legendRange = legendRange, numberOfSegments = 11, \
-        colors = colors, chartType = chartType))
-except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = legendpar.LegendParameters(legendRange=legendRange,
+                                     numberOfSegments=11,
+                                     colors=colors,
+                                     chartType=chartType)
+except Exception as e:
+    OUT = "ERROR:\n%s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

@@ -1,6 +1,12 @@
-"""Analysis library for Dynamo. This calss is base class for radiation and sunlighthours analysis."""
+"""Analysis library for Dynamo.
 
-from abc import ABCMeta, abstractmethod, abstractproperty
+This calss is base class for radiation and sunlighthours analysis.
+
+WARNING: This class will be replace by honeybee analysis classes in the next
+         release.
+"""
+
+from abc import ABCMeta, abstractproperty
 from ladybug import listoperations as lo
 import geometryoperations as go
 
@@ -14,8 +20,11 @@ class LBAnalysis(object):
         geometries: A list of all the geometries in scene
     """
 
+    __metaclass__ = ABCMeta
+
     def __init__(self, vectors, testPoints, geometries, reverseVectors=True,
                  pointsNormal=None, values=None):
+        """Init analysis class."""
         # set up the analysis
         # flatten input values
         self.geometries = list(lo.flatten(geometries))
@@ -29,18 +38,22 @@ class LBAnalysis(object):
         maxLength = go.calculateSceneSize(self.testPoints + self.geometries)
 
         # create analysis points
-        self.analysisPoints = [go.LBAnalysisPoint(
-            testPoint, self.vectors, maxLength, self.pointsNormal[count], values)
-            for count, testPoint in enumerate(self.testPoints)]
+        self.analysisPoints = tuple(go.LBAnalysisPoint(testPoint, self.vectors,
+                                                       maxLength,
+                                                       self.pointsNormal[count],
+                                                       values)
+                                    for count, testPoint in enumerate(self.testPoints))
 
         # create place holder for results
         self.isExecuted = False
 
     @classmethod
     def bySkyTestPoints(cls):
+        """Genrate the analysis by sky and test points."""
         pass
 
-    def runAnalysis(self, parallel = False):
+    def runAnalysis(self, parallel=False):
+        """Run analysis."""
         for analysisPoint in self.analysisPoints:
             analysisPoint.calculateIntersections(self.geometries, parallel)
 
@@ -49,4 +62,5 @@ class LBAnalysis(object):
     # TODO: create meaningful outputs from the analysis
     @abstractproperty
     def results(self):
+        """Return results."""
         pass

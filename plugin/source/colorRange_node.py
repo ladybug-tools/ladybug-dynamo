@@ -33,9 +33,9 @@ try:
 
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
-    sys.path.append(getDynamoPath()) #This is for using colors
+    sys.path.append(getDynamoPath())  # This is for using colors
 
-    ###### start you code from here ###
+    # ##### start you code from here ###
     import ladybugdynamo.color as color
 
     index = IN[0]
@@ -43,6 +43,6 @@ try:
     colors = cs[index]
     OUT = color.ColorConvertor.toDSColor(colors)
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR:\n%s"%str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

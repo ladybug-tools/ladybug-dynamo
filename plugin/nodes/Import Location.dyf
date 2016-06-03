@@ -7,10 +7,10 @@
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="25db76b6-7aad-4f85-be35-e39c940b8554" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-187.376536759457" y="-306.532338348617" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;importLocation_node.py&quot;;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="5df9e824-58cd-4f9b-99d7-ebbc7fbabe8b" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="579.395364526229" y="-100.825108200513" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="location" />
+      <Symbol value="//Ladybug location. Use this to construct a sunpath.&#xD;&#xA;location" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="818556cf-8a1e-4397-bb14-78b8df0d65f7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="835.463749029133" y="-310.015686867822" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <Symbol value="ERRReport" />
+      <Symbol value="//Report&#xD;&#xA;ERRReport" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
     <PythonNodeModels.PythonNode guid="42c5f614-4fd3-4a79-a849-b853fb8036de" type="PythonNodeModels.PythonNode" nickname="Error Report!" x="675.853715467709" y="-310.015686867822" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <Script>"""Report errors"""

@@ -32,21 +32,23 @@ try:
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
 
-    ###### start you code from here ###
-    from ladybugdynamo.wrapper import Wrapper
+    # ##### start you code from here ###
     import ladybugdynamo.sky as sky
 
     # get input data
     epwfile = IN[0]
     skyDensity = IN[1]
-    workingDir = IN[2] if IN[2].strip()!="" else os.path.join(getPackagePath('Ladybug') + "temp\\cumulativeSkies")
+    workingDir = IN[2] if IN[2].strip() != "" else os.path.join(getPackagePath('Ladybug') + "temp\\cumulativeSkies")
 
     cSky = sky.CumulativeSkyMtx(epwfile, skyDensity=skyDensity, workingDir=workingDir)
 
-    cSky.gendaymtx(pathToRadianceBinaries=getPackagePath('Ladybug').replace("extra", "bin"))
+    cSky.gendaymtx(recalculate=True,
+                   pathToRadianceBinaries=getPackagePath('Ladybug').replace("extra", "bin"))
+
     # assign sky to output
-    OUT = Wrapper(cSky)
+    OUT = cSky
+
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR:\n%s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

@@ -1,6 +1,6 @@
-__all__ = ["core", "epw", "sunpath", "sunlighthours", "geometryoperations", "sky", "color", \
-    "legendparameters", "wrapper"]
+__all__ = ['analysis', 'analysisperiod', 'color', 'dt', 'epw', 'geometryoperations',
+           'header', 'legendparameters', 'location', 'sky', 'solarradiation',
+           'sunlighthours', 'sunpath']
 
-# core contains Ladybug core objects such as Header, Location, AnalysisPeriod, DataList
-# epw contains EPW object
-import core, epw, sunpath, sunlighthours, geometryoperations, sky, color, legendparameters, wrapper
+import analysis, analysisperiod, color, dt, epw, geometryoperations, header
+import legendparameters, location, sky, solarradiation, sunlighthours, sunpath

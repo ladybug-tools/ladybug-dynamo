@@ -32,40 +32,39 @@ try:
     sys.path.append(getPackagePath('Ladybug'))
 
     ###### start you code from here ###
-    import ladybugdynamo.core as core
-    import ladybugdynamo.epw as epw
-    import ladybugdynamo.sunpath as sunpath
+    from ladybugdynamo.dt import LBDateTime
+    from ladybugdynamo.sunpath import Sunpath
 
-    ## calculate sunpath data
+    # calculate sunpath data
     # get location data
     northAngle = IN[0]
     location = IN[1]
     HOYs = IN[2] if isinstance(IN[2], list) else [IN[2]]
     cenPt, scale, sunScale = IN[3:6]
-    drawAnnualSunpath = IN[6] # a boolean that indicates if sunpath should be drawn for
+    drawAnnualSunpath = IN[6]  # a boolean that indicates if sunpath should be drawn for
 
-    #daylightSavingPeriod = IN[7]
-    daylightSavingPeriod = None # temporary until I fully implement it
+    # daylightSavingPeriod = IN[7]
+    daylightSavingPeriod = None  # temporary until I fully implement it
 
     # initiate sunpath based on location
-    sp = sunpath.Sunpath.fromLocation(location, northAngle, daylightSavingPeriod, \
-            basePoint =cenPt, scale = scale, sunScale = sunScale)
+    sp = Sunpath.fromLocation(location, northAngle, daylightSavingPeriod,
+                              basePoint=cenPt, scale=scale, sunScale=sunScale)
 
     # draw sunpath geometry
-    if drawAnnualSunpath: sp.drawAnnualSunpath()
+    if drawAnnualSunpath:
+        sp.drawAnnualSunpath()
 
     # draw suns
     months = {}
     for HOY in HOYs:
-        dt = core.LBDateTime.fromHOY(HOY)
+        dt = LBDateTime.fromHOY(HOY)
         sp.drawSunFromDateTime(dt)
 
-        #draw daily sunpath curves
+        # draw daily sunpath curves
         if not drawAnnualSunpath and dt.DOY not in months:
             # add this day
             sp.drawDailySunpath(dt.month, dt.day)
-            months[dt.DOY] = dt  #keep track of days not to redraw them
-
+            months[dt.DOY] = dt  # keep track of days not to redraw them
 
     # generate outputs
     suns = sp.suns
@@ -89,16 +88,16 @@ try:
 
     # assign outputs
     OUT = [
-            sunVectors,
-            sunAltitudes,
-            sunAzimuths,
-            sunSpheres,
-            geometries,
-            centerPoint,
-            sunPositions,
-            sunDateTimes
-        ]
+        sunVectors,
+        sunAltitudes,
+        sunAzimuths,
+        sunSpheres,
+        geometries,
+        centerPoint,
+        sunPositions,
+        sunDateTimes
+    ]
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR: %s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

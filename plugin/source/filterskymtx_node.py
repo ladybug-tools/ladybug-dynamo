@@ -32,18 +32,13 @@ try:
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
 
-    ###### start you code from here ###
-    from ladybugdynamo.wrapper import Wrapper
-
+    # ##### start you code from here ###
     # get input data
     # unwrap sky
-    try:
-        cSky = IN[0].unwrap()
-    except:
-        raise ValueError("Can't be unwrapped. Input sky is not a LBCumulativeSky")
+    cSky = IN[0]
 
     # instance check fails!
-    #assert isinstance(cSky, CumulativeSkyMtx), "Input sky is not a LBCumulativeSky"
+    # assert isinstance(cSky, CumulativeSkyMtx), "Input sky is not a LBCumulativeSky"
     assert type(cSky).__name__ == "CumulativeSkyMtx", "Input sky is not a LBCumulativeSky"
 
     # get hours of the year
@@ -51,16 +46,17 @@ try:
     includeDiffuse = IN[2]
     includeDirect = IN[3]
 
-    cSky.gendaymtx(diffuse = includeDiffuse, direct = includeDirect, \
-        analysisPeriod = HOYs)
+    cSky.gendaymtx(diffuse=includeDiffuse, direct=includeDirect,
+                   analysisPeriod=HOYs)
 
-    #Assign your output to the OUT variable.
-    OUT = [Wrapper(cSky), \
-    		[cSky.skyTotalRadiation.values(header = True),
-            cSky.skyDiffuseRadiation.values(header = True),
-            cSky.skyDirectRadiation.values(header = True)]
-          ]
+    # Assign your output to the OUT variable.
+    OUT = [cSky,
+           [cSky.skyTotalRadiation.values(header=True),
+            cSky.skyDiffuseRadiation.values(header=True),
+            cSky.skyDirectRadiation.values(header=True)]
+           ]
+
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR:\n%s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

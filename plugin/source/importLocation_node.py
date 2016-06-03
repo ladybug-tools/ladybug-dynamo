@@ -55,22 +55,22 @@ try:
     # append ladybug path to sys.path
     sys.path.append(getPackagePath('Ladybug'))
 
-    ###### start you code from here ###
+    # ##### start you code from here #####
 
     outputsDescription = """
             location: Ladybug location
             """
 
     # import Ladybug libraries
-    import ladybugdynamo.epw as epw
+    from ladybugdynamo.epw import EPW
 
     _epwFile = IN[0]
-    #_epwFile, _analysisPeriod_ = 'C:\EnergyPlusV8-3-0\WeatherData\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw', '10/1 to 12/31 between 1 to 24'
+
     # create an epw object
-    epwData = epw.EPW(_epwFile)
+    epwData = EPW(_epwFile)
     OUT = epwData.location
 
 except Exception, e:
-	OUT = "ERROR: %s"%str(e) + \
-		"\nIf you think this is a bug submit an issue on github.\n" + \
-		"https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+    OUT = "ERROR: %s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
