@@ -1,5 +1,4 @@
-# try:
-if True:
+try:
     # add IronPython path to sys
     import sys
     IronPythonLib = 'C:\Program Files (x86)\IronPython 2.7\Lib'
@@ -52,7 +51,7 @@ if True:
     OUT = copy.deepcopy(radAnalysis.results)
     del(radAnalysis)
 
-# except Exception, e:
-#     OUT = "ERROR [line(%d)]:\n%s" % (sys.exc_traceback.tb_lineno, str(e)) + \
-#         "\nIf you think this is a bug submit an issue on github.\n" + \
-#         "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+except Exception, e:
+    OUT = "ERROR [line(%d)]:\n%s" % (sys.exc_traceback.tb_lineno, str(e)) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

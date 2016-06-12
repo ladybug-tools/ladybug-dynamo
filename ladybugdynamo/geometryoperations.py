@@ -131,11 +131,11 @@ class LBAnalysisPoint(object):
                     self.intensity[lineCount] = 0
                     break
                 else:
-                    disposeGeometries(intersection)
                     # calculate value based on normal angle and value
                     self.intensity[lineCount] = \
                         self.values[lineCount] * \
                         math.cos(math.radians(self.angles[lineCount]))
+                    disposeGeometries(intersection)
 
         # dispose lineRays
         for lr in self.lineRays:
