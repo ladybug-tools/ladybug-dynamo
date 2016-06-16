@@ -44,8 +44,8 @@ else:
 		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
 		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
-		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		path1 = r'%s\%s\packages\%s\extra\nodesrc\\'%(appdata, dynamoPath_1, packageName)
+		path0 = r'%s\%s\packages\%s\extra\nodesrc\\'%(appdata, dynamoPath_0, packageName)
 		
 		if os.path.isdir(path1):
 			return path1

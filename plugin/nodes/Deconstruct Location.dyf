@@ -7,7 +7,7 @@
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="af20e3a3-7447-4f56-a13d-41ef81b88d3a" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-427.418204976619" y="459.82803450318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;deconstructLocation_node.py&quot;;" ShouldFocus="false" />
     <PythonNodeModels.PythonStringNode guid="eb5f2edf-4e68-4d89-a62b-93a28eb027b7" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="159.604514007339" y="580.092933626717" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a0dd5089-c076-41a7-9ca8-c5f8e4093c60" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-623.959372110174" y="662.258143100254" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <Symbol value="// The output from the importLocation, importEPW or constructLocation component.  This is essentially a list of text summarizing a location on the earth.&#xD;&#xA;_location: var;" />
+      <Symbol value="//The output from the importLocation, importEPW or constructLocation component.&#xD;&#xA;//This is essentially a list of text summarizing a location on the earth.&#xD;&#xA;_location: var;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="6e5ea53b-1ba2-4a3c-81c6-fea69b39c121" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="365.733878428688" y="583" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="a10a4b17-1cb8-4918-a812-432c957704b7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="577.705878608417" y="577.880198264616" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -60,8 +60,8 @@ else:
 		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
 		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
-		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		path1 = r'%s\%s\packages\%s\extra\nodesrc\\'%(appdata, dynamoPath_1, packageName)
+		path0 = r'%s\%s\packages\%s\extra\nodesrc\\'%(appdata, dynamoPath_0, packageName)
 		
 		if os.path.isdir(path1):
 			return path1

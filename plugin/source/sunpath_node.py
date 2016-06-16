@@ -1,5 +1,4 @@
-# try:
-if True:
+try:
     # add IronPython path to sys
     import sys
     IronPythonLib = 'C:\Program Files (x86)\IronPython 2.7\Lib'
@@ -98,7 +97,7 @@ if True:
         sunPositions,
         sunDateTimes
     ]
-# except Exception, e:
-#     OUT = "ERROR: %s" % str(e) + \
-#         "\nIf you think this is a bug submit an issue on github.\n" + \
-#         "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"
+except Exception, e:
+    OUT = "ERROR: %s" % str(e) + \
+        "\nIf you think this is a bug submit an issue on github.\n" + \
+        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

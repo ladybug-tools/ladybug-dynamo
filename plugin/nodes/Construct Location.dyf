@@ -1,11 +1,11 @@
-<Workspace Version="1.0.0.1180" X="-32.8845801450216" Y="70.3819047652094" zoom="1.01858378031331" Name="Construct Location" Description="Construct a Ladybug location based on input data" ID="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" Category="Ladybug.0|Ladybug">
+<Workspace Version="1.0.0.1180" X="139.021520254204" Y="132.685468209563" zoom="0.743834708160595" Name="Construct Location" Description="Construct a Ladybug location based on input data" ID="a3a6bbfe-0d7d-4479-8826-9227ea7e1672" Category="Ladybug.0|Ladybug">
   <NamespaceResolutionMap />
   <Elements>
     <PythonNodeModels.PythonStringNode guid="a6924a42-ff14-4259-b8d4-4210bcd6de54" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="695.130396330236" y="199.226672867258" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="6" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="70c6da6a-e656-44c2-8ffa-485ec58ff1a9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.066587201008" y="276.246473405722" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// A name for the location you are constructing. (ie. Steventon Island, Antarctica)&#xD;&#xA;_locationName_: string = &quot;unknown city&quot;;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-91.8773453444778" y="29.6443792675841" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;constructLocation_node.py&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-89.188575947113" y="26.9556098702193" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;constructLocation_node.py&quot;;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="bcfdaabc-e37c-47ac-ab97-4b7dbbab8a2a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-249.144602790822" y="362.654463592397" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="// The latitude of the location you are constructing. Values must be between -90 and 90. Default is set to the equator&#xD;&#xA;_latitude_: double = 0.00;" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
@@ -41,7 +41,7 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="94a80582-f75b-4d27-96bb-25d9d51fce93" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="295.312298655057" y="23.7663794930768" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="1b0132f1-cfb8-49e8-b9a0-6dd2e402f49c" type="PythonNodeModels.PythonNode" nickname="Find file and import it!" x="222.293294322091" y="23.1479450981652" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <Script>try:
 	def getPackagePath(packageName):
 		import sys
@@ -56,8 +56,8 @@ else:
 		dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
 		dynamoPath_0 = "Dynamo\\" + _ver
 		appdata = os.getenv('APPDATA')
-		path1 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_1, packageName)
-		path0 = '%s\%s\packages\%s\extra\\'%(appdata, dynamoPath_0, packageName)
+		path1 = r'%s\%s\packages\%s\extra\nodesrc\\'%(appdata, dynamoPath_1, packageName)
+		path0 = r'%s\%s\packages\%s\extra\nodesrc\\'%(appdata, dynamoPath_0, packageName)
 		
 		if os.path.isdir(path1):
 			return path1
@@ -82,18 +82,18 @@ except Exception, e:
     <Dynamo.Graph.Connectors.ConnectorModel start="a6924a42-ff14-4259-b8d4-4210bcd6de54" start_index="0" end="258a5bf3-0789-45a5-be84-45df51a314db" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="a6924a42-ff14-4259-b8d4-4210bcd6de54" start_index="0" end="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="70c6da6a-e656-44c2-8ffa-485ec58ff1a9" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" start_index="0" end="94a80582-f75b-4d27-96bb-25d9d51fce93" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" start_index="0" end="1b0132f1-cfb8-49e8-b9a0-6dd2e402f49c" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="bcfdaabc-e37c-47ac-ab97-4b7dbbab8a2a" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="2" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="aceea731-16e6-472b-a21c-6ae174025e9b" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="3" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b2a92f6c-af2b-4ce3-ac0d-ea04638af9b3" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="4" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="a7bb640b-ba78-4a06-adfd-883f11bcf6ff" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="5" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" start_index="0" end="a670d78f-4493-4f55-a435-8c0a2aa98707" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="94a80582-f75b-4d27-96bb-25d9d51fce93" start_index="0" end="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="94a80582-f75b-4d27-96bb-25d9d51fce93" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="1b0132f1-cfb8-49e8-b9a0-6dd2e402f49c" start_index="0" end="aa97fa1e-bbcd-47eb-bca1-d8386b2950f0" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="1b0132f1-cfb8-49e8-b9a0-6dd2e402f49c" start_index="0" end="a6924a42-ff14-4259-b8d4-4210bcd6de54" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="39a71b3a-2f22-482d-9c75-30277a52597a" annotationText="load the script" left="-101.877345344478" top="-0.3556207324159" width="288" height="98" fontSize="14" InitialTop="29.6443792675841" InitialHeight="102.14290964232" TextblockHeight="20" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="39a71b3a-2f22-482d-9c75-30277a52597a" annotationText="load the script" left="-99.188575947113" top="-3.04439012978071" width="288" height="98" fontSize="14" InitialTop="26.9556098702193" InitialHeight="102.14290964232" TextblockHeight="20" backgrouund="#FFC1D676">
       <Models ModelGuid="3fa9dcc4-774a-4e0c-91c6-23a0a8d2c581" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
