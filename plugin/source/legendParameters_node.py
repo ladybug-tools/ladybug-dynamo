@@ -1,53 +1,18 @@
-try:
-    # add IronPython path to sys
-    import sys
-    IronPythonLib = 'C:\Program Files (x86)\IronPython 2.7\Lib'
-    sys.path.append(IronPythonLib)
+def getDynamoPath():
+	return os.path.split(clr.References[2].Location)[0]
 
-    # Now that the path to IronPython is established we can import libraries
-    import os
-    import clr
-    clr.AddReference('DynamoCore')
+	sys.path.append(getDynamoPath())  # This is for using colors
 
-    def getPackagePath(packageName):
-        """Get path to dynamo package using the package name."""
-        _loc = clr.References[2].Location
-        _ver = _loc.split('\\')[-2].split(' ')[-1]
+###### start you code from here ###
+import ladybugdynamo.legendparameters as legendpar
+from ladybugdynamo.color import ColorConvertor
 
-        # the path structure has changed after the release of version 1
-        dynamoPath_1 = "Dynamo\\Dynamo Revit\\" + _ver
-        dynamoPath_0 = "Dynamo\\" + _ver
-        appdata = os.getenv('APPDATA')
-        path1 = '%s\%s\packages\%s\extra\\' % (appdata, dynamoPath_1, packageName)
-        path0 = '%s\%s\packages\%s\extra\\' % (appdata, dynamoPath_0, packageName)
+chartType = IN[0]
+legendRange = IN[1] if IN[1]!=[] else ['min', 'max']
+colors = list(ColorConvertor.toLBColor(IN[2]))
 
-        if os.path.isdir(path1):
-            return path1
-        elif os.path.isdir(path0):
-            return path0
-        else:
-            raise Exception("Can't find Dynamo installation Folder!")
+OUT = legendpar.LegendParameters(legendRange=legendRange,
+								 numberOfSegments=11,
+								 colors=colors,
+								 chartType=chartType)
 
-    def getDynamoPath():
-        return os.path.split(clr.References[2].Location)[0]
-
-    # append ladybug path to sys.path
-    sys.path.append(getPackagePath('Ladybug'))
-    sys.path.append(getDynamoPath())  # This is for using colors
-
-    ###### start you code from here ###
-    import ladybugdynamo.legendparameters as legendpar
-    from ladybugdynamo.color import ColorConvertor
-
-    chartType = IN[0]
-    legendRange = IN[1] if IN[1]!=[] else ['min', 'max']
-    colors = list(ColorConvertor.toLBColor(IN[2]))
-
-    OUT = legendpar.LegendParameters(legendRange=legendRange,
-                                     numberOfSegments=11,
-                                     colors=colors,
-                                     chartType=chartType)
-except Exception as e:
-    OUT = "ERROR:\n%s" % str(e) + \
-        "\nIf you think this is a bug submit an issue on github.\n" + \
-        "https://github.com/ladybug-analysis-tools/ladybug-dynamo/issues"

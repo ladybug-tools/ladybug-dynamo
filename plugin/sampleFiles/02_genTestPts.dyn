@@ -1,0 +1,223 @@
+<Workspace Version="1.2.0.2690" X="188.702879749012" Y="97.1582494150328" zoom="0.491902090236302" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Autodesk.DesignScript.Geometry.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Label" resolvedName="Analysis.Label" assemblyName="Analysis.dll" />
+    <ClassMap partialName="Color" resolvedName="DSCore.Color" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
+    <ClassMap partialName="Autodesk.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Autodesk.DesignScript.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="UV" resolvedName="Autodesk.DesignScript.Geometry.UV" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="1e862920-eb93-4e2f-af29-9e2876e0eecc" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Rectangle.ByWidthLength" x="-130.521706734268" y="18.3190237262748" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@Autodesk.DesignScript.Geometry.Plane,double,double">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="e3ba3fcd-e93c-4771-87c1-f25de7fa168a" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-320.884250830494" y="102.392624125232" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="20;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="213f9e5a-ff3d-46d7-93b8-22e19cc3484b" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Plane.XY" x="-322.631033490371" y="16.3206369698707" isVisible="false" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Plane.XY" />
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="6e9da8e2-0498-4a43-be90-4f58b5c95a86" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Surface.ByPatch" x="175.606165039558" y="107.087264563959" isVisible="false" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Surface.ByPatch@Autodesk.DesignScript.Geometry.Curve">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="119016b4-9447-41c4-a909-92e7b67bd930" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Rectangle.ByWidthLength" x="-122.625077431851" y="329.151586312989" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@Autodesk.DesignScript.Geometry.Plane,double,double">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="0bcf9586-6600-44d9-a317-110451b9b872" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-322.631033490371" y="404.674633793626" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="10;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="35c63f4b-8e24-44e1-8b34-a833ddae2db1" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Plane.XZ" x="-322.631033490371" y="310.77787792278" isVisible="false" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Plane.XZ" />
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="31ce4fa0-15c3-4ee5-a7d3-dd283cfc8c36" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Surface.ByPatch" x="135.011562428342" y="330.803383924592" isVisible="false" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Surface.ByPatch@Autodesk.DesignScript.Geometry.Curve">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <CoreNodeModels.CreateList guid="2934cafd-1d86-4142-bb27-4e8fbe313af7" type="CoreNodeModels.CreateList" nickname="List.Create" x="436.008916782152" y="160.31302868327" isVisible="false" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </CoreNodeModels.CreateList>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="de87bc68-e91b-4124-8f17-ac1be65f6f5f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Test Points" x="618.709223335198" y="298.792190555348" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <ID value="3bb214f8-59b8-4ce8-969b-e42d4d05414e" />
+      <Name value="Generate Test Points" />
+      <Description value="Generate test points from a surface based on number of segments and distance from the surface" />
+      <Inputs>
+        <Input value="_testSurfaces" />
+        <Input value="_numOfSegments_" />
+        <Input value="_disFromSurface_" />
+      </Inputs>
+      <Outputs>
+        <Output value="testPts" />
+        <Output value="ptsNormal" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="e7c19cf0-2875-45ae-83ad-7090b681304b" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="456.920480476758" y="314.254256501885" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="20;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="f4a04478-5e23-4ad4-9b1a-5a5459b2a473" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-320.884250830494" y="188.278108274234" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="10;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="498b6ae3-da2f-4c7c-9724-071362155790" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Center Point" x="597.524917801028" y="454.961991798868" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="s.PointAtParameter(0.5,0.5);" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="70ebd375-8e87-4e89-a207-a89de405388c" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Sphere.ByCenterPointRadius" x="1014.13194167458" y="693.112171986267" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Sphere.ByCenterPointRadius@Autodesk.DesignScript.Geometry.Point,double">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="26021a0a-aeb8-49ec-a527-c0f2a625c826" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="909.82864405486" y="721.830347227491" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="0.2;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="b633bfb1-b972-43b9-bc6c-8edf2d3bae50" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Geometry.DistanceTo" x="1138.98379886801" y="299.084420127214" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Geometry.DistanceTo@Autodesk.DesignScript.Geometry.Geometry">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="2e34e137-8041-4f6d-89ac-257018fb8a17" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="LB Color Range" x="1488.27813860373" y="757.196317900143" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="True" />
+      <ID value="934e1b58-33ad-4e48-837f-357d5d61b044" />
+      <Name value="LB Color Range" />
+      <Description value="A set of color ranges for coloring analysis results" />
+      <Inputs>
+        <Input value="_index_" />
+      </Inputs>
+      <Outputs>
+        <Output value="colors" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="cfad05f2-ed42-42db-a67e-dd7fd03ae20e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1368.98721408889" y="775.375862178033" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="1;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="dd482bdb-ac01-49b9-8f90-c151a0223232" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Legend Parameters" x="1795.47845329602" y="676.965285122635" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <ID value="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" />
+      <Name value="Legend Parameters" />
+      <Description value="Use legend parameter to set up results visualization setting" />
+      <Inputs>
+        <Input value="_cType_" />
+        <Input value="_domain_" />
+        <Input value="_colors_" />
+      </Inputs>
+      <Outputs>
+        <Output value="legendPar" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="0f490ea5-24b2-4f8d-ae33-cf72c38c2737" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="domain" x="1492.11425711014" y="595.938335786172" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="{&quot;min&quot;,5};" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="f2f598f2-9b2c-43e8-8c7b-d106116e9c16" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="LB Color Range" x="1215.4182637349" y="1230.64582428874" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="True" />
+      <ID value="934e1b58-33ad-4e48-837f-357d5d61b044" />
+      <Name value="LB Color Range" />
+      <Description value="A set of color ranges for coloring analysis results" />
+      <Inputs>
+        <Input value="_index_" />
+      </Inputs>
+      <Outputs>
+        <Output value="colors" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="f792b6e2-55b5-479a-8d9d-7c550186a8bd" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1090.32634639268" y="1235.03848574228" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="2;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="ceb7b566-9bed-4b58-8a6f-e42faf7132f1" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="domain" x="1607.02949821402" y="980.92883163534" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="1;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="ae92fa19-799b-49d2-97f1-4aeed95cc57a" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1548.17557327931" y="1094.02900670464" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="{0, 2, 4, 8};" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="f9eeb458-3633-44cd-b56c-6337647a5de1" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="List.GetItemAtIndex" x="1577.00100765563" y="1230.9764556494" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.List.GetItemAtIndex@var[]..[],int">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="48ccda55-8040-48f0-ad9e-d6ad5394fc2b" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1235.06434394194" y="1397.20280993698" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="{0,2,4,6,8};" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="02a907b9-573f-470d-8edb-1e03fcf58d93" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Legend Parameters" x="1843.07630597956" y="1046.66449065461" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <ID value="a61b91d2-3ce6-4d1c-905f-6fe4aa4ecd90" />
+      <Name value="Legend Parameters" />
+      <Description value="Use legend parameter to set up results visualization setting" />
+      <Inputs>
+        <Input value="_cType_" />
+        <Input value="_domain_" />
+        <Input value="_colors_" />
+      </Inputs>
+      <Outputs>
+        <Output value="legendPar" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="29db5291-97e3-48a6-949b-8fa60d4087d3" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Colors" x="2125.96079400836" y="307.226447155701" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+      <ID value="d3408aa8-7ebe-40b5-8754-ae621b6d9647" />
+      <Name value="Generate Colors" />
+      <Description value="Color a test surface based on the results of a study. The results structure should match the test points structure to be mapped correctly on the surface." />
+      <Inputs>
+        <Input value="_values" />
+        <Input value="_legendPar_" />
+      </Inputs>
+      <Outputs>
+        <Output value="colors" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <CoreNodeModels.Watch guid="d0cfd3d8-8a47-460c-b60e-643523d4057c" type="CoreNodeModels.Watch" nickname="Watch" x="2747.79380065889" y="171.538553401651" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="b4a3ecde-bb08-4310-ae31-2e400d482aa1" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Display.BySurfaceColors" x="2480.76515743132" y="172.688190050573" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="Display.dll" function="Display.Display.BySurfaceColors@Autodesk.DesignScript.Geometry.Surface,DSCore.Color[][]">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="1e862920-eb93-4e2f-af29-9e2876e0eecc" start_index="0" end="6e9da8e2-0498-4a43-be90-4f58b5c95a86" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e3ba3fcd-e93c-4771-87c1-f25de7fa168a" start_index="0" end="1e862920-eb93-4e2f-af29-9e2876e0eecc" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="213f9e5a-ff3d-46d7-93b8-22e19cc3484b" start_index="0" end="1e862920-eb93-4e2f-af29-9e2876e0eecc" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="6e9da8e2-0498-4a43-be90-4f58b5c95a86" start_index="0" end="2934cafd-1d86-4142-bb27-4e8fbe313af7" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="119016b4-9447-41c4-a909-92e7b67bd930" start_index="0" end="31ce4fa0-15c3-4ee5-a7d3-dd283cfc8c36" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0bcf9586-6600-44d9-a317-110451b9b872" start_index="0" end="119016b4-9447-41c4-a909-92e7b67bd930" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0bcf9586-6600-44d9-a317-110451b9b872" start_index="0" end="119016b4-9447-41c4-a909-92e7b67bd930" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="35c63f4b-8e24-44e1-8b34-a833ddae2db1" start_index="0" end="119016b4-9447-41c4-a909-92e7b67bd930" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="31ce4fa0-15c3-4ee5-a7d3-dd283cfc8c36" start_index="0" end="2934cafd-1d86-4142-bb27-4e8fbe313af7" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="31ce4fa0-15c3-4ee5-a7d3-dd283cfc8c36" start_index="0" end="498b6ae3-da2f-4c7c-9724-071362155790" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2934cafd-1d86-4142-bb27-4e8fbe313af7" start_index="0" end="de87bc68-e91b-4124-8f17-ac1be65f6f5f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2934cafd-1d86-4142-bb27-4e8fbe313af7" start_index="0" end="b4a3ecde-bb08-4310-ae31-2e400d482aa1" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de87bc68-e91b-4124-8f17-ac1be65f6f5f" start_index="0" end="b633bfb1-b972-43b9-bc6c-8edf2d3bae50" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e7c19cf0-2875-45ae-83ad-7090b681304b" start_index="0" end="de87bc68-e91b-4124-8f17-ac1be65f6f5f" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f4a04478-5e23-4ad4-9b1a-5a5459b2a473" start_index="0" end="1e862920-eb93-4e2f-af29-9e2876e0eecc" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="498b6ae3-da2f-4c7c-9724-071362155790" start_index="0" end="70ebd375-8e87-4e89-a207-a89de405388c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="498b6ae3-da2f-4c7c-9724-071362155790" start_index="0" end="b633bfb1-b972-43b9-bc6c-8edf2d3bae50" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="26021a0a-aeb8-49ec-a527-c0f2a625c826" start_index="0" end="70ebd375-8e87-4e89-a207-a89de405388c" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b633bfb1-b972-43b9-bc6c-8edf2d3bae50" start_index="0" end="29db5291-97e3-48a6-949b-8fa60d4087d3" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2e34e137-8041-4f6d-89ac-257018fb8a17" start_index="0" end="dd482bdb-ac01-49b9-8f90-c151a0223232" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="cfad05f2-ed42-42db-a67e-dd7fd03ae20e" start_index="0" end="2e34e137-8041-4f6d-89ac-257018fb8a17" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f2f598f2-9b2c-43e8-8c7b-d106116e9c16" start_index="0" end="f9eeb458-3633-44cd-b56c-6337647a5de1" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f792b6e2-55b5-479a-8d9d-7c550186a8bd" start_index="0" end="f2f598f2-9b2c-43e8-8c7b-d106116e9c16" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="ceb7b566-9bed-4b58-8a6f-e42faf7132f1" start_index="0" end="02a907b9-573f-470d-8edb-1e03fcf58d93" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="ae92fa19-799b-49d2-97f1-4aeed95cc57a" start_index="0" end="02a907b9-573f-470d-8edb-1e03fcf58d93" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f9eeb458-3633-44cd-b56c-6337647a5de1" start_index="0" end="02a907b9-573f-470d-8edb-1e03fcf58d93" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="48ccda55-8040-48f0-ad9e-d6ad5394fc2b" start_index="0" end="f9eeb458-3633-44cd-b56c-6337647a5de1" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="29db5291-97e3-48a6-949b-8fa60d4087d3" start_index="0" end="b4a3ecde-bb08-4310-ae31-2e400d482aa1" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b4a3ecde-bb08-4310-ae31-2e400d482aa1" start_index="0" end="d0cfd3d8-8a47-460c-b60e-643523d4057c" end_index="0" portType="0" />
+  </Connectors>
+  <Notes>
+    <Dynamo.Graph.Notes.NoteModel guid="43dfffd5-7610-4b56-aa05-fca5f8c555ea" text="Here is an example for segmented coloring" x="1720.25773884307" y="963.026525448343" />
+  </Notes>
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="27e5b00d-b679-4950-9b6d-e8fcf2f55355" annotationText="Use Ladybug's generate test point to generate test points. In this example we&#xD;&#xA;use this test points to color the surface&#xD;&#xA;based on distance from test points." left="608.709223335198" top="221.792190555348" width="307" height="222" fontSize="14" InitialTop="298.792190555348" InitialHeight="175" TextblockHeight="67" backgrouund="#FF48B9FF">
+      <Models ModelGuid="de87bc68-e91b-4124-8f17-ac1be65f6f5f" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="d1aded30-427f-44f3-b300-e929f746f5b6" annotationText="Just for better visualization" left="899.82864405486" top="663.112171986267" width="349.30329761972" height="151.718175241224" fontSize="14" InitialTop="693.112171986267" InitialHeight="155.758714765478" TextblockHeight="20" backgrouund="#FFFFAA45">
+      <Models ModelGuid="70ebd375-8e87-4e89-a207-a89de405388c" />
+      <Models ModelGuid="26021a0a-aeb8-49ec-a527-c0f2a625c826" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="6685f126-b905-4efa-b4e1-1d01499631e7" annotationText="Ladybug color range&#xD;&#xA;Check _index_ description for more information." left="1478.27813860373" top="697.196317900143" width="242" height="179" fontSize="14" InitialTop="757.196317900143" InitialHeight="123" TextblockHeight="50" backgrouund="#FF48B9FF">
+      <Models ModelGuid="2e34e137-8041-4f6d-89ac-257018fb8a17" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9aa890a5-ca78-4f15-af4c-3487dafb9d76" annotationText="Legend Parameters" left="1785.47845329602" top="646.965285122635" width="254" height="175" fontSize="14" InitialTop="676.965285122635" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
+      <Models ModelGuid="dd482bdb-ac01-49b9-8f90-c151a0223232" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="80d4ba22-34a4-46ee-b21f-aa9368ac406c" annotationText="Ladybug color range&#xD;&#xA;Check _index_ description for more information." left="1205.4182637349" top="1170.64582428874" width="242" height="179" fontSize="14" InitialTop="1230.64582428874" InitialHeight="123" TextblockHeight="50" backgrouund="#FF48B9FF">
+      <Models ModelGuid="f2f598f2-9b2c-43e8-8c7b-d106116e9c16" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="65838059-7212-47cd-87ed-829e397b42a5" annotationText="Legend Parameters" left="1833.07630597956" top="1016.66449065461" width="254" height="175" fontSize="14" InitialTop="1046.66449065461" InitialHeight="175" TextblockHeight="20" backgrouund="#FF48B9FF">
+      <Models ModelGuid="02a907b9-573f-470d-8edb-1e03fcf58d93" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-9.6294527053833" eyeY="16.2723979949951" eyeZ="-9.77249526977539" lookX="10.0564861297607" lookY="-24.9523124694824" lookZ="13.1959476470947" upX="0.421057403087616" upY="0.719339728355408" upZ="0.552504241466522" />
+  </Cameras>
+</Workspace>

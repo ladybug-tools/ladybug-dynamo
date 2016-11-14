@@ -1,0 +1,90 @@
+<Workspace Version="1.2.0.2690" X="-655.356198683323" Y="455.863642124792" zoom="0.669360351052164" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="BoundingBox" resolvedName="Autodesk.DesignScript.Geometry.BoundingBox" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Autodesk.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Autodesk.DesignScript.Geometry.Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Label" resolvedName="Analysis.Label" assemblyName="Analysis.dll" />
+    <ClassMap partialName="Color" resolvedName="DSCore.Color" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.Object" resolvedName="System.Object" assemblyName="" />
+    <ClassMap partialName="Autodesk.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Autodesk.DesignScript.Geometry.Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <CoreNodeModels.Input.Filename guid="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" type="CoreNodeModels.Input.Filename" nickname="File Path" x="1023.89721411795" y="-210.603540350963" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>..\..\..\..\..\..\..\..\..\..\..\ladybug\dynamo%20test\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw</System.String>
+      <HintPath>C:\ladybug\dynamo test\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw</HintPath>
+    </CoreNodeModels.Input.Filename>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="2d09773a-f756-43c5-9e31-a60dbd3e0971" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Sky Matrix" x="1554.14581371739" y="-211.436507855918" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <ID value="ee2746e6-241d-482b-aaa7-bbff10490610" />
+      <Name value="Generate Sky Matrix" />
+      <Description value="Generate sky matrix for a location from epw file" />
+      <Inputs>
+        <Input value="_epwFile" />
+        <Input value="_skyDensity_" />
+        <Input value="workingDir_" />
+      </Inputs>
+      <Outputs>
+        <Output value="SkyMatrix" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <CoreNodeModels.Watch guid="edaf74b4-f26c-4d7b-bfb0-fd128227670d" type="CoreNodeModels.Watch" nickname="Watch" x="1925.1647002879" y="-337.750117538804" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="fa8bc790-1e1b-426e-8434-1b8a1e91155d" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Filter Sky Matrix" x="2078.6140316959" y="-1.81726499144213" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <PortInfo index="3" default="True" />
+      <ID value="71bc920f-b341-44b4-b64e-0ae42bc3338d" />
+      <Name value="Filter Sky Matrix" />
+      <Description value="Filter Cumulative Sky for an analysis period. You can also filter diffuse or direct component of the sky" />
+      <Inputs>
+        <Input value="_skyMatrix" />
+        <Input value="_HOYs_" />
+        <Input value="_includeDiffuse_" />
+        <Input value="_includeDirect_" />
+      </Inputs>
+      <Outputs>
+        <Output value="filteredSkyMatrix" />
+        <Output value="cumulativeRadiationValues" />
+        <Output value="ERRReport" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <CoreNodeModels.Watch guid="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" type="CoreNodeModels.Watch" nickname="Watch" x="2631.17075120132" y="103.724966508788" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="111a56ef-cfbd-4f77-ba06-8546a0c58693" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1182.63933015591" y="-104.889352844631" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;c:\ladybug\San Francisco&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="1ce8acb2-12eb-48c0-bb4f-8b0e8bbca0d6" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1884.89543254506" y="23.1478008785978" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="0..47;" ShouldFocus="false" />
+    <CoreNodeModels.Watch guid="b73a30c5-2ccb-4960-bfb4-62e86d63517f" type="CoreNodeModels.Watch" nickname="Watch" x="2629.73702298214" y="1.13853485872236" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="0b55c441-b94e-4b4d-94d9-bc93d32e01d8" start_index="0" end="2d09773a-f756-43c5-9e31-a60dbd3e0971" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="0" end="fa8bc790-1e1b-426e-8434-1b8a1e91155d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2d09773a-f756-43c5-9e31-a60dbd3e0971" start_index="1" end="edaf74b4-f26c-4d7b-bfb0-fd128227670d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="0" end="b73a30c5-2ccb-4960-bfb4-62e86d63517f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fa8bc790-1e1b-426e-8434-1b8a1e91155d" start_index="2" end="9c2c5ff7-fb6a-4f3a-8652-3fdd21a35c2a" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="111a56ef-cfbd-4f77-ba06-8546a0c58693" start_index="0" end="2d09773a-f756-43c5-9e31-a60dbd3e0971" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="1ce8acb2-12eb-48c0-bb4f-8b0e8bbca0d6" start_index="0" end="fa8bc790-1e1b-426e-8434-1b8a1e91155d" end_index="1" portType="0" />
+  </Connectors>
+  <Notes>
+    <Dynamo.Graph.Notes.NoteModel guid="0c24b68a-96c2-4218-a75c-97cdf4e12640" text="Generating sky can take up to few minutes." x="1553.75298890299" y="-49.4403797274144" />
+  </Notes>
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="410b445a-03c0-4d15-88ba-f694419b37f6" annotationText="Generate sky matrix for running radiation analysis." left="1544.14581371739" top="-255.436507855918" width="272" height="189" fontSize="14" InitialTop="-211.436507855918" InitialHeight="175" TextblockHeight="34" backgrouund="#FF48B9FF">
+      <Models ModelGuid="2d09773a-f756-43c5-9e31-a60dbd3e0971" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="0229a01f-fd34-4711-abad-cb52edcc17c5" annotationText="Filter sky matrix for Radiation Analysis.&#xD;&#xA;&#xD;&#xA;In the next release you can use the sky matrix to draw sky dome and radiation rose." left="2068.6140316959" top="-78.8172649914421" width="385" height="248" fontSize="14" InitialTop="-1.81726499144213" InitialHeight="201" TextblockHeight="67" backgrouund="#FF48B9FF">
+      <Models ModelGuid="fa8bc790-1e1b-426e-8434-1b8a1e91155d" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-39.0121269226074" eyeY="79.5265197753906" eyeZ="-104.912857055664" lookX="88.0934753417969" lookY="-98.2718963623047" lookZ="150.689727783203" upX="0.147556439042091" upY="0.956304728984833" upZ="0.252405077219009" />
+  </Cameras>
+</Workspace>
