@@ -35,7 +35,8 @@ if len(errors)==0:
 else:
 	OUT = "\n".join(errors)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="c1083a10-d21f-49e6-a1e2-43c1bc077469" type="PythonNodeModels.PythonNode" nickname="import and prepare py code" x="674.549847334502" y="-137.071354856506" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="bb7750b3-253f-40cd-aac1-a443afe4f0f2" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="404.80627469833" y="-133.079124893086" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;Ladybug&quot;;&#xA;&quot;colorRange_node.py&quot;;" ShouldFocus="false" />
+    <PythonNodeModels.PythonNode guid="c0ad5226-afaa-42c3-adba-7c2ae873a66f" type="PythonNodeModels.PythonNode" nickname="import and prepare py code" x="650.609385568695" y="-138.527245157891" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <Script>"""Find packages from Dynamo folder and prepare the code."""
@@ -66,6 +67,8 @@ def tryGetPluginPath(plugin):
     pkf = []
     for path in _dynamoPaths:
         settingsFile = IO.Path.Combine(_appdata, path, _settingsFilename)
+        if not IO.File.Exists(settingsFile):
+        	continue
         with open(settingsFile, 'rb') as outf:
             for line in outf:
                 if line.strip().startswith('&lt;CustomPackageFolders&gt;'):
@@ -116,17 +119,16 @@ except Exception, e:
         "{}".format(traceback.format_exc())
 </Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="bb7750b3-253f-40cd-aac1-a443afe4f0f2" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="404.80627469833" y="-133.079124893086" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;Ladybug&quot;;&#xA;&quot;colorRange_node.py&quot;;" ShouldFocus="false" />
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="fe57f0f7-ede7-44a3-8f58-3710a11ce351" start_index="0" end="15857a8b-6fa3-4eca-b95f-7d82dab24a04" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="fe57f0f7-ede7-44a3-8f58-3710a11ce351" start_index="0" end="b5873f13-8203-4eda-90d2-4a8dde8f679f" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="c1e99cfb-4589-41a6-86b9-29a566a4a77f" start_index="0" end="fe57f0f7-ede7-44a3-8f58-3710a11ce351" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b5873f13-8203-4eda-90d2-4a8dde8f679f" start_index="0" end="467ea450-eec5-4d99-9019-6ef6ce07b3d0" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="c1083a10-d21f-49e6-a1e2-43c1bc077469" start_index="0" end="b5873f13-8203-4eda-90d2-4a8dde8f679f" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="c1083a10-d21f-49e6-a1e2-43c1bc077469" start_index="0" end="fe57f0f7-ede7-44a3-8f58-3710a11ce351" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="bb7750b3-253f-40cd-aac1-a443afe4f0f2" start_index="0" end="c1083a10-d21f-49e6-a1e2-43c1bc077469" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="bb7750b3-253f-40cd-aac1-a443afe4f0f2" start_index="1" end="c1083a10-d21f-49e6-a1e2-43c1bc077469" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="bb7750b3-253f-40cd-aac1-a443afe4f0f2" start_index="0" end="c0ad5226-afaa-42c3-adba-7c2ae873a66f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="bb7750b3-253f-40cd-aac1-a443afe4f0f2" start_index="1" end="c0ad5226-afaa-42c3-adba-7c2ae873a66f" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c0ad5226-afaa-42c3-adba-7c2ae873a66f" start_index="0" end="b5873f13-8203-4eda-90d2-4a8dde8f679f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c0ad5226-afaa-42c3-adba-7c2ae873a66f" start_index="0" end="fe57f0f7-ede7-44a3-8f58-3710a11ce351" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations>
@@ -136,6 +138,6 @@ except Exception, e:
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="-53.4322090148926" eyeY="73.1740646362305" eyeZ="-87.5913314819336" lookX="74.7593841552734" lookY="-104.001853942871" lookZ="113.764282226563" upX="0.232092618942261" upY="0.906307756900787" upZ="0.353184401988983" />
   </Cameras>
 </Workspace>

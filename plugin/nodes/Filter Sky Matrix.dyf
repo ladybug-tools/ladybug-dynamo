@@ -87,6 +87,8 @@ def tryGetPluginPath(plugin):
     pkf = []
     for path in _dynamoPaths:
         settingsFile = IO.Path.Combine(_appdata, path, _settingsFilename)
+        if not IO.File.Exists(settingsFile):
+        	continue
         with open(settingsFile, 'rb') as outf:
             for line in outf:
                 if line.strip().startswith('&lt;CustomPackageFolders&gt;'):
