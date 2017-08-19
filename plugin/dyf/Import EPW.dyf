@@ -1,0 +1,235 @@
+<Workspace Category="Ladybug.00 :: Ladybug" Description="Import epw.
+-" ID="c777457d-bc07-47a7-bf57-fd109d937113" Name="Import EPW" Version="1.2.0.2690" X="400" Y="-100" zoom="0.5">
+  <NamespaceResolutionMap/>
+  <Elements>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel CodeText="&quot;Ladybug&quot;;&#xA;&quot;importepw_node.py&quot;;" ShouldFocus="false" guid="b904af26-ef46-4f32-bcd9-3542a86ca8a1" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="input python script" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" x="-750" y="390"/>
+    <PythonNodeModels.PythonNode guid="53e4fb25-9a0a-44cd-888c-fd6ab2f99c45" inputcount="2" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="import and prepare py code" type="PythonNodeModels.PythonNode" x="-355" y="385">
+      <PortInfo default="false" index="0"/>
+      <PortInfo default="false" index="1"/>
+      <Script>
+        
+&quot;&quot;&quot;Find packages from Dynamo folder and prepare the code.&quot;&quot;&quot;
+import clr
+from System import AppDomain, Environment, IO
+
+def tryGetPluginPath(plugin):
+    &quot;&quot;&quot;Try to get path to plugin folder.&quot;&quot;&quot;
+    clr.AddReference('ProtoGeometry')
+    _loc = tuple(a.Location
+                 for a in AppDomain.CurrentDomain.GetAssemblies()
+                 if 'ProtoGeometry' in a.FullName)
+
+    try:
+        _ver = float(_loc[0].split('\\')[-2])
+    except:
+        _ver = float(_loc[0].split('\\')[-2].split(' ')[-1])
+
+    assert _ver &gt;= 1.2, 'You need Dynamo 1.2 or higher to use this plugin!'
+
+    _appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+    _dynamoPath = ('\\').join(_loc[0].split('\\')[-4:-1])
+    # if the assembly is cached put Revit folder first, and then try to load it from core
+    _dynamoPaths = (_dynamoPath.replace('Dynamo Core', 'Dynamo Revit'),
+                    _dynamoPath.replace('Dynamo Revit', 'Dynamo Core'))
+    _settingsFilename = 'DynamoSettings.xml'
+
+    pkf = []
+    for path in _dynamoPaths:
+        settingsFile = IO.Path.Combine(_appdata, path, _settingsFilename)
+        if IO.File.Exists(settingsFile):
+            with open(settingsFile, 'rb') as outf:
+                for line in outf:
+                    if line.strip().startswith('&lt;CustomPackageFolders&gt;'):
+                        for l in outf:
+                            if l.strip().startswith('&lt;/CustomPackageFolders&gt;'):
+                                break
+                            else:
+                                pkf.append(l.replace('&lt;/string&gt;', '').replace('&lt;string&gt;', '').strip())
+
+    for p in pkf:
+        pp = IO.Path.Combine(p, 'packages', plugin, 'extra')
+        # In case of custom folders user may put honeybee under the root folder
+        ppp = IO.Path.Combine(p, plugin, 'extra')
+        if IO.Directory.Exists(pp):
+            return pp
+        elif IO.Directory.Exists(ppp):
+            return ppp
+
+
+try:
+    plugin, filename = IN
+
+    p = tryGetPluginPath(plugin)
+
+    if not p:
+        raise ImportError('{} is not installed! Install it from package manager.'.format(plugin))
+
+	# import the file and wrap it into sys.append
+    f = IO.Path.Combine(p, 'nodesrc', filename)
+    with open(f, 'rb') as inf:
+        source = '    '.join(inf.readlines())
+
+    header = 'try:\n    import sys\n' + \
+        '    sys.path.append(r\'{}\')\n\n'.format(p) + \
+        '    sys.path.append(r\'C:\Program Files (x86)\IronPython 2.7\Lib\')\n\n' + \
+        '    '
+
+    footer = '\nexcept Exception, e:\n' + \
+        '    import traceback\n' + \
+        '    OUT = &quot;ERROR:\\n\\t{}&quot;.format(str(e)) + \\\n' + \
+        '    &quot;\\n\\nIf you think this is a bug submit an issue on github.\\n&quot; + \\\n' + \
+        '    &quot;https://github.com/ladybug-tools/honeybee-dynamo/issues\\n&quot; +  \\\n' + \
+        '    &quot;and include below error message:\\n\\n&quot; + \\\n' + \
+        '    &quot;{}&quot;.format(traceback.format_exc())\n'
+
+    OUT = header + source + footer
+
+except Exception, e:
+    import sys
+    sys.path.append(r'C:\Program Files (x86)\IronPython 2.7\Lib')
+    import traceback
+    OUT = &quot;ERROR:\n\t{}&quot;.format(str(e)) + \
+        &quot;\n\nIf you think this is a bug submit an issue on github.\n&quot; + \
+        &quot;https://github.com/ladybug-tools/honeybee-dynamo/issues\n&quot; +  \
+        &quot;and include below error message:\n\n&quot; + \
+        &quot;{}&quot;.format(traceback.format_exc())
+
+      </Script>
+    </PythonNodeModels.PythonNode>
+    <PythonNodeModels.PythonStringNode guid="92ace648-5a75-4722-8bbe-76eef038bb6b" inputcount="2" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="core" type="PythonNodeModels.PythonStringNode" x="-75" y="460">
+      <PortInfo default="false" index="0"/>
+      <PortInfo default="false" index="1"/>
+    </PythonNodeModels.PythonStringNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="2b30f326-162f-4838-aed8-931c8f58bd4e" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="_epwFile" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" x="-750" y="475">
+      <Symbol value="// An .epw file path on your system as a string.&#xD;&#xA;_epwFile: string;"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];&#xA;out[8];&#xA;out[9];&#xA;out[10];&#xA;out[11];&#xA;out[12];&#xA;out[13];&#xA;out[14];&#xA;out[15];&#xA;out[16];" ShouldFocus="false" guid="632a2c8d-e089-4990-b969-036a93664de3" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="decompose outputs" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" x="150" y="515"/>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f34e5993-2f77-4de0-9532-4d7e694a48da" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="Output" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="475">
+      <Symbol value="// ...&#xD;&#xA;Output;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="12d98cd1-33df-4bd1-b5f7-78e88d800227" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="location" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="570">
+      <Symbol value="// A list of text summarizing the location data in the weather file (use this to construct the sun path).&#xD;&#xA;location;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="d1ffc188-3b37-41b8-825a-d751197d9efb" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="dryBulbTemperature" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="665">
+      <Symbol value="// &quot;This is the houlry dry bulb temperature, in C. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from 70 C to 70 C. Missing value for this field is 99.9.&quot;&#xD;&#xA;dryBulbTemperature;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="4b87a894-c1a7-4f71-a1cb-3ef87345e329" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="dewPointTemperature" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="760">
+      <Symbol value="// &quot;This is the hourly dew point temperature, in C. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from 70 C to 70 C. Missing value for this field is 99.9.&quot;&#xD;&#xA;dewPointTemperature;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="92b03c11-a2b7-4f1c-80f1-301e9eeec3ef" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="relativeHumidity" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="855">
+      <Symbol value="// &quot;This is the hourly Relative Humidity in percent. Valid values range from 0% to 110%. Missing value for this field is 999.&quot;&#xD;&#xA;relativeHumidity;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="d26963ea-f181-419f-8e67-5d97a11a1604" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="windSpeed" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="950">
+      <Symbol value="// &quot;This is the hourly wind speed in m/sec. Values can range from 0 to 40. Missing value is 999.&quot;&#xD;&#xA;windSpeed;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="348e4f3a-2162-4a27-9f4a-092c5e114e3e" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="windDirection" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1045">
+      <Symbol value="// &quot;This is the hourly Wind Direction in degrees where the convention is that North=0.0, East=90.0, South=180.0, West=270.0. (If wind is calm for the given hour, the direction equals zero.) Values can range from 0 to 360. Missing value is 999.&quot;&#xD;&#xA;windDirection;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="15d4cd05-0ba4-4f10-b2ce-6e98fee1bb9a" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="directNormalRadiation" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1140">
+      <Symbol value="// &quot;This is the hourly Direct Normal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) If the field is missing ( 9999) or invalid (&lt;0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.&quot;&#xD;&#xA;directNormalRadiation;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="cc6b12ae-0bc1-448a-8bbe-c9bc3647495f" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="diffuseHorizontalRadiation" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1235">
+      <Symbol value="// &quot;This is the hourly Diffuse Horizontal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) If the field is missing ( 9999) or invalid (&lt;0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.&quot;&#xD;&#xA;diffuseHorizontalRadiation;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="045d3fa8-5774-4adb-90a1-83f46cf1d875" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="globalHorizontalRadiation" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1330">
+      <Symbol value="// &quot;This is the hourly Global Horizontal Radiation in Wh/m2. (Total amount of direct and diffuse solar radiation in Wh/m2 received on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 9999.&quot;&#xD;&#xA;globalHorizontalRadiation;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="b05973e8-c8d0-4a9e-ae31-23a3b3be87b6" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="directNormalIlluminance" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1425">
+      <Symbol value="// &quot;This is the hourly Direct Normal Illuminance in lux. (Average amount of illuminance in hundreds of lux received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of &gt;= 999900.&quot;&#xD;&#xA;directNormalIlluminance;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="2d328641-d21b-4191-b5ac-b662786665e3" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="diffuseHorizontalIlluminance" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1520">
+      <Symbol value="// &quot;This is the hourly Diffuse Horizontal Illuminance in lux. (Average amount of illuminance in hundreds of lux received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of &gt;= 999900.&quot;&#xD;&#xA;diffuseHorizontalIlluminance;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="3f75cd41-2238-4b7a-9f2e-f2928ef85978" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="globalHorizontalIlluminance" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1615">
+      <Symbol value="// &quot;This is the hourly Global Horizontal Illuminance in lux. (Average total amount of direct and diffuse illuminance in hundreds of lux received on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of &gt;= 999900.&quot;&#xD;&#xA;globalHorizontalIlluminance;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="099a43e5-e89d-4b93-9271-97a8af079630" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="totalSkyCover" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1710">
+      <Symbol value="// &quot;This is the fraction for total sky cover (tenths of coverage). (i.e. 1 is 1/10 covered. 10 is total coverage). (Amount of sky dome in tenths covered by clouds or obscuring phenomena at the hour indicated at the time indicated.) Minimum value is 0; maximum value is 10; missing value is 99.&quot;&#xD;&#xA;totalSkyCover;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fb16ee97-ed33-44e2-92c4-3af65b8d9b75" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="liquidPrecipitationDepth" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1805">
+      <Symbol value="// &quot;The amount of liquid precipitation(mm) observed at the indicated hour for the period indicated in the liquid precipitation quantity field. If this value is not missing, then it is used and overrides the precipitation flag as rainfall.  Conversely, if the precipitation flag shows rain and this field is missing or zero, it is set to 1.5 (mm).&quot;&#xD;&#xA;liquidPrecipitationDepth;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="42803ad8-786e-48ae-bc3a-0a49edce7694" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="barometricPressure" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1900">
+      <Symbol value="// &quot;This is the hourly weather station pressure in Pa. Valid values range from 31,000 to 120,000... Missing value for this field is 999999.&quot;&#xD;&#xA;barometricPressure;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="32f08bb8-e5d2-46f3-afbf-4ce8d5917225" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="modelYear" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1995">
+      <Symbol value="// The year from which the hourly data has been extracted. EPW files are synthesized from real recorded data from different years in a given climate. This is done to ensure that, for each month, the selected data is statistically representative of the average monthly conditions over the 18+ years of recording the data. Different EPW files will be synthesized from different years depeding on whether they are TMY (Typical Meteorological Year), TMY2, TMY3, AMY (Actual Meteorological Year) or other.&#xD;&#xA;modelYear;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <PythonNodeModels.PythonNode guid="de3df082-ef89-4e44-8761-f9f14ca025c4" inputcount="2" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="Error report" type="PythonNodeModels.PythonNode" x="150" y="380">
+      <PortInfo default="false" index="0"/>
+      <PortInfo default="false" index="1"/>
+      <Script>
+        
+&quot;&quot;&quot;Report errors&quot;&quot;&quot;
+importErr, runErr = IN
+errors = []
+
+if importErr and str(importErr).startswith(&quot;ERROR:&quot;):
+    errors.append(importErr)
+
+if runErr and str(runErr).startswith(&quot;ERROR:&quot;):
+    errors.append(runErr)
+
+if len(errors)==0:
+    OUT = &quot;All good! Vvizzzz.&quot;
+else:
+    OUT = &quot;\n&quot;.join(errors)
+
+      </Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="ffe2d02a-1c19-4732-814f-88db1907f974" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="ERRReport" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="380">
+      <Symbol value="// Report&#xD;&#xA;ERRReport;"/>
+      <PortInfo default="false" index="0"/>
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel end="53e4fb25-9a0a-44cd-888c-fd6ab2f99c45" end_index="0" portType="0" start="b904af26-ef46-4f32-bcd9-3542a86ca8a1" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="53e4fb25-9a0a-44cd-888c-fd6ab2f99c45" end_index="1" portType="0" start="b904af26-ef46-4f32-bcd9-3542a86ca8a1" start_index="1"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="92ace648-5a75-4722-8bbe-76eef038bb6b" end_index="0" portType="0" start="53e4fb25-9a0a-44cd-888c-fd6ab2f99c45" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="92ace648-5a75-4722-8bbe-76eef038bb6b" end_index="1" portType="0" start="2b30f326-162f-4838-aed8-931c8f58bd4e" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="632a2c8d-e089-4990-b969-036a93664de3" end_index="0" portType="0" start="92ace648-5a75-4722-8bbe-76eef038bb6b" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="f34e5993-2f77-4de0-9532-4d7e694a48da" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="12d98cd1-33df-4bd1-b5f7-78e88d800227" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="1"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="d1ffc188-3b37-41b8-825a-d751197d9efb" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="2"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="4b87a894-c1a7-4f71-a1cb-3ef87345e329" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="3"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="92b03c11-a2b7-4f1c-80f1-301e9eeec3ef" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="4"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="d26963ea-f181-419f-8e67-5d97a11a1604" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="5"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="348e4f3a-2162-4a27-9f4a-092c5e114e3e" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="6"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="15d4cd05-0ba4-4f10-b2ce-6e98fee1bb9a" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="7"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="cc6b12ae-0bc1-448a-8bbe-c9bc3647495f" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="8"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="045d3fa8-5774-4adb-90a1-83f46cf1d875" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="9"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="b05973e8-c8d0-4a9e-ae31-23a3b3be87b6" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="10"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="2d328641-d21b-4191-b5ac-b662786665e3" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="11"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="3f75cd41-2238-4b7a-9f2e-f2928ef85978" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="12"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="099a43e5-e89d-4b93-9271-97a8af079630" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="13"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="fb16ee97-ed33-44e2-92c4-3af65b8d9b75" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="14"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="42803ad8-786e-48ae-bc3a-0a49edce7694" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="15"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="32f08bb8-e5d2-46f3-afbf-4ce8d5917225" end_index="0" portType="0" start="632a2c8d-e089-4990-b969-036a93664de3" start_index="16"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="de3df082-ef89-4e44-8761-f9f14ca025c4" end_index="0" portType="0" start="53e4fb25-9a0a-44cd-888c-fd6ab2f99c45" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="de3df082-ef89-4e44-8761-f9f14ca025c4" end_index="1" portType="0" start="92ace648-5a75-4722-8bbe-76eef038bb6b" start_index="0"/>
+    <Dynamo.Graph.Connectors.ConnectorModel end="ffe2d02a-1c19-4732-814f-88db1907f974" end_index="0" portType="0" start="de3df082-ef89-4e44-8761-f9f14ca025c4" start_index="0"/>
+  </Connectors>
+  <Notes/>
+  <Annotations/>
+  <Presets/>
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-34.00" eyeY="-34.00" eyeZ="21.19" lookX="-14.19" lookY="-43.06" lookZ="-41.65" upX="-0.17" upY="0.85" upZ="-0.50"/>
+  </Cameras>
+</Workspace>
