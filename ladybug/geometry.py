@@ -1,6 +1,9 @@
-import clr
-clr.AddReference('ProtoGeometry')
-import Autodesk.DesignScript.Geometry as dg
+try:
+    import clr
+    clr.AddReference('ProtoGeometry')
+    import Autodesk.DesignScript.Geometry as dg
+except ImportError:
+    pass
 
 
 def point(x, y, z):

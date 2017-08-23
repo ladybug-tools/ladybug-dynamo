@@ -1,7 +1,10 @@
 """Methods for drawing sunpath geometry."""
-import clr
-clr.AddReference('ProtoGeometry')
-import Autodesk.DesignScript.Geometry as adg
+try:
+    import clr
+    clr.AddReference('ProtoGeometry')
+    import Autodesk.DesignScript.Geometry as adg
+except ImportError:
+    pass
 
 
 def analemmaCurves(suns, origin, radius):
