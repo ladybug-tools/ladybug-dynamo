@@ -20,9 +20,9 @@ Latest API documentation is available at [this page](http://ladybug-tools.github
 
 ## Road Map
 - [x] First release for proof of concept.
-- [ ] Second release with enhanced performance.
+- [x] Second release with enhanced performance.
 - [ ] Improve Revit integration (e.g. load data based on Revit location, etc.).
 - [ ] Add visualization components. This is dependant on Dynamo's features for visualization 
 
 ## dependencies
-[ladybug-core](https://github.com/ladybug-tools/ladybug) for all the non-geometrical calculations. ladybug-core is licensed under GPLV3.
+[ladybug](https://github.com/ladybug-tools/ladybug). ladybug-core is licensed under GPLV3.
