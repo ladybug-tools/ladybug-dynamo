@@ -1,56 +1,38 @@
 # assign inputs
-north_, _location, _hoys_, _centerPt_, _scale_, _sunScale_, _annualSunpath_ = IN
-sunVectors = sunAltitudes = sunAzimuths = sunSpheres = geometry = centerPt = sunPositions = hoys = datetimes = None
-
+north_, _location, _hoys_, _centerPt_, _scale_, _sunScale_, _annual_ = IN
+vectors = altitudes = azimuths = sunPts = analemma = compass = daily = centerPt = hoys = datetimes = None
 
 try:
-    from ladybug.dt import DateTime
     from ladybug.sunpath import Sunpath
+    import ladybug.geometry as geo
 except ImportError as e:
     raise ImportError('\nFailed to import ladybug:\n\t{}'.format(e))
 
 if _location:
-
+    
     daylightSavingPeriod = None  # temporary until we fully implement it
-    
+    _hoys_ = _hoys_ or ()
+
     # initiate sunpath based on location
-    sp = Sunpath.fromLocation(_location, north_, daylightSavingPeriod,
-        basePoint=_centerPt_, scale=_scale_, sunScale=_sunScale_)
-    
-    # draw suns
-    months = {}
-    for HOY in _hoys_:
-        dt = LBDateTime.fromHOY(HOY)
-        sp.drawSunFromDateTime(dt)
-    
-    # draw daily sunpath curves
+    sp = Sunpath.fromLocation(_location, north_, daylightSavingPeriod)
+
     # draw sunpath geometry
-    sp.drawSunpath(_hoys_, annual=_annualSunpath_)
-    #if not _annualSunpath_ and dt.DOY not in months:
-    #    # add this day
-    #    sp.drawDailySunpath(dt.month, dt.day)
-    #    months[dt.DOY] = dt  # keep track of days not to redraw them
-
-    # generate outputs
-    suns = sp.suns
-    sunCount = len(suns)
-    sunVectors = range(sunCount)
-    sunAltitudes = range(sunCount)
-    sunAzimuths = range(sunCount)
-    sunPositions = range(sunCount)
-    sunDateTimes = range(sunCount)
+    sunpathGeo = \
+        sp.drawSunpath(_hoys_, _centerPt_, _scale_, _sunScale_, _annual_)
     
-    for count, sun in enumerate(suns):
-        sunVectors[count] = sun.vector
-        sunAltitudes[count] = sun.altitude
-        sunAzimuths[count] = sun.azimuth
-        sunPositions[count] = sun.position
-        sunDateTimes[count] = sun.datetime
+    analemma = sunpathGeo.analemmaCurves
+    compass = sunpathGeo.compassCurves
+    daily = sunpathGeo.dailyCurves
     
-    geometries = sp.geometries.values()
-    sunSpheres = sp.sunGeometries
-    centerPoint = sp.basePoint
+    sunPts = sunpathGeo.sunGeos
 
+    suns = sunpathGeo.suns
+    vectors = (geo.vector(*sun.sunVector) for sun in suns)
+    altitudes = (sun.altitude for sun in suns)
+    azimuths = (sun.azimuth for sun in suns)
+    centerPt = _centerPt_ or geo.point(0, 0, 0)
+    hoys = (sun.hoy for sun in suns)
+    datetimes = (sun.datetime for sun in suns)
 
 # assign outputs to OUT
-OUT = sunVectors, sunAltitudes, sunAzimuths, sunSpheres, geometry, centerPt, sunPositions, hoys, datetimes
+OUT = vectors, altitudes, azimuths, sunPts, analemma, compass, daily, centerPt, hoys, datetimes

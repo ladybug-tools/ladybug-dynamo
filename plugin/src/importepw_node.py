@@ -1,6 +1,6 @@
 # assign inputs
 _epwFile = IN[0]
-Output = location = dryBulbTemperature = dewPointTemperature = relativeHumidity = windSpeed = windDirection = directNormalRadiation = diffuseHorizontalRadiation = globalHorizontalRadiation = directNormalIlluminance = diffuseHorizontalIlluminance = globalHorizontalIlluminance = totalSkyCover = liquidPrecipitationDepth = barometricPressure = modelYear = None
+location = dryBulbTemperature = dewPointTemperature = relativeHumidity = windSpeed = windDirection = directNormalRadiation = diffuseHorizontalRadiation = globalHorizontalRadiation = directNormalIlluminance = diffuseHorizontalIlluminance = globalHorizontalIlluminance = totalSkyCover = liquidPrecipitationDepth = barometricPressure = modelYear = None
 
 try:
     import ladybug.epw as epw
@@ -28,4 +28,4 @@ if _epwFile:
     modelYear = output.wrap(epwData.years.values)
 
 # assign outputs to OUT
-OUT = Output, location, dryBulbTemperature, dewPointTemperature, relativeHumidity, windSpeed, windDirection, directNormalRadiation, diffuseHorizontalRadiation, globalHorizontalRadiation, directNormalIlluminance, diffuseHorizontalIlluminance, globalHorizontalIlluminance, totalSkyCover, liquidPrecipitationDepth, barometricPressure, modelYear
+OUT = location, dryBulbTemperature, dewPointTemperature, relativeHumidity, windSpeed, windDirection, directNormalRadiation, diffuseHorizontalRadiation, globalHorizontalRadiation, directNormalIlluminance, diffuseHorizontalIlluminance, globalHorizontalIlluminance, totalSkyCover, liquidPrecipitationDepth, barometricPressure, modelYear
