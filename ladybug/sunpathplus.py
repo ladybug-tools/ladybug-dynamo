@@ -7,7 +7,7 @@ except ImportError:
     pass
 
 
-def analemmaCurves(suns, origin, radius):
+def analemma_curves(suns, origin, radius):
     """Create analemma curves.
 
     Args:
@@ -36,38 +36,38 @@ def analemmaCurves(suns, origin, radius):
             yield adg.NurbsCurve.ByPoints(pts)
 
 
-def baseCurves(origin, radius, northAngle):
+def base_curves(origin, radius, north_angle):
     origin = adg.Point.ByCoordinates(*origin)
-    innerCircle = adg.Circle.ByCenterPointRadius(origin, radius)
-    middleCircle = adg.Circle.ByCenterPointRadius(origin, 1.02 * radius)
-    outterCircle = adg.Circle.ByCenterPointRadius(origin, 1.08 * radius)
+    inner_circle = adg.Circle.ByCenterPointRadius(origin, radius)
+    middle_circle = adg.Circle.ByCenterPointRadius(origin, 1.02 * radius)
+    outter_circle = adg.Circle.ByCenterPointRadius(origin, 1.08 * radius)
 
-    baseCurves = []
+    base_curves = []
     # create North Arrow
-    startVector = adg.Vector.Scale(adg.Vector.YAxis(), radius)
-    startPt = adg.Point.Add(origin, startVector)
-    endVector = adg.Vector.Scale(adg.Vector.YAxis(), 1.12 * radius)
-    endPt = adg.Point.Add(origin, endVector)
-    northArrow = adg.Line.ByStartPointEndPoint(startPt, endPt)
+    start_vector = adg.Vector.Scale(adg.Vector.YAxis(), radius)
+    start_pt = adg.Point.Add(origin, start_vector)
+    end_vector = adg.Vector.Scale(adg.Vector.YAxis(), 1.12 * radius)
+    end_pt = adg.Point.Add(origin, end_vector)
+    north_arrow = adg.Line.ByStartPointEndPoint(start_pt, end_pt)
     # draw it for the 4 direction
     for angle in range(0, 360, 90):
-        baseCurves.append(northArrow.Rotate(adg.Plane.XY(),
-                                            angle + northAngle))
+        base_curves.append(north_arrow.Rotate(adg.Plane.XY(),
+                                              angle + north_angle))
 
     # create mid curves
-    endVector = adg.Vector.Scale(adg.Vector.YAxis(), 1.08 * radius)
-    endPt = adg.Point.Add(origin, endVector)
-    shortArrow = adg.Line.ByStartPointEndPoint(startPt, endPt)
+    end_vector = adg.Vector.Scale(adg.Vector.YAxis(), 1.08 * radius)
+    end_pt = adg.Point.Add(origin, end_vector)
+    short_arrow = adg.Line.ByStartPointEndPoint(start_pt, end_pt)
     # draw it for the 4 direction
     for angle in range(0, 360, 30):
         if angle % 90 != 0:
-            baseCurves.append(
-                shortArrow.Rotate(adg.Plane.XY(), angle + northAngle)
+            base_curves.append(
+                short_arrow.Rotate(adg.Plane.XY(), angle + north_angle)
             )
-    return [innerCircle, middleCircle, outterCircle] + baseCurves
+    return [inner_circle, middle_circle, outter_circle] + base_curves
 
 
-def dailyCurves(suns, origin, radius):
+def daily_curves(suns, origin, radius):
     """Create daily sunpath curves."""
     origin = adg.Point.ByCoordinates(*origin)
     for day, isArc in suns:
@@ -86,7 +86,7 @@ def dailyCurves(suns, origin, radius):
                 yield adg.Circle.ByThreePoints(*pts)
 
 
-def sunGeometry(suns, origin, radius):
+def sun_geometry(suns, origin, radius):
     """Get sun geometries as points."""
     origin = adg.Point.ByCoordinates(*origin)
     return tuple(
