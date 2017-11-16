@@ -9,8 +9,8 @@ except ImportError as e:
     raise ImportError('\nFailed to import ladybug:\n\t{}'.format(e))
 
 legendPar = lpar.LegendParameters(
-    legendRange=_domain_, numberOfSegments=11,
-    colors=_colors_, chartType=_cType_
+    legend_range=_domain_, number_of_segments=11,
+    colors=_colors_, chart_type=_cType_
 )
 
 # assign outputs to OUT

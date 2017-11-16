@@ -24,7 +24,7 @@ def list_to_tree(input):
     return input
 
 
-def color_tocolor(colors):
+def color_to_color(colors):
     """Convert a ladybug color into Dynamo color."""
     if not hasattr(colors, '__iter__'):
         colors = (colors,)

@@ -25,7 +25,7 @@ def analemma_curves(suns, origin, radius):
                     origin,
                     adg.Vector.Scale(
                         adg.Vector.ByCoordinates(
-                            sun.sunVector.x, sun.sunVector.y, sun.sunVector.z),
+                            sun.sun_vector.x, sun.sun_vector.y, sun.sun_vector.z),
                         -radius))
                 for sun in hour)
         except AttributeError:
@@ -70,16 +70,16 @@ def base_curves(origin, radius, north_angle):
 def daily_curves(suns, origin, radius):
     """Create daily sunpath curves."""
     origin = adg.Point.ByCoordinates(*origin)
-    for day, isArc in suns:
+    for day, is_arc in suns:
         pts = tuple(
             adg.Point.Add(
                 origin,
                 adg.Vector.Scale(
                     adg.Vector.ByCoordinates(
-                        sun.sunVector.x, sun.sunVector.y, sun.sunVector.z),
+                        sun.sun_vector.x, sun.sun_vector.y, sun.sun_vector.z),
                     -radius))
             for sun in day)
-        if isArc:
+        if is_arc:
             yield adg.Arc.ByThreePoints(*pts)
         else:
             if pts[2].Z > 0:
@@ -94,6 +94,6 @@ def sun_geometry(suns, origin, radius):
             origin,
             adg.Vector.Scale(
                 adg.Vector.ByCoordinates(
-                    sun.sunVector.x, sun.sunVector.y, sun.sunVector.z),
+                    sun.sun_vector.x, sun.sun_vector.y, sun.sun_vector.z),
                 -radius))
         for sun in suns)

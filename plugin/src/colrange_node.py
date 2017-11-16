@@ -10,7 +10,7 @@ except ImportError as e:
 
 _index = _index or 0
 cs = col.Colorset()
-colors = output.colorTocolor(cs[_index])
+colors = output.color_to_color(cs[_index])
 
 
 # assign outputs to OUT
