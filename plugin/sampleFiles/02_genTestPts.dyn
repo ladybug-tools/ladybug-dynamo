@@ -51,12 +51,12 @@
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="cfad05f2-ed42-42db-a67e-dd7fd03ae20e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1368.98721408889" y="775.375862178033" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="0;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="cfad05f2-ed42-42db-a67e-dd7fd03ae20e" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1373.67415833804" y="776.157019552891" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="0;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="dd482bdb-ac01-49b9-8f90-c151a0223232" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Legend Parameters" x="1809.13028939062" y="718.933077550632" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="True" />
       <PortInfo index="1" default="True" />
       <PortInfo index="2" default="True" />
-      <ID value="9c5da907-298c-46b2-853c-d261e966512b" />
+      <ID value="4307a7a2-88a4-490a-b5bc-1f115ae3772c" />
       <Name value="Legend Parameters" />
       <Description value="Use legend parameter to set up results visualization setting" />
       <Inputs>
@@ -81,7 +81,7 @@
       <PortInfo index="0" default="True" />
       <PortInfo index="1" default="True" />
       <PortInfo index="2" default="True" />
-      <ID value="9c5da907-298c-46b2-853c-d261e966512b" />
+      <ID value="4307a7a2-88a4-490a-b5bc-1f115ae3772c" />
       <Name value="Legend Parameters" />
       <Description value="Use legend parameter to set up results visualization setting" />
       <Inputs>
@@ -122,7 +122,7 @@
     </CoreNodeModels.CreateList>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="cf5d34b8-c78b-4fd4-b5a7-caecd25d7924" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Color Range" x="1317.56787503013" y="1202.06281094311" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
-      <ID value="d8c48a10-e24a-4386-abc3-bb21a0a52e3a" />
+      <ID value="68e78fad-0d8a-43da-9ebb-45e094681fdc" />
       <Name value="Color Range" />
       <Description value="Use this component to access a library of typical gradients useful throughout Ladybug. &#xD;&#xA;The output from this component should be plugged into the colors_ input of the&#xD;&#xA;&quot;Legend Parameters&quot; component.&#xD;&#xA;For an image of each of the gardients in the library, check here:&#xD;&#xA;https://github.com/mostaphaRoudsari/ladybug/blob/master/resources/gradients.jpg&#xD;&#xA;-" />
       <Inputs>
@@ -136,7 +136,7 @@
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="3eb4da97-7746-44c9-acc3-b37682b88e92" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Generate Colors" x="2600.086149066" y="412.530730322217" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="True" />
-      <ID value="b5d3d7e7-c64a-424d-a3b2-de1a29c59203" />
+      <ID value="fc7f1dc1-3a79-4641-951f-3a79ba792c69" />
       <Name value="Generate Colors" />
       <Description value="Use this component to generate colors based on values and legend parameters.&#xD;&#xA;-" />
       <Inputs>
@@ -157,7 +157,7 @@
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="e30387a1-3099-40c2-b037-ba1594793e19" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Color Range" x="1501.16163284226" y="773.030679527432" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
-      <ID value="d8c48a10-e24a-4386-abc3-bb21a0a52e3a" />
+      <ID value="68e78fad-0d8a-43da-9ebb-45e094681fdc" />
       <Name value="Color Range" />
       <Description value="Use this component to access a library of typical gradients useful throughout Ladybug. &#xD;&#xA;The output from this component should be plugged into the colors_ input of the&#xD;&#xA;&quot;Legend Parameters&quot; component.&#xD;&#xA;For an image of each of the gardients in the library, check here:&#xD;&#xA;https://github.com/mostaphaRoudsari/ladybug/blob/master/resources/gradients.jpg&#xD;&#xA;-" />
       <Inputs>
@@ -190,6 +190,7 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="26021a0a-aeb8-49ec-a527-c0f2a625c826" start_index="0" end="70ebd375-8e87-4e89-a207-a89de405388c" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b633bfb1-b972-43b9-bc6c-8edf2d3bae50" start_index="0" end="3eb4da97-7746-44c9-acc3-b37682b88e92" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="cfad05f2-ed42-42db-a67e-dd7fd03ae20e" start_index="0" end="e30387a1-3099-40c2-b037-ba1594793e19" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="dd482bdb-ac01-49b9-8f90-c151a0223232" start_index="0" end="3eb4da97-7746-44c9-acc3-b37682b88e92" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="0f490ea5-24b2-4f8d-ae33-cf72c38c2737" start_index="0" end="dd482bdb-ac01-49b9-8f90-c151a0223232" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f792b6e2-55b5-479a-8d9d-7c550186a8bd" start_index="0" end="cf5d34b8-c78b-4fd4-b5a7-caecd25d7924" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="ae92fa19-799b-49d2-97f1-4aeed95cc57a" start_index="0" end="02a907b9-573f-470d-8edb-1e03fcf58d93" end_index="0" portType="0" />

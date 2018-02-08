@@ -22,7 +22,7 @@ if _location:
     
     analemma = sunpath_geo.analemma_curves
     compass = sunpath_geo.compass_curves
-    # daily = sunpath_geo.daily_curves
+    daily = sunpath_geo.daily_curves
     
     sunPts = sunpath_geo.sun_geos
 
