@@ -16,7 +16,7 @@ def wrap(input):
     return input
 
 
-def listToTree(input):
+def list_to_tree(input):
     """Replicate method for Grashopper library.
 
     This is a workaround  to use th exact same code in bot libraries.
@@ -24,7 +24,7 @@ def listToTree(input):
     return input
 
 
-def colorTocolor(colors):
+def color_to_color(colors):
     """Convert a ladybug color into Dynamo color."""
     if not hasattr(colors, '__iter__'):
         colors = (colors,)

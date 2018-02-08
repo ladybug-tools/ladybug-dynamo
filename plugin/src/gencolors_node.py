@@ -10,7 +10,7 @@ except ImportError as e:
 
 if _values:
     legendPar = legendPar_ or lpar.LegendParameters()
-    colors = output.colorTocolor(legendPar.calculateColors(_values))
+    colors = output.color_to_color(legendPar.calculate_colors(_values))
 
 
 # assign outputs to OUT

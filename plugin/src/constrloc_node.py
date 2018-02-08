@@ -7,8 +7,7 @@ try:
 except ImportError as e:
     raise ImportError('\nFailed to import ladybug:\n\t{}'.format(e))
 
-location = loc.Location(_name_, '', _latitude_, _longitude_, _timeZone_, _elevation_)
-
+location = loc.Location(_name_, '-', _latitude_, _longitude_, _timeZone_, _elevation_)
 
 # assign outputs to OUT
 OUT = (location,)
