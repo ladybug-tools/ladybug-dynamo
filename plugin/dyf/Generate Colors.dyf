@@ -11,23 +11,18 @@
 &quot;&quot;&quot;Find packages from Dynamo folder and prepare the code.&quot;&quot;&quot;
 import clr
 from System import AppDomain, Environment, IO
+from System.Reflection import Assembly
 
 def tryGetPluginPath(plugin):
     &quot;&quot;&quot;Try to get path to plugin folder.&quot;&quot;&quot;
-    clr.AddReference('ProtoGeometry')
-    _loc = tuple(a.Location
-                 for a in AppDomain.CurrentDomain.GetAssemblies()
-                 if 'ProtoGeometry' in a.FullName)
-
-    try:
-        _ver = float(_loc[0].split('\\')[-2])
-    except:
-        _ver = float(_loc[0].split('\\')[-2].split(' ')[-1])
+    dynamo = Assembly.Load('DynamoCore')
+    dynamoV = dynamo.GetName().Version.ToString().split('.')
+    _ver = float(dynamoV[0] + '.' + dynamoV[1])
 
     assert _ver &gt;= 1.2, 'You need Dynamo 1.2 or higher to use this plugin!'
 
     _appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-    _dynamoPath = '%s\\%.1f' % (('\\').join(_loc[0].split('\\')[-4:-2]), float(_loc[0].split('\\')[-2]))
+    _dynamoPath = '%s\\%s\\%.1f' % ('Dynamo', 'Dynamo Core', _ver)
     # if the assembly is cached put Revit folder first, and then try to load it from core
     _dynamoPaths = (_dynamoPath.replace('Dynamo Core', 'Dynamo Revit'),
                     _dynamoPath.replace('Dynamo Revit', 'Dynamo Core'))
