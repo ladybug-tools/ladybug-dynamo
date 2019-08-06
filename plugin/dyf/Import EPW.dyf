@@ -1,225 +1,1092 @@
-<Workspace Category="Ladybug.00 :: Ladybug" Description="Import epw.
--" ID="7a57d081-be6e-40ef-88d8-eb04cf69e030" Name="Import EPW" Version="1.2.0.2690" X="400" Y="-100" zoom="0.5">
-  <NamespaceResolutionMap/>
-  <Elements>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel CodeText="&quot;Ladybug&quot;;&#xA;&quot;importepw_node.py&quot;;" ShouldFocus="false" guid="8f2fe15c-d070-41c9-8791-9352817796e4" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="input python script" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" x="-750" y="390"/>
-    <PythonNodeModels.PythonNode guid="ba087142-10f2-4f55-9683-57046cbbd86d" inputcount="2" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="import and prepare py code" type="PythonNodeModels.PythonNode" x="-355" y="385">
-      <PortInfo default="false" index="0"/>
-      <PortInfo default="false" index="1"/>
-      <Script>
-        
-&quot;&quot;&quot;Find packages from Dynamo folder and prepare the code.&quot;&quot;&quot;
-import clr
-from System import AppDomain, Environment, IO
-from System.Reflection import Assembly
-
-def tryGetPluginPath(plugin):
-    &quot;&quot;&quot;Try to get path to plugin folder.&quot;&quot;&quot;
-    dynamo = Assembly.Load('DynamoCore')
-    dynamoV = dynamo.GetName().Version.ToString().split('.')
-    _ver = float(dynamoV[0] + '.' + dynamoV[1])
-
-    assert _ver &gt;= 1.2, 'You need Dynamo 1.2 or higher to use this plugin!'
-
-    _appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-    _dynamoPath = '%s\\%s\\%.1f' % ('Dynamo', 'Dynamo Core', _ver)
-    # if the assembly is cached put Revit folder first, and then try to load it from core
-    _dynamoPaths = (_dynamoPath.replace('Dynamo Core', 'Dynamo Revit'),
-                    _dynamoPath.replace('Dynamo Revit', 'Dynamo Core'))
-    _settingsFilename = 'DynamoSettings.xml'
-
-    pkf = []
-    for path in _dynamoPaths:
-        settingsFile = IO.Path.Combine(_appdata, path, _settingsFilename)
-        if IO.File.Exists(settingsFile):
-            with open(settingsFile, 'rb') as outf:
-                for line in outf:
-                    if line.strip().startswith('&lt;CustomPackageFolders&gt;'):
-                        for l in outf:
-                            if l.strip().startswith('&lt;/CustomPackageFolders&gt;'):
-                                break
-                            else:
-                                pkf.append(l.replace('&lt;/string&gt;', '').replace('&lt;string&gt;', '').strip())
-
-    for p in pkf:
-        pp = IO.Path.Combine(p, 'packages', plugin, 'extra')
-        # In case of custom folders user may put honeybee under the root folder
-        ppp = IO.Path.Combine(p, plugin, 'extra')
-        if IO.Directory.Exists(pp):
-            return pp
-        elif IO.Directory.Exists(ppp):
-            return ppp
-
-
-try:
-    plugin, filename = IN
-
-    p = tryGetPluginPath(plugin)
-
-    if not p:
-        raise ImportError('{} is not installed! Install it from package manager.'.format(plugin))
-
-	# import the file and wrap it into sys.append
-    f = IO.Path.Combine(p, 'nodesrc', filename)
-    with open(f, 'rb') as inf:
-        source = '    '.join(inf.readlines())
-
-    header = 'try:\n    import sys\n' + \
-        '    sys.path.append(r\'{}\')\n\n'.format(p) + \
-        '    sys.path.append(r\'C:\Program Files (x86)\IronPython 2.7\Lib\')\n\n' + \
-        '    '
-
-    footer = '\nexcept Exception, e:\n' + \
-        '    import traceback\n' + \
-        '    OUT = &quot;ERROR:\\n\\t{}&quot;.format(str(e)) + \\\n' + \
-        '    &quot;\\n\\nIf you think this is a bug submit an issue on github.\\n&quot; + \\\n' + \
-        '    &quot;https://github.com/ladybug-tools/ladybug-dynamo/issues\\n&quot; +  \\\n' + \
-        '    &quot;and include below error message:\\n\\n&quot; + \\\n' + \
-        '    &quot;{}&quot;.format(traceback.format_exc())\n'
-
-    OUT = header + source + footer
-
-except Exception, e:
-    import sys
-    sys.path.append(r'C:\Program Files (x86)\IronPython 2.7\Lib')
-    import traceback
-    OUT = &quot;ERROR:\n\t{}&quot;.format(str(e)) + \
-        &quot;\n\nIf you think this is a bug submit an issue on github.\n&quot; + \
-        &quot;https://github.com/ladybug-tools/ladybug-dynamo/issues\n&quot; +  \
-        &quot;and include below error message:\n\n&quot; + \
-        &quot;{}&quot;.format(traceback.format_exc())
-
-      </Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonStringNode guid="2e98635e-cb2c-4bb5-93c5-c6d86fe436d8" inputcount="2" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="core" type="PythonNodeModels.PythonStringNode" x="-75" y="460">
-      <PortInfo default="false" index="0"/>
-      <PortInfo default="false" index="1"/>
-    </PythonNodeModels.PythonStringNode>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5882095e-0eb0-448b-bf74-5beac60d1b68" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="_epwFile" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" x="-750" y="475">
-      <Symbol value="// An .epw file path on your system as a string.&#xD;&#xA;_epwFile: string;"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel CodeText="out[0];&#xA;out[1];&#xA;out[2];&#xA;out[3];&#xA;out[4];&#xA;out[5];&#xA;out[6];&#xA;out[7];&#xA;out[8];&#xA;out[9];&#xA;out[10];&#xA;out[11];&#xA;out[12];&#xA;out[13];&#xA;out[14];&#xA;out[15];" ShouldFocus="false" guid="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="decompose outputs" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" x="150" y="515"/>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="483cdcae-2408-4d1f-a133-f2282a01af5b" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="location" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="475">
-      <Symbol value="// A list of text summarizing the location data in the weather file (use this to construct the sun path).&#xD;&#xA;location;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fac9cf51-440a-416f-a546-3336d807b953" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="dryBulbTemperature" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="570">
-      <Symbol value="// &quot;This is the houlry dry bulb temperature, in C. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from 70 C to 70 C. Missing value for this field is 99.9.&quot;&#xD;&#xA;dryBulbTemperature;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="809006cd-f588-42d0-b853-4229b91844d8" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="dewPointTemperature" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="665">
-      <Symbol value="// &quot;This is the hourly dew point temperature, in C. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from 70 C to 70 C. Missing value for this field is 99.9.&quot;&#xD;&#xA;dewPointTemperature;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="460bf97c-4d67-4a8a-bdcc-6a3d2b7eae00" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="relativeHumidity" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="760">
-      <Symbol value="// &quot;This is the hourly Relative Humidity in percent. Valid values range from 0% to 110%. Missing value for this field is 999.&quot;&#xD;&#xA;relativeHumidity;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a4acc40b-fc47-4886-9fd0-48311fb9189b" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="windSpeed" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="855">
-      <Symbol value="// &quot;This is the hourly wind speed in m/sec. Values can range from 0 to 40. Missing value is 999.&quot;&#xD;&#xA;windSpeed;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="989b841c-1f72-4a9e-bd83-c08dd75f1f40" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="windDirection" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="950">
-      <Symbol value="// &quot;This is the hourly Wind Direction in degrees where the convention is that North=0.0, East=90.0, South=180.0, West=270.0. (If wind is calm for the given hour, the direction equals zero.) Values can range from 0 to 360. Missing value is 999.&quot;&#xD;&#xA;windDirection;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="e11c645f-ce6b-44dc-a69e-9b3949519936" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="directNormalRadiation" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1045">
-      <Symbol value="// &quot;This is the hourly Direct Normal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) If the field is missing ( 9999) or invalid (&lt;0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.&quot;&#xD;&#xA;directNormalRadiation;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="77e3d099-ddd7-41b7-abfe-4e943b87ea0c" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="diffuseHorizontalRadiation" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1140">
-      <Symbol value="// &quot;This is the hourly Diffuse Horizontal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) If the field is missing ( 9999) or invalid (&lt;0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.&quot;&#xD;&#xA;diffuseHorizontalRadiation;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="6dc83897-9882-49f9-8c19-55b125675794" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="globalHorizontalRadiation" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1235">
-      <Symbol value="// &quot;This is the hourly Global Horizontal Radiation in Wh/m2. (Total amount of direct and diffuse solar radiation in Wh/m2 received on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 9999.&quot;&#xD;&#xA;globalHorizontalRadiation;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c42f4292-ddee-4c98-87fa-a54c140afd05" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="directNormalIlluminance" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1330">
-      <Symbol value="// &quot;This is the hourly Direct Normal Illuminance in lux. (Average amount of illuminance in hundreds of lux received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of &gt;= 999900.&quot;&#xD;&#xA;directNormalIlluminance;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="582bc2e0-d182-419b-9559-2e182b22c7f7" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="diffuseHorizontalIlluminance" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1425">
-      <Symbol value="// &quot;This is the hourly Diffuse Horizontal Illuminance in lux. (Average amount of illuminance in hundreds of lux received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of &gt;= 999900.&quot;&#xD;&#xA;diffuseHorizontalIlluminance;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="d509f7ed-12fb-46bc-ad0d-e97595dfa3fd" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="globalHorizontalIlluminance" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1520">
-      <Symbol value="// &quot;This is the hourly Global Horizontal Illuminance in lux. (Average total amount of direct and diffuse illuminance in hundreds of lux received on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of &gt;= 999900.&quot;&#xD;&#xA;globalHorizontalIlluminance;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="9d600e28-c750-4116-90fe-1a7437ae0fc1" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="totalSkyCover" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1615">
-      <Symbol value="// &quot;This is the fraction for total sky cover (tenths of coverage). (i.e. 1 is 1/10 covered. 10 is total coverage). (Amount of sky dome in tenths covered by clouds or obscuring phenomena at the hour indicated at the time indicated.) Minimum value is 0; maximum value is 10; missing value is 99.&quot;&#xD;&#xA;totalSkyCover;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f7c02055-79d2-4a07-9834-97d7b3263571" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="liquidPrecipitationDepth" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1710">
-      <Symbol value="// &quot;The amount of liquid precipitation(mm) observed at the indicated hour for the period indicated in the liquid precipitation quantity field. If this value is not missing, then it is used and overrides the precipitation flag as rainfall.  Conversely, if the precipitation flag shows rain and this field is missing or zero, it is set to 1.5 (mm).&quot;&#xD;&#xA;liquidPrecipitationDepth;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="130a981f-f2b4-4635-ae7f-55bddb19d85a" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="barometricPressure" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1805">
-      <Symbol value="// &quot;This is the hourly weather station pressure in Pa. Valid values range from 31,000 to 120,000... Missing value for this field is 999999.&quot;&#xD;&#xA;barometricPressure;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="294b2f98-09e7-47fa-b15b-e1b7318dce47" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="modelYear" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="1900">
-      <Symbol value="// The year from which the hourly data has been extracted. EPW files are synthesized from real recorded data from different years in a given climate. This is done to ensure that, for each month, the selected data is statistically representative of the average monthly conditions over the 18+ years of recording the data. Different EPW files will be synthesized from different years depeding on whether they are TMY (Typical Meteorological Year), TMY2, TMY3, AMY (Actual Meteorological Year) or other.&#xD;&#xA;modelYear;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-    <PythonNodeModels.PythonNode guid="b53e3147-b361-42a7-a16a-91f05a47a6c1" inputcount="2" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="Error report" type="PythonNodeModels.PythonNode" x="150" y="380">
-      <PortInfo default="false" index="0"/>
-      <PortInfo default="false" index="1"/>
-      <Script>
-        
-&quot;&quot;&quot;Report errors&quot;&quot;&quot;
-importErr, runErr = IN
-errors = []
-
-if importErr and str(importErr).startswith(&quot;ERROR:&quot;):
-    errors.append(importErr)
-
-if runErr and str(runErr).startswith(&quot;ERROR:&quot;):
-    errors.append(runErr)
-
-if len(errors)==0:
-    OUT = &quot;All good! Vvizzzz.&quot;
-else:
-    OUT = &quot;\n&quot;.join(errors)
-
-      </Script>
-    </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="2023d848-1f27-4aef-b193-642ba68c969b" isFrozen="false" isPinned="false" isSelectedInput="true" isUpstreamVisible="true" isVisible="true" lacing="Disabled" nickname="ERRReport" type="Dynamo.Graph.Nodes.CustomNodes.Output" x="380" y="380">
-      <Symbol value="// Report&#xD;&#xA;ERRReport;"/>
-      <PortInfo default="false" index="0"/>
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
-  </Elements>
-  <Connectors>
-    <Dynamo.Graph.Connectors.ConnectorModel end="ba087142-10f2-4f55-9683-57046cbbd86d" end_index="0" portType="0" start="8f2fe15c-d070-41c9-8791-9352817796e4" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="ba087142-10f2-4f55-9683-57046cbbd86d" end_index="1" portType="0" start="8f2fe15c-d070-41c9-8791-9352817796e4" start_index="1"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="2e98635e-cb2c-4bb5-93c5-c6d86fe436d8" end_index="0" portType="0" start="ba087142-10f2-4f55-9683-57046cbbd86d" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="2e98635e-cb2c-4bb5-93c5-c6d86fe436d8" end_index="1" portType="0" start="5882095e-0eb0-448b-bf74-5beac60d1b68" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" end_index="0" portType="0" start="2e98635e-cb2c-4bb5-93c5-c6d86fe436d8" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="483cdcae-2408-4d1f-a133-f2282a01af5b" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="fac9cf51-440a-416f-a546-3336d807b953" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="1"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="809006cd-f588-42d0-b853-4229b91844d8" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="2"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="460bf97c-4d67-4a8a-bdcc-6a3d2b7eae00" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="3"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="a4acc40b-fc47-4886-9fd0-48311fb9189b" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="4"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="989b841c-1f72-4a9e-bd83-c08dd75f1f40" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="5"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="e11c645f-ce6b-44dc-a69e-9b3949519936" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="6"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="77e3d099-ddd7-41b7-abfe-4e943b87ea0c" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="7"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="6dc83897-9882-49f9-8c19-55b125675794" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="8"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="c42f4292-ddee-4c98-87fa-a54c140afd05" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="9"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="582bc2e0-d182-419b-9559-2e182b22c7f7" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="10"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="d509f7ed-12fb-46bc-ad0d-e97595dfa3fd" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="11"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="9d600e28-c750-4116-90fe-1a7437ae0fc1" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="12"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="f7c02055-79d2-4a07-9834-97d7b3263571" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="13"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="130a981f-f2b4-4635-ae7f-55bddb19d85a" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="14"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="294b2f98-09e7-47fa-b15b-e1b7318dce47" end_index="0" portType="0" start="4b7bc71b-9137-41eb-94bb-7ee58660eeaf" start_index="15"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="b53e3147-b361-42a7-a16a-91f05a47a6c1" end_index="0" portType="0" start="ba087142-10f2-4f55-9683-57046cbbd86d" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="b53e3147-b361-42a7-a16a-91f05a47a6c1" end_index="1" portType="0" start="2e98635e-cb2c-4bb5-93c5-c6d86fe436d8" start_index="0"/>
-    <Dynamo.Graph.Connectors.ConnectorModel end="2023d848-1f27-4aef-b193-642ba68c969b" end_index="0" portType="0" start="b53e3147-b361-42a7-a16a-91f05a47a6c1" start_index="0"/>
-  </Connectors>
-  <Notes/>
-  <Annotations/>
-  <Presets/>
-  <Cameras>
-    <Camera Name="Background Preview" eyeX="-34.00" eyeY="-34.00" eyeZ="21.19" lookX="-14.19" lookY="-43.06" lookZ="-41.65" upX="-0.17" upY="0.85" upZ="-0.50"/>
-  </Cameras>
-</Workspace>
+{
+  "Uuid": "7a57d081-be6e-40ef-88d8-eb04cf69e030",
+  "IsCustomNode": true,
+  "Category": "Ladybug.00 :: Ladybug",
+  "Description": "Import epw.\r\n-",
+  "Name": "Import EPW",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Ladybug\";\n\"importepw_node.py\";",
+      "Id": "8f2fe15cd07041c987919352817796e4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2d585c2d5c104d668d9f3bd9cdcab02f",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3423dfc48cad41d2857587f4859fad82",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\r\n        \r\n\"\"\"Find packages from Dynamo folder and prepare the code.\"\"\"\r\nimport clr\r\nfrom System import AppDomain, Environment, IO\r\nfrom System.Reflection import Assembly\r\n\r\ndef tryGetPluginPath(plugin):\r\n    \"\"\"Try to get path to plugin folder.\"\"\"\r\n    dynamo = Assembly.Load('DynamoCore')\r\n    dynamoV = dynamo.GetName().Version.ToString().split('.')\r\n    _ver = float(dynamoV[0] + '.' + dynamoV[1])\r\n\r\n    assert _ver >= 1.2, 'You need Dynamo 1.2 or higher to use this plugin!'\r\n\r\n    _appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)\r\n    _dynamoPath = '%s\\\\%s\\\\%.1f' % ('Dynamo', 'Dynamo Core', _ver)\r\n    # if the assembly is cached put Revit folder first, and then try to load it from core\r\n    _dynamoPaths = (_dynamoPath.replace('Dynamo Core', 'Dynamo Revit'),\r\n                    _dynamoPath.replace('Dynamo Revit', 'Dynamo Core'))\r\n    _settingsFilename = 'DynamoSettings.xml'\r\n\r\n    pkf = []\r\n    for path in _dynamoPaths:\r\n        settingsFile = IO.Path.Combine(_appdata, path, _settingsFilename)\r\n        if IO.File.Exists(settingsFile):\r\n            with open(settingsFile, 'rb') as outf:\r\n                for line in outf:\r\n                    if line.strip().startswith('<CustomPackageFolders>'):\r\n                        for l in outf:\r\n                            if l.strip().startswith('</CustomPackageFolders>'):\r\n                                break\r\n                            else:\r\n                                pkf.append(l.replace('</string>', '').replace('<string>', '').strip())\r\n\r\n    for p in pkf:\r\n        pp = IO.Path.Combine(p, 'packages', plugin, 'extra')\r\n        # In case of custom folders user may put honeybee under the root folder\r\n        ppp = IO.Path.Combine(p, plugin, 'extra')\r\n        if IO.Directory.Exists(pp):\r\n            return pp\r\n        elif IO.Directory.Exists(ppp):\r\n            return ppp\r\n\r\n\r\ntry:\r\n    plugin, filename = IN\r\n\r\n    p = tryGetPluginPath(plugin)\r\n\r\n    if not p:\r\n        raise ImportError('{} is not installed! Install it from package manager.'.format(plugin))\r\n\r\n\t# import the file and wrap it into sys.append\r\n    f = IO.Path.Combine(p, 'nodesrc', filename)\r\n    with open(f, 'rb') as inf:\r\n        source = '    '.join(inf.readlines())\r\n\r\n    header = 'try:\\n    import sys\\n' + \\\r\n        '    sys.path.append(r\\'{}\\')\\n\\n'.format(p) + \\\r\n        '    sys.path.append(r\\'C:\\Program Files (x86)\\IronPython 2.7\\Lib\\')\\n\\n' + \\\r\n        '    '\r\n\r\n    footer = '\\nexcept Exception, e:\\n' + \\\r\n        '    import traceback\\n' + \\\r\n        '    OUT = \"ERROR:\\\\n\\\\t{}\".format(str(e)) + \\\\\\n' + \\\r\n        '    \"\\\\n\\\\nIf you think this is a bug submit an issue on github.\\\\n\" + \\\\\\n' + \\\r\n        '    \"https://github.com/ladybug-tools/ladybug-dynamo/issues\\\\n\" +  \\\\\\n' + \\\r\n        '    \"and include below error message:\\\\n\\\\n\" + \\\\\\n' + \\\r\n        '    \"{}\".format(traceback.format_exc())\\n'\r\n\r\n    OUT = header + source + footer\r\n\r\nexcept Exception, e:\r\n    import sys\r\n    sys.path.append(r'C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\n    import traceback\r\n    OUT = \"ERROR:\\n\\t{}\".format(str(e)) + \\\r\n        \"\\n\\nIf you think this is a bug submit an issue on github.\\n\" + \\\r\n        \"https://github.com/ladybug-tools/ladybug-dynamo/issues\\n\" +  \\\r\n        \"and include below error message:\\n\\n\" + \\\r\n        \"{}\".format(traceback.format_exc())\r\n\r\n      ",
+      "VariableInputPorts": true,
+      "Id": "ba08714210f24f55968357046cbbd86d",
+      "Inputs": [
+        {
+          "Id": "2a23555c8d384444bb8c9f9bb2738894",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "716a8c107ca741a5b558796bfc14e1fe",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "42b471f049ad498e9bec58d0c99b8dab",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "2e98635ecb2c4bb593c5c6d86fe436d8",
+      "Inputs": [
+        {
+          "Id": "f947890781a24893a733c2967a971e0a",
+          "Name": "script",
+          "Description": "Python script to run.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "86a41319acdb48b49488b7dbea2aa66e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "54de220397dc4e52bb83fe3669498eee",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs a IronPython script from a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "_epwFile",
+        "TypeName": "string",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": " An .epw file path on your system as a string."
+      },
+      "Id": "5882095e0eb0448bbf745beac60d1b68",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "58ba7fb59a8b49e38378eef56b03f811",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "out[0];\nout[1];\nout[2];\nout[3];\nout[4];\nout[5];\nout[6];\nout[7];\nout[8];\nout[9];\nout[10];\nout[11];\nout[12];\nout[13];\nout[14];\nout[15];",
+      "Id": "4b7bc71b913741eb94bb7ee58660eeaf",
+      "Inputs": [
+        {
+          "Id": "e09ce69dae0f4b01af482d275f596b22",
+          "Name": "out",
+          "Description": "out",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "779356442c3349109d294c3ad37d7acf",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "50f3825e37f347eca02cca44517c9a0b",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "60c722567e814761b6528fa863c7ed93",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "effb6b9f07a44fe89500c87dc86ba268",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d71895b496b3409093a759a6889283e3",
+          "Name": "",
+          "Description": "Value of expression at line 5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2cfbf472029b44debb2a4681cef0ed11",
+          "Name": "",
+          "Description": "Value of expression at line 6",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cecb046113ba47af92520d75389336c8",
+          "Name": "",
+          "Description": "Value of expression at line 7",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4d00684d01c04987a97725ef3ea5b2fd",
+          "Name": "",
+          "Description": "Value of expression at line 8",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3cce5d028a8741c5b5f41302e491928a",
+          "Name": "",
+          "Description": "Value of expression at line 9",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "81f5fba3f22540b4851957e0066438c7",
+          "Name": "",
+          "Description": "Value of expression at line 10",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ead10432195f48ef923b0dc20415a565",
+          "Name": "",
+          "Description": "Value of expression at line 11",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e79739f0aaf74514a628652754260437",
+          "Name": "",
+          "Description": "Value of expression at line 12",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "10bc26287a264113aeb5611794f8fe2a",
+          "Name": "",
+          "Description": "Value of expression at line 13",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1a86da355adc4181929f8110e73d3c99",
+          "Name": "",
+          "Description": "Value of expression at line 14",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ae2286229c4e47618edf41925d2f5210",
+          "Name": "",
+          "Description": "Value of expression at line 15",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "617132cfdf7a4bb0873a22c1da223844",
+          "Name": "",
+          "Description": "Value of expression at line 16",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// A list of text summarizing the location data in the weather file (use this to construct the sun path).\r\nlocation;",
+      "Id": "483cdcae24084d1fa133f2282a01af5b",
+      "Inputs": [
+        {
+          "Id": "b7ef7a1e4f62423baf2cee64c924311c",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the houlry dry bulb temperature, in C. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from 70 C to 70 C. Missing value for this field is 99.9.\"\r\ndryBulbTemperature;",
+      "Id": "fac9cf51440a416fa5463336d807b953",
+      "Inputs": [
+        {
+          "Id": "6fc6883af969464da84a13e2d13cf118",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly dew point temperature, in C. Note that this is a full numeric field (i.e. 23.6) and not an integer representation with tenths. Valid values range from 70 C to 70 C. Missing value for this field is 99.9.\"\r\ndewPointTemperature;",
+      "Id": "809006cdf58842d0b8534229b91844d8",
+      "Inputs": [
+        {
+          "Id": "13d2dc1d2d67491689d790c13c7d1d67",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Relative Humidity in percent. Valid values range from 0% to 110%. Missing value for this field is 999.\"\r\nrelativeHumidity;",
+      "Id": "460bf97c4d674a8abdcc6a3d2b7eae00",
+      "Inputs": [
+        {
+          "Id": "be5e6c29dacf4c5194707f6eac6142dd",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly wind speed in m/sec. Values can range from 0 to 40. Missing value is 999.\"\r\nwindSpeed;",
+      "Id": "a4acc40bfc4748869fd048311fb9189b",
+      "Inputs": [
+        {
+          "Id": "183b3146d84945b8b1d90df55563f129",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Wind Direction in degrees where the convention is that North=0.0, East=90.0, South=180.0, West=270.0. (If wind is calm for the given hour, the direction equals zero.) Values can range from 0 to 360. Missing value is 999.\"\r\nwindDirection;",
+      "Id": "989b841c1f724a9ebd83c08dd75f1f40",
+      "Inputs": [
+        {
+          "Id": "6a68abe08c7645e0984b8d19a5afe5ef",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Direct Normal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) If the field is missing ( 9999) or invalid (<0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.\"\r\ndirectNormalRadiation;",
+      "Id": "e11c645fce6b44dca69e9b3949519936",
+      "Inputs": [
+        {
+          "Id": "61d9357ad8d84b479670d73c0c5999f1",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Diffuse Horizontal Radiation in Wh/m2. (Amount of solar radiation in Wh/m2 received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) If the field is missing ( 9999) or invalid (<0), it is set to 0. Counts of such missing values are totaled and presented at the end of the runperiod.\"\r\ndiffuseHorizontalRadiation;",
+      "Id": "77e3d099ddd741b7abfe4e943b87ea0c",
+      "Inputs": [
+        {
+          "Id": "7a21a75cacbf4b998ac80b74bfbdbdca",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Global Horizontal Radiation in Wh/m2. (Total amount of direct and diffuse solar radiation in Wh/m2 received on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 9999.\"\r\nglobalHorizontalRadiation;",
+      "Id": "6dc83897988249f98c1955b125675794",
+      "Inputs": [
+        {
+          "Id": "73761ab3c1ae48e7b46150481bd45b49",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Direct Normal Illuminance in lux. (Average amount of illuminance in hundreds of lux received directly from the solar disk on a surface perpendicular to the sun's rays, during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of >= 999900.\"\r\ndirectNormalIlluminance;",
+      "Id": "c42f4292ddee4c9887faa54c140afd05",
+      "Inputs": [
+        {
+          "Id": "1b618c936fa44db7bb407bcef585b9a4",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Diffuse Horizontal Illuminance in lux. (Average amount of illuminance in hundreds of lux received from the sky (excluding the solar disk) on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of >= 999900.\"\r\ndiffuseHorizontalIlluminance;",
+      "Id": "582bc2e0d182419b95592e182b22c7f7",
+      "Inputs": [
+        {
+          "Id": "10133e848d6647ae97135e01c2a0a68e",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly Global Horizontal Illuminance in lux. (Average total amount of direct and diffuse illuminance in hundreds of lux received on a horizontal surface during the number of minutes preceding the time indicated.) It is not currently used in EnergyPlus calculations. It should have a minimum value of 0; missing value for this field is 999999 and will be considered missing of >= 999900.\"\r\nglobalHorizontalIlluminance;",
+      "Id": "d509f7ed12fb46bcad0de97595dfa3fd",
+      "Inputs": [
+        {
+          "Id": "60748fa909d444d1b0bad96f05432b5f",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the fraction for total sky cover (tenths of coverage). (i.e. 1 is 1/10 covered. 10 is total coverage). (Amount of sky dome in tenths covered by clouds or obscuring phenomena at the hour indicated at the time indicated.) Minimum value is 0; maximum value is 10; missing value is 99.\"\r\ntotalSkyCover;",
+      "Id": "9d600e28c750411690fe1a7437ae0fc1",
+      "Inputs": [
+        {
+          "Id": "890ed3760b754782b4244db869919e68",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"The amount of liquid precipitation(mm) observed at the indicated hour for the period indicated in the liquid precipitation quantity field. If this value is not missing, then it is used and overrides the precipitation flag as rainfall.  Conversely, if the precipitation flag shows rain and this field is missing or zero, it is set to 1.5 (mm).\"\r\nliquidPrecipitationDepth;",
+      "Id": "f7c0205579d24a07983497d7b3263571",
+      "Inputs": [
+        {
+          "Id": "5999c78c8be1450e8f3620447c2778be",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// \"This is the hourly weather station pressure in Pa. Valid values range from 31,000 to 120,000... Missing value for this field is 999999.\"\r\nbarometricPressure;",
+      "Id": "130a981ff2b44635ae7f55bddb19d85a",
+      "Inputs": [
+        {
+          "Id": "65899c8ce5d849f892c4432344a2c017",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// The year from which the hourly data has been extracted. EPW files are synthesized from real recorded data from different years in a given climate. This is done to ensure that, for each month, the selected data is statistically representative of the average monthly conditions over the 18+ years of recording the data. Different EPW files will be synthesized from different years depeding on whether they are TMY (Typical Meteorological Year), TMY2, TMY3, AMY (Actual Meteorological Year) or other.\r\nmodelYear;",
+      "Id": "294b2f9809e747fab15be1b7318dce47",
+      "Inputs": [
+        {
+          "Id": "7972c2441af245e681bf2d0d11f6bd3a",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\r\n        \r\n\"\"\"Report errors\"\"\"\r\nimportErr, runErr = IN\r\nerrors = []\r\n\r\nif importErr and str(importErr).startswith(\"ERROR:\"):\r\n    errors.append(importErr)\r\n\r\nif runErr and str(runErr).startswith(\"ERROR:\"):\r\n    errors.append(runErr)\r\n\r\nif len(errors)==0:\r\n    OUT = \"All good! Vvizzzz.\"\r\nelse:\r\n    OUT = \"\\n\".join(errors)\r\n\r\n      ",
+      "VariableInputPorts": true,
+      "Id": "b53e3147b36142a7a16a91f05a47a6c1",
+      "Inputs": [
+        {
+          "Id": "502e95edba03478c87547bf3af3cde96",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f723fafaa0e948b6a88a55a77f5ce958",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "be4298e107d748399d3548dc0e93a6b3",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "// Report\r\nERRReport;",
+      "Id": "2023d8481f274aefb193642ba68c969b",
+      "Inputs": [
+        {
+          "Id": "d4b8893d5c774d7ba7d2b2d00b26196e",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "2d585c2d5c104d668d9f3bd9cdcab02f",
+      "End": "2a23555c8d384444bb8c9f9bb2738894",
+      "Id": "e21d9eb13dc14ed6927d081e5e54e9d1"
+    },
+    {
+      "Start": "3423dfc48cad41d2857587f4859fad82",
+      "End": "716a8c107ca741a5b558796bfc14e1fe",
+      "Id": "4b8f8d9d2b5a485d8a1109f11395d751"
+    },
+    {
+      "Start": "42b471f049ad498e9bec58d0c99b8dab",
+      "End": "f947890781a24893a733c2967a971e0a",
+      "Id": "97456b2bc45e4003899ccaa8d12f2292"
+    },
+    {
+      "Start": "42b471f049ad498e9bec58d0c99b8dab",
+      "End": "502e95edba03478c87547bf3af3cde96",
+      "Id": "78b659aa1db040d0acbd05c8f8d41f2f"
+    },
+    {
+      "Start": "54de220397dc4e52bb83fe3669498eee",
+      "End": "e09ce69dae0f4b01af482d275f596b22",
+      "Id": "bd334e98a1694125853b4befda46158e"
+    },
+    {
+      "Start": "54de220397dc4e52bb83fe3669498eee",
+      "End": "f723fafaa0e948b6a88a55a77f5ce958",
+      "Id": "51ca5e7f9df04b089b3d3e1696c00e5f"
+    },
+    {
+      "Start": "58ba7fb59a8b49e38378eef56b03f811",
+      "End": "86a41319acdb48b49488b7dbea2aa66e",
+      "Id": "f9a3ec34c3ae42e8a4619dbb0ab21f97"
+    },
+    {
+      "Start": "779356442c3349109d294c3ad37d7acf",
+      "End": "b7ef7a1e4f62423baf2cee64c924311c",
+      "Id": "c139e25e0c1b4f7283c5b497beae3a27"
+    },
+    {
+      "Start": "50f3825e37f347eca02cca44517c9a0b",
+      "End": "6fc6883af969464da84a13e2d13cf118",
+      "Id": "13c36cf08a584d07894e27645f2534bc"
+    },
+    {
+      "Start": "60c722567e814761b6528fa863c7ed93",
+      "End": "13d2dc1d2d67491689d790c13c7d1d67",
+      "Id": "33c2d5745af045899835d620fb9110ab"
+    },
+    {
+      "Start": "effb6b9f07a44fe89500c87dc86ba268",
+      "End": "be5e6c29dacf4c5194707f6eac6142dd",
+      "Id": "d8aefec450bd475da2c5d2512f58acdb"
+    },
+    {
+      "Start": "d71895b496b3409093a759a6889283e3",
+      "End": "183b3146d84945b8b1d90df55563f129",
+      "Id": "7907a35f477645c19ee679f650cf959a"
+    },
+    {
+      "Start": "2cfbf472029b44debb2a4681cef0ed11",
+      "End": "6a68abe08c7645e0984b8d19a5afe5ef",
+      "Id": "d013c11802aa4df0853ed553ec348146"
+    },
+    {
+      "Start": "cecb046113ba47af92520d75389336c8",
+      "End": "61d9357ad8d84b479670d73c0c5999f1",
+      "Id": "2765aed37ef4483986637643e5c10a69"
+    },
+    {
+      "Start": "4d00684d01c04987a97725ef3ea5b2fd",
+      "End": "7a21a75cacbf4b998ac80b74bfbdbdca",
+      "Id": "ba88c52e41f0492cb7f70de4bf2f225e"
+    },
+    {
+      "Start": "3cce5d028a8741c5b5f41302e491928a",
+      "End": "73761ab3c1ae48e7b46150481bd45b49",
+      "Id": "9041a9b854404769ad21ba446731aa07"
+    },
+    {
+      "Start": "81f5fba3f22540b4851957e0066438c7",
+      "End": "1b618c936fa44db7bb407bcef585b9a4",
+      "Id": "bb877237fc1a4290950a2700892ef291"
+    },
+    {
+      "Start": "ead10432195f48ef923b0dc20415a565",
+      "End": "10133e848d6647ae97135e01c2a0a68e",
+      "Id": "fa27ee7b4429427bb9169f598599600b"
+    },
+    {
+      "Start": "e79739f0aaf74514a628652754260437",
+      "End": "60748fa909d444d1b0bad96f05432b5f",
+      "Id": "23e169cf073e4d3c911670a92144157e"
+    },
+    {
+      "Start": "10bc26287a264113aeb5611794f8fe2a",
+      "End": "890ed3760b754782b4244db869919e68",
+      "Id": "9912cec356a04843bb16b724c6900397"
+    },
+    {
+      "Start": "1a86da355adc4181929f8110e73d3c99",
+      "End": "5999c78c8be1450e8f3620447c2778be",
+      "Id": "035935f2e0fd457bb3cc9ec301e5a5cb"
+    },
+    {
+      "Start": "ae2286229c4e47618edf41925d2f5210",
+      "End": "65899c8ce5d849f892c4432344a2c017",
+      "Id": "b06d09b85aab4509b8100f5f1454d341"
+    },
+    {
+      "Start": "617132cfdf7a4bb0873a22c1da223844",
+      "End": "7972c2441af245e681bf2d0d11f6bd3a",
+      "Id": "93454d4e20944c2189377d8f731e3a12"
+    },
+    {
+      "Start": "be4298e107d748399d3548dc0e93a6b3",
+      "End": "d4b8893d5c774d7ba7d2b2d00b26196e",
+      "Id": "01da39cc99e94890bb74e3f7d9ae351a"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -34.0,
+      "EyeY": -34.0,
+      "EyeZ": 21.190000534057617,
+      "LookX": -14.1899995803833,
+      "LookY": -43.060001373291016,
+      "LookZ": -41.650001525878906,
+      "UpX": -0.17000000178813934,
+      "UpY": 0.85000002384185791,
+      "UpZ": -0.5
+    },
+    "NodeViews": [
+      {
+        "Id": "8f2fe15cd07041c987919352817796e4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "input python script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -750.0,
+        "Y": 390.0
+      },
+      {
+        "Id": "ba08714210f24f55968357046cbbd86d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "import and prepare py code",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -355.0,
+        "Y": 385.0
+      },
+      {
+        "Id": "2e98635ecb2c4bb593c5c6d86fe436d8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "core",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -75.0,
+        "Y": 460.0
+      },
+      {
+        "Id": "5882095e0eb0448bbf745beac60d1b68",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "_epwFile",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -750.0,
+        "Y": 475.0
+      },
+      {
+        "Id": "4b7bc71b913741eb94bb7ee58660eeaf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "decompose outputs",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 150.0,
+        "Y": 515.0
+      },
+      {
+        "Id": "483cdcae24084d1fa133f2282a01af5b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "location",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 475.0
+      },
+      {
+        "Id": "fac9cf51440a416fa5463336d807b953",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "dryBulbTemperature",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 570.0
+      },
+      {
+        "Id": "809006cdf58842d0b8534229b91844d8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "dewPointTemperature",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 665.0
+      },
+      {
+        "Id": "460bf97c4d674a8abdcc6a3d2b7eae00",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "relativeHumidity",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 760.0
+      },
+      {
+        "Id": "a4acc40bfc4748869fd048311fb9189b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "windSpeed",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 855.0
+      },
+      {
+        "Id": "989b841c1f724a9ebd83c08dd75f1f40",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "windDirection",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 950.0
+      },
+      {
+        "Id": "e11c645fce6b44dca69e9b3949519936",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "directNormalRadiation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1045.0
+      },
+      {
+        "Id": "77e3d099ddd741b7abfe4e943b87ea0c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "diffuseHorizontalRadiation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1140.0
+      },
+      {
+        "Id": "6dc83897988249f98c1955b125675794",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "globalHorizontalRadiation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1235.0
+      },
+      {
+        "Id": "c42f4292ddee4c9887faa54c140afd05",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "directNormalIlluminance",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1330.0
+      },
+      {
+        "Id": "582bc2e0d182419b95592e182b22c7f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "diffuseHorizontalIlluminance",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1425.0
+      },
+      {
+        "Id": "d509f7ed12fb46bcad0de97595dfa3fd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "globalHorizontalIlluminance",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1520.0
+      },
+      {
+        "Id": "9d600e28c750411690fe1a7437ae0fc1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "totalSkyCover",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1615.0
+      },
+      {
+        "Id": "f7c0205579d24a07983497d7b3263571",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "liquidPrecipitationDepth",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1710.0
+      },
+      {
+        "Id": "130a981ff2b44635ae7f55bddb19d85a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "barometricPressure",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1805.0
+      },
+      {
+        "Id": "294b2f9809e747fab15be1b7318dce47",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "modelYear",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 1900.0
+      },
+      {
+        "Id": "b53e3147b36142a7a16a91f05a47a6c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Error report",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 150.0,
+        "Y": 380.0
+      },
+      {
+        "Id": "2023d8481f274aefb193642ba68c969b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "ERRReport",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 380.0,
+        "Y": 380.0
+      }
+    ],
+    "Annotations": [],
+    "X": 400.0,
+    "Y": -100.0,
+    "Zoom": 0.5
+  }
+}
